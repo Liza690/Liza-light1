@@ -138,7 +138,7 @@ function ProvidersContent() {
     <>
       <Navbar />
       <div style={{ background: "var(--cream)", minHeight: "100vh", paddingTop: "120px", paddingBottom: "96px" }}>
-        <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 32px" }}>
+        <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 16px" }} className="sm:px-8">
           {/* Page Header */}
           <div style={{ marginBottom: "40px" }}>
             <p className="section-label">Browse Companions</p>
@@ -161,13 +161,15 @@ function ProvidersContent() {
               WebkitBackdropFilter: "blur(24px)",
               borderRadius: "20px",
               border: searchFocused ? "1px solid rgba(124,58,237,0.35)" : "1px solid rgba(192,138,132,0.1)",
-              padding: "5px 5px 5px 24px",
+              padding: "5px 5px 5px 16px",
               boxShadow: searchFocused
                 ? "0 4px 32px rgba(124,58,237,0.1), 0 0 0 2px rgba(124,58,237,0.12)"
                 : "0 2px 24px rgba(13,4,6,0.04), inset 0 0 0 1px rgba(255,255,255,0.6)",
               transition: "all 0.3s ease",
               width: "100%",
               maxWidth: "860px",
+              overflow: "hidden",
+              boxSizing: "border-box",
             }}>
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={searchFocused ? "var(--accent)" : "var(--text-muted)"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ flexShrink: 0, opacity: searchFocused ? 0.7 : 0.35, transition: "all 0.3s" }}><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
               <input
@@ -179,9 +181,10 @@ function ProvidersContent() {
                 placeholder="Search by name, city, or keyword..."
                 style={{
                   flex: 1,
-                  padding: "16px 14px",
+                  minWidth: 0,
+                  padding: "14px 10px",
                   border: "none",
-                  fontSize: "0.9rem",
+                  fontSize: "0.85rem",
                   fontFamily: "'Jost', sans-serif",
                   outline: "none",
                   background: "transparent",
@@ -190,9 +193,8 @@ function ProvidersContent() {
                   fontWeight: 400,
                 }}
               />
-              <span style={{ fontSize: "0.5rem", fontWeight: 500, letterSpacing: "0.08em", color: "var(--text-muted)", opacity: 0.35, marginRight: "10px", fontFamily: "'Jost', sans-serif", flexShrink: 0, display: "none" }} className="lg:block">/</span>
               <button type="submit" style={{
-                padding: "14px 32px",
+                padding: "12px 20px",
                 background: "linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%)",
                 color: "var(--white)",
                 fontSize: "0.72rem",
@@ -206,8 +208,7 @@ function ProvidersContent() {
                 transition: "all 0.25s cubic-bezier(0.34,1.56,0.64,1)",
                 boxShadow: "0 4px 16px rgba(124,58,237,0.35)",
                 whiteSpace: "nowrap",
-                position: "relative",
-                overflow: "hidden",
+                flexShrink: 0,
               }}
                 onMouseEnter={(e) => { e.currentTarget.style.transform = "scale(1.03)"; e.currentTarget.style.boxShadow = "0 8px 28px rgba(124,58,237,0.5)"; e.currentTarget.style.background = "linear-gradient(135deg, #6D28D9 0%, #5B21B6 100%)"; }}
                 onMouseLeave={(e) => { e.currentTarget.style.transform = "scale(1)"; e.currentTarget.style.boxShadow = "0 4px 16px rgba(124,58,237,0.35)"; e.currentTarget.style.background = "linear-gradient(135deg, #7C3AED 0%, #6D28D9 100%)"; }}
