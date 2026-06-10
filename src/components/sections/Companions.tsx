@@ -11,17 +11,6 @@ interface CompanionCard {
   available: boolean;
 }
 
-const fallback: CompanionCard[] = [
-  { id: "f1", name: "Anaya", meta: "24 · Mumbai", img: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400", available: true },
-  { id: "f2", name: "Ishita", meta: "26 · Delhi", img: "https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&q=80&w=400", available: true },
-  { id: "f3", name: "Mira", meta: "23 · Bangalore", img: "https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&q=80&w=400", available: false },
-  { id: "f4", name: "Riya", meta: "25 · Goa", img: "https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?auto=format&fit=crop&q=80&w=400", available: true },
-  { id: "f5", name: "Zara", meta: "27 · Kolkata", img: "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&q=80&w=400", available: true },
-  { id: "f6", name: "Neha", meta: "22 · Pune", img: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=400", available: true },
-  { id: "f7", name: "Kiara", meta: "28 · Hyderabad", img: "https://images.unsplash.com/photo-1513094735237-8f8f64505f79?auto=format&fit=crop&q=80&w=400", available: false },
-  { id: "f8", name: "Tara", meta: "24 · Jaipur", img: "https://images.unsplash.com/photo-1502823403499-6ccfcf4fb453?auto=format&fit=crop&q=80&w=400", available: true },
-];
-
 export default function Companions() {
   const router = useRouter();
   const sectionRef = useRef<HTMLElement>(null);
@@ -44,8 +33,7 @@ export default function Companions() {
         if (cards.length > 0) setCompanions(cards);
         else throw new Error("Empty");
       } catch {
-        // API unavailable — use fallback
-        setCompanions(fallback);
+        // API unavailable — render nothing
       } finally {
         setLoaded(true);
       }

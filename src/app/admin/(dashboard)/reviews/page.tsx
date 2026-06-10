@@ -102,7 +102,7 @@ export default function ReviewsPage() {
         }}>{msg.text}</div>
       )}
 
-      <div style={{ display:"grid", gridTemplateColumns:"360px 1fr", gap:24, alignItems:"start" }}>
+      <div className="admin-reviews-grid" style={{ display:"grid", gridTemplateColumns:"360px 1fr", gap:24, alignItems:"start" }}>
 
         {/* ── LEFT: Create review form ── */}
         <div style={card}>

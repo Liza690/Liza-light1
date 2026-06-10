@@ -56,7 +56,7 @@ export default function AdminOverview() {
       </div>
 
       {/* Stats */}
-      <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 40 }}>
+      <div className="admin-stats-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 16, marginBottom: 40 }}>
         {STAT_CARDS.map((c) => (
           <Link key={c.label} href={c.href} style={{ textDecoration: "none", display: "block", ...S.card, transition: "border-color 0.2s" }}
             onMouseEnter={(e) => (e.currentTarget.style.borderColor = "rgba(124,58,237,0.3)")}

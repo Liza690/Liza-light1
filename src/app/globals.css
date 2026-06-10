@@ -422,3 +422,63 @@ section { padding: 100px 80px; }
   .pricing-card .perks li { font-size: 0.6rem !important; }
   .pricing-card .pc-btn { font-size: 0.55rem !important; padding: 12px !important; }
 }
+
+/* ═══ Admin Panel Responsive ═══ */
+@media (max-width: 1024px) {
+  .admin-stats-grid { grid-template-columns: repeat(2, 1fr) !important; }
+  .admin-reviews-grid { grid-template-columns: 1fr !important; }
+  .admin-providers-grid { grid-template-columns: 1fr !important; }
+}
+@media (max-width: 768px) {
+  .admin-sidebar { left: -230px !important; transition: left 0.3s ease !important; }
+  .admin-sidebar.open { left: 0 !important; }
+  .admin-sidebar-toggle { display: flex !important; }
+  .admin-mobile-overlay { display: block !important; }
+  .admin-main-content { margin-left: 0 !important; padding: 24px 20px !important; max-width: 100vw !important; overflow-x: hidden !important; }
+  .admin-stats-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+}
+@media (min-width: 769px) {
+  .admin-mobile-overlay { display: none !important; }
+}
+@media (max-width: 576px) {
+  .admin-main-content { padding: 20px 14px !important; }
+  .admin-reviews-grid { gap: 16px !important; }
+  .admin-providers-grid { gap: 16px !important; }
+}
+
+.admin-main-content { min-width: 0; }
+.admin-booking-card { overflow-x: auto; min-width: 0; }
+@media (max-width: 768px) {
+  .provider-detail-page .grid-cols-4 { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 640px) {
+  .provider-detail-page .grid-cols-4 { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
+  .provider-detail-page .grid-cols-2 { gap: 8px !important; }
+
+}
+@media (max-width: 900px) {
+  .provider-detail-page [style*="paddingTop: 140px"],
+  .provider-detail-page [style*="padding-top: 140px"] { padding-top: 80px !important; }
+  .provider-detail-page [style*="paddingBottom: 96px"],
+  .provider-detail-page [style*="padding-bottom: 96px"] { padding-bottom: 60px !important; }
+  .provider-detail-page .sticky { position: static !important; }
+  .provider-detail-page [style*="padding: 36px"] { padding: 24px !important; }
+  .provider-detail-page [style*="padding: 32px"] { padding: 20px !important; }
+  .provider-detail-page .gap-8 { gap: 20px !important; }
+}
+@media (max-width: 576px) {
+  .provider-detail-page [style*="paddingTop: 140px"],
+  .provider-detail-page [style*="padding-top: 140px"] { padding-top: 66px !important; }
+  .provider-detail-page [style*="paddingBottom: 96px"],
+  .provider-detail-page [style*="padding-bottom: 96px"] { padding-bottom: 40px !important; }
+  .provider-detail-page [style*="padding: 36px"] { padding: 18px !important; }
+  .provider-detail-page [style*="padding: 32px"] { padding: 16px !important; }
+  .provider-detail-page [style*="padding: 40px 32px"] { padding: 24px 18px !important; }
+  .provider-detail-page [style*="padding: 16px 20px"] { padding: 12px 14px !important; }
+  .provider-detail-page [style*="marginBottom: 40"] { margin-bottom: 20px !important; }
+  .provider-detail-page .gap-8 { gap: 16px !important; }
+  .provider-detail-page [style*="padding: 10px 4px"] { padding: 14px 6px !important; font-size: 13px !important; }
+}
+@media (max-width: 768px) {
+  .admin-booking-card { overflow-x: auto !important; min-width: 0 !important; max-width: 100% !important; }
+}

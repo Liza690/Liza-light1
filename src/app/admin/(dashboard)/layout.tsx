@@ -9,7 +9,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   }
 
   return (
-    <div style={{
+    <div className="admin-layout-wrapper" style={{
       display: "flex",
       minHeight: "100vh",
       background: "var(--deeper)",
@@ -17,7 +17,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
       fontFamily: "'Jost', sans-serif",
     }}>
       <AdminSidebar userName={session.user.name ?? "Administrator"} />
-      <main style={{
+      <main className="admin-main-content" style={{
         marginLeft: 230,
         flex: 1,
         padding: "40px 44px",

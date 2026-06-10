@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
 
 const NAV = [
   { href: "/admin",           label: "Overview",   exact: true  },
@@ -13,6 +14,7 @@ const NAV = [
 export default function AdminSidebar({ userName }: { userName?: string }) {
   const path = usePathname();
   const router = useRouter();
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   async function handleSignOut() {
     await fetch("/api/v1/auth/signout", { method: "POST" }).catch(() => {});
@@ -21,14 +23,32 @@ export default function AdminSidebar({ userName }: { userName?: string }) {
   }
 
   return (
-    <aside style={{
-      width: 230, flexShrink: 0,
-      position: "fixed", top: 0, left: 0, bottom: 0,
-      background: "#111111",
-      borderRight: "1px solid rgba(255,255,255,0.05)",
-      display: "flex", flexDirection: "column",
-      zIndex: 999, overflowY: "auto",
-    }}>
+    <>
+      {mobileOpen && (
+        <div onClick={() => setMobileOpen(false)} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.5)", zIndex: 998 }} className="admin-mobile-overlay" />
+      )}
+      <button
+        className="admin-sidebar-toggle"
+        onClick={() => setMobileOpen(!mobileOpen)}
+        aria-label="Toggle sidebar"
+        style={{
+          position: "fixed", top: 12, right: 14, zIndex: 1001,
+          background: "var(--accent)", border: "none", color: "#fff",
+          fontSize: 18, cursor: "pointer", width: 36, height: 36,
+          display: "none", alignItems: "center", justifyContent: "center",
+          borderRadius: 8, padding: 0,
+        }}
+      >
+        {mobileOpen ? "✕" : "☰"}
+      </button>
+      <aside className={`admin-sidebar ${mobileOpen ? "open" : ""}`} style={{
+        width: 230, flexShrink: 0,
+        position: "fixed", top: 0, left: 0, bottom: 0,
+        background: "#111111",
+        borderRight: "1px solid rgba(255,255,255,0.05)",
+        display: "flex", flexDirection: "column",
+        zIndex: 999, overflowY: "auto",
+      }}>
       {/* Brand */}
       <div style={{ padding: "28px 24px 22px", borderBottom: "1px solid rgba(255,255,255,0.05)" }}>
         <div style={{
@@ -45,7 +65,7 @@ export default function AdminSidebar({ userName }: { userName?: string }) {
         {NAV.map(({ href, label, exact }) => {
           const active = exact ? path === href : path.startsWith(href);
           return (
-            <Link key={href} href={href} style={{
+            <Link key={href} href={href} onClick={() => setMobileOpen(false)} style={{
               display: "flex", alignItems: "center",
               padding: "13px 24px",
               fontSize: 11, fontWeight: 700, letterSpacing: "1.8px", textTransform: "uppercase",
@@ -78,5 +98,6 @@ export default function AdminSidebar({ userName }: { userName?: string }) {
         </div>
       </div>
     </aside>
+    </>
   );
 }

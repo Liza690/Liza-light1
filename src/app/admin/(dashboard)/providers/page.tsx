@@ -277,7 +277,7 @@ export default function ProvidersPage() {
           }}>{msg.text}</div>
         )}
 
-      <div style={{ display:"grid", gridTemplateColumns:"420px 1fr", gap:24, alignItems:"start" }}>
+      <div className="admin-providers-grid" style={{ display:"grid", gridTemplateColumns:"420px 1fr", gap:24, alignItems:"start" }}>
 
         {/* ══════════════ LEFT PANEL ══════════════ */}
         <div style={{ maxHeight:"calc(100vh - 160px)", overflowY:"auto", paddingRight:4 }}>

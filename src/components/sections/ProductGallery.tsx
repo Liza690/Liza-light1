@@ -41,12 +41,58 @@ export default function ProductGallery({ images = [], name }: Props) {
     setActiveImageIndex((activeImageIndex - 1 + allImages.length) % allImages.length);
   };
 
+  const [activeMobileIdx, setActiveMobileIdx] = useState(0);
+
+  const handleMobileScroll = (e: React.UIEvent<HTMLDivElement>) => {
+    const width = e.currentTarget.offsetWidth;
+    if (width > 0) {
+      const newIdx = Math.round(e.currentTarget.scrollLeft / width);
+      setActiveMobileIdx(newIdx);
+    }
+  };
+
   return (
     <div className="space-y-4">
-      <div className="grid grid-cols-4 gap-3 md:gap-4">
+      {/* Mobile Slider View */}
+      <div className="sm:hidden relative w-full aspect-[3/4] overflow-hidden bg-[var(--beige)] shadow-lg">
+        <div 
+          onScroll={handleMobileScroll}
+          className="flex w-full h-full overflow-x-auto snap-x snap-mandatory scrollbar-none"
+          style={{ scrollbarWidth: "none" }}
+        >
+          {imgs.map((img, idx) => (
+            <div 
+              key={idx}
+              onClick={() => openLightbox(idx % allImages.length)}
+              className="w-full h-full shrink-0 snap-start relative cursor-pointer"
+            >
+              <img
+                src={img}
+                alt={`${name} - ${idx + 1}`}
+                className="w-full h-full object-cover"
+              />
+            </div>
+          ))}
+        </div>
+        
+        {/* Counter Overlay */}
+        <div style={{padding:5}} className="absolute bottom-4 right-4 bg-[var(--dark)]/80 backdrop-blur-md px-4.5 py-2 rounded-full text-xs tracking-[1.5px] text-[var(--cream)] border border-[var(--cream)]/10 leading-none flex items-center justify-center">
+          {activeMobileIdx + 1} / {imgs.length}
+        </div>
+
+        {/* Swipe Hint */}
+        {imgs.length > 1 && (
+          <div style={{padding:5}} className="absolute bottom-4 left-4 bg-[var(--dark)]/60 backdrop-blur-sm px-4.5 py-2 rounded-full text-[10px] uppercase tracking-[1.5px] text-[var(--cream)] border border-[var(--cream)]/10 font-bold leading-none pointer-events-none flex items-center justify-center">
+            ← Swipe →
+          </div>
+        )}
+      </div>
+
+      {/* Desktop Bento Grid layout */}
+      <div className="hidden sm:grid grid-cols-4 gap-3 md:gap-4">
         <div 
           onClick={() => openLightbox(0)}
-          className="col-span-4 sm:col-span-2 row-span-2 aspect-[3/4] sm:aspect-auto sm:min-h-[500px] overflow-hidden rounded-2xl bg-[var(--beige)] relative group cursor-pointer border border-[var(--taupe)]/15 hover:border-[var(--accent)]/40 transition-all duration-300 shadow-lg"
+          className="col-span-4 sm:col-span-2 row-span-2 aspect-[3/4] overflow-hidden rounded-2xl bg-[var(--beige)] relative group cursor-pointer border border-[var(--taupe)]/15 hover:border-[var(--accent)]/40 transition-all duration-300 shadow-lg"
         >
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 group-hover:opacity-40 transition-opacity z-[1]" />
           <img
@@ -55,13 +101,13 @@ export default function ProductGallery({ images = [], name }: Props) {
             className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
           />
           <div className="absolute bottom-4 left-4 z-10 bg-[var(--dark)]/70 backdrop-blur-md px-3 py-1.5 rounded-lg text-[10px] uppercase tracking-[1.5px] text-[var(--cream)] border border-[var(--cream)]/10 opacity-0 group-hover:opacity-100 transition-opacity">
-            🔍 View Fullscreen
+             View Fullscreen
           </div>
         </div>
 
         <div 
           onClick={() => openLightbox(1 % allImages.length)}
-          className="col-span-2 sm:col-span-1 aspect-[4/3] sm:aspect-auto sm:h-[242px] overflow-hidden rounded-xl bg-[var(--beige)] relative group cursor-pointer border border-[var(--taupe)]/15 hover:border-[var(--accent)]/40 transition-all duration-300 shadow-md"
+          className="col-span-2 sm:col-span-1 aspect-[3/4] overflow-hidden rounded-xl bg-[var(--beige)] relative group cursor-pointer border border-[var(--taupe)]/15 hover:border-[var(--accent)]/40 transition-all duration-300 shadow-md"
         >
           <img
             src={imgs[1]}
@@ -72,7 +118,7 @@ export default function ProductGallery({ images = [], name }: Props) {
 
         <div 
           onClick={() => openLightbox(2 % allImages.length)}
-          className="col-span-2 sm:col-span-1 aspect-[4/3] sm:aspect-auto sm:h-[242px] overflow-hidden rounded-xl bg-[var(--beige)] relative group cursor-pointer border border-[var(--taupe)]/15 hover:border-[var(--accent)]/40 transition-all duration-300 shadow-md"
+          className="col-span-2 sm:col-span-1 aspect-[3/4] overflow-hidden rounded-xl bg-[var(--beige)] relative group cursor-pointer border border-[var(--taupe)]/15 hover:border-[var(--accent)]/40 transition-all duration-300 shadow-md"
         >
           <img
             src={imgs[2]}
@@ -83,7 +129,7 @@ export default function ProductGallery({ images = [], name }: Props) {
 
         <div 
           onClick={() => openLightbox(3 % allImages.length)}
-          className="col-span-2 sm:col-span-1 aspect-[4/3] sm:aspect-auto sm:h-[242px] overflow-hidden rounded-xl bg-[var(--beige)] relative group cursor-pointer border border-[var(--taupe)]/15 hover:border-[var(--accent)]/40 transition-all duration-300 shadow-md"
+          className="col-span-2 sm:col-span-1 aspect-[3/4] overflow-hidden rounded-xl bg-[var(--beige)] relative group cursor-pointer border border-[var(--taupe)]/15 hover:border-[var(--accent)]/40 transition-all duration-300 shadow-md"
         >
           <img
             src={imgs[3]}
@@ -94,7 +140,7 @@ export default function ProductGallery({ images = [], name }: Props) {
 
         <div 
           onClick={() => openLightbox(4 % allImages.length)}
-          className="col-span-2 sm:col-span-1 aspect-[4/3] sm:aspect-auto sm:h-[242px] overflow-hidden rounded-xl bg-[var(--beige)] relative group cursor-pointer border border-[var(--taupe)]/15 hover:border-[var(--accent)]/40 transition-all duration-300 shadow-md"
+          className="col-span-2 sm:col-span-1 aspect-[3/4] overflow-hidden rounded-xl bg-[var(--beige)] relative group cursor-pointer border border-[var(--taupe)]/15 hover:border-[var(--accent)]/40 transition-all duration-300 shadow-md"
         >
           <img
             src={imgs[4]}

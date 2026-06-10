@@ -83,7 +83,7 @@ export default function BookingsPage() {
         ))}
       </div>
 
-      <div style={card}>
+      <div className="admin-booking-card" style={card}>
         {loading ? (
           <div style={{ textAlign:"center", padding:"60px 0", color:"var(--text-muted)", fontSize:12 }}>Loading bookings…</div>
         ) : bookings.length === 0 ? (

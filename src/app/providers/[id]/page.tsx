@@ -419,7 +419,7 @@ export default function ProviderDetail() {
         className="bg-gradient-to-b from-[var(--deeper)] via-[var(--dark)] to-[var(--deeper)] min-h-screen text-white flex justify-center items-start"
         style={{ paddingTop: "140px", paddingBottom: "96px" }}
       >
-        <div className="max-w-7xl w-full mx-auto px-4 sm:px-8">
+        <div className="max-w-7xl w-full mx-auto px-4 sm:px-8 provider-detail-page">
           <div className="grid lg:grid-cols-12 gap-8 xl:gap-12 items-start justify-center">
             
             {/* ===== LEFT: Bento Gallery Layout (Sticky) ===== */}
