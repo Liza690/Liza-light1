@@ -1,0 +1,4454 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LIZA — Elite Companionship</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500;1,600&family=Jost:wght@200;300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<style>
+
+  @font-face {
+    font-family: 'VeganStyle';
+    src: url('./vegan-style-font/VeganStylePersonalUse-5Y58.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  :root {
+
+    --cream: #FDF6F3;
+
+    --beige: #F5E4DE;
+
+    --taupe: #C08A84;
+
+    --dark: #1A0D0F;
+
+    --dark-mid: #2C1519;
+
+    --deeper: #0D0406;
+
+    --text-muted: #8A6B6E;
+
+    --white: #FFFFFF;
+
+    --accent: #7C3AED;
+
+    --gold: #A78BFA;
+
+  }
+
+
+
+  @font-face {
+    font-family: 'Vegan Style Personal Use';
+    src: url('./vegan-style-font/VeganStylePersonalUse-5Y58.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+
+
+  body {
+
+    font-family: 'Jost', sans-serif;
+
+    background: var(--white);
+
+    color: var(--dark);
+
+    overflow-x: hidden;
+
+    -webkit-font-smoothing: antialiased;
+
+    -moz-osx-font-smoothing: grayscale;
+
+  }
+
+
+
+  a { text-decoration: none; color: inherit; }
+
+  img { display: block; max-width: 100%; }
+
+
+
+  /* â�?€â�?€ SHARED SECTION STYLES â�?€â�?€ */
+
+  section { padding: 100px 80px; }
+
+  .section-label {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.62rem;
+
+    letter-spacing: 0.2em;
+
+    text-transform: uppercase;
+
+    color: var(--gold);
+
+    margin-bottom: 6px;
+
+    font-weight: 500;
+
+  }
+
+  .section-title {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 2rem;
+
+    font-weight: 500;
+
+    color: var(--dark);
+
+    line-height: 1.2;
+
+  }
+
+  .section-title em { font-style: italic; color: var(--accent); }
+
+  .section-sub {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.65rem;
+
+    font-weight: 300;
+
+    color: var(--text-muted);
+
+    line-height: 1.8;
+
+    max-width: 500px;
+
+  }
+
+  .divider {
+
+    width: 40px;
+
+    height: 2px;
+
+    background: var(--accent);
+
+    margin: 12px 0 24px;
+
+  }
+
+  .section-header { margin-bottom: 60px; }
+
+  .section-header .section-title { margin-bottom: 10px; }
+
+
+
+  /* â�?€â�?€ NAV â�?€â�?€ */
+
+  nav {
+
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+
+    display: flex; align-items: center; justify-content: space-between;
+
+    padding: 18px 60px;
+
+    background: var(--accent);
+
+    backdrop-filter: blur(16px);
+
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+
+    transition: all 0.3s;
+
+  }
+
+  .nav-logo {
+
+    font-family: 'Great Vibes', cursive;
+
+    font-size: 1.5rem;
+
+    color: var(--white);
+
+  }
+
+  .nav-links {
+
+    display: flex; gap: 36px; list-style: none;
+
+  }
+
+  .nav-links a {
+
+    font-family: 'Jost', sans-serif;
+
+    font-weight: 700;
+
+    font-size: 0.65rem;
+
+    letter-spacing: 0.18em;
+
+    text-transform: uppercase;
+
+    color: rgba(255,255,255,0.9);
+
+    transition: color 0.2s;
+
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-cta {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--white);
+    padding: 11px 26px;
+    font-weight: 700;
+    border-radius: 50px;
+    border: 2px solid transparent;
+    box-shadow: 0 4px 18px rgba(124,58,237,0.2), inset 0 1px 0 rgba(255,255,255,0.8);
+    transition: all 0.28s cubic-bezier(0.34,1.56,0.64,1);
+    position: relative;
+    overflow: hidden;
+  }
+  .nav-cta::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50px;
+    background: linear-gradient(135deg, rgba(124,58,237,0.12) 0%, transparent 60%);
+    opacity: 0;
+    transition: opacity 0.28s;
+  }
+  .nav-cta:hover {
+    background: transparent;
+    color: var(--white);
+    border-color: var(--white);
+    box-shadow: 0 6px 28px rgba(255,255,255,0.15), 0 0 0 1px rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+  }
+  .nav-cta:hover::after { opacity: 0; }
+
+
+
+  /* â�?€â�?€ HERO â�?€â�?€ */
+
+  #home {
+
+    height: 100vh; min-height: 650px;
+
+    position: relative;
+
+    overflow: hidden;
+
+  }
+
+  .hero-bg {
+
+    position: absolute; inset: 0;
+
+  }
+
+  .hero-bg::after {
+
+    content: '';
+
+    position: absolute; inset: 0;
+
+    background: linear-gradient(135deg, rgba(124,58,237,0.65) 0%, rgba(13,4,6,0.5) 40%, rgba(13,4,6,0.05) 60%, rgba(167,139,250,0.15) 100%);
+
+    z-index: 1;
+
+  }
+
+  .hero-bg img {
+
+    width: 100%; height: 100%;
+
+    object-fit: cover;
+
+    object-position: center 25%;
+
+    animation: heroZoom 10s ease-out forwards;
+
+  }
+
+  @keyframes heroZoom {
+
+    from { transform: scale(1.08); }
+
+    to { transform: scale(1); }
+
+  }
+
+  .hero-overlay {
+
+    position: relative; z-index: 2;
+
+    height: 100%;
+
+    display: flex; flex-direction: column;
+
+    justify-content: center;
+
+    padding: 0 80px;
+
+  }
+
+  .hero-featured {
+
+    position: absolute;
+
+    left: 65%;
+
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    z-index: 3;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+    width: 260px;
+
+  }
+
+  .hero-featured .heading {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.65rem;
+
+    letter-spacing: 0.2em;
+
+    text-transform: uppercase;
+
+    color: rgba(255,255,255,0.7);
+
+    margin-bottom: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding-left: 4px;
+
+  }
+
+  .hero-featured .heading .dot {
+
+    display: inline-block;
+
+    width: 8px;
+
+    height: 8px;
+
+    background: #10B981;
+
+    border-radius: 50%;
+
+    animation: beep 1.5s ease-in-out infinite;
+
+  }
+
+  @keyframes beep {
+
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(16,185,129,0.6); }
+
+    50% { opacity: 0.4; box-shadow: 0 0 0 8px rgba(16,185,129,0); }
+
+  }
+
+  .hero-featured .fcard {
+    display: flex;
+    gap: 14px;
+    padding: 18px 20px;
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.1);
+    align-items: center;
+    transform-origin: top right;
+    position: relative;
+    transition: transform 0.5s ease, opacity 0.5s ease;
+    cursor: pointer;
+  }
+  .hero-featured .fcard.no-transition {
+    transition: none !important;
+  }
+
+  .hero-featured .fcard#fc-1 {
+    transform: rotate(-1.5deg);
+    z-index: 3;
+  }
+  .hero-featured .fcard#fc-2 {
+    margin-top: -35px;
+    transform: rotate(1deg) translateX(30px);
+    z-index: 2;
+  }
+  .hero-featured .fcard#fc-3 {
+    margin-top: -35px;
+    transform: rotate(3deg) translateX(60px);
+    z-index: 1;
+  }
+
+  .hero-featured .fcard:hover {
+    transition: transform 0.25s ease, opacity 0.25s ease;
+    z-index: 10 !important;
+    box-shadow: 0 20px 60px rgba(124,58,237,0.3);
+    border-color: var(--accent);
+    background: rgba(255,255,255,0.14);
+  }
+  .hero-featured .fcard#fc-1:hover {
+    transform: rotate(-1.5deg) translateX(-15px) scale(1.12) translateY(-12px);
+  }
+  .hero-featured .fcard#fc-2:hover {
+    transform: rotate(1deg) translateX(30px) translateX(-15px) scale(1.12) translateY(-12px);
+  }
+  .hero-featured .fcard#fc-3:hover {
+    transform: rotate(3deg) translateX(60px) translateX(-15px) scale(1.12) translateY(-12px);
+  }
+  .hero-featured .fcard.swipe-out {
+    animation: swipeOut 0.8s ease forwards;
+  }
+  .hero-featured .fcard.swipe-in {
+    animation: swipeIn 0.8s ease forwards;
+  }
+  .hero-featured .fcard.fade-out {
+    animation: fadeOut 0.6s ease forwards;
+  }
+  .hero-featured .fcard.fade-in {
+    animation: fadeIn 0.5s ease forwards;
+  }
+  @keyframes swipeOut {
+    0% { transform: rotate(-1.5deg) translateX(0); opacity: 1; }
+    100% { transform: rotate(-4deg) translateX(-140px); opacity: 0; }
+  }
+  @keyframes swipeIn {
+    0% { transform: rotate(3deg) translateX(140px); opacity: 0; }
+    100% { transform: rotate(3deg) translateX(60px); opacity: 1; }
+  }
+  @keyframes fadeOut {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+  @keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+
+  .hero-featured .fcard .thumb {
+
+    width: 70px;
+
+    height: 84px;
+
+    flex-shrink: 0;
+
+    overflow: hidden;
+
+  }
+
+  .hero-featured .fcard .thumb img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+  }
+
+  .hero-featured .fcard .info { text-align: left; }
+
+  .hero-featured .fcard .info .name {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.9rem;
+
+    font-weight: 600;
+
+    color: var(--white);
+
+    display: block;
+
+  }
+
+  .hero-featured .fcard .info .detail {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.6rem;
+
+    letter-spacing: 0.1em;
+
+    color: rgba(255,255,255,0.5);
+
+    margin-top: 2px;
+
+  }
+
+  .hero-featured .fcard .info .status {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.55rem;
+
+    letter-spacing: 0.15em;
+
+    text-transform: uppercase;
+
+    color: #10B981;
+
+    margin-top: 4px;
+
+    display: block;
+
+  }
+
+  .hero-featured .fcard .info .btn-sm {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.5rem;
+
+    letter-spacing: 0.15em;
+
+    text-transform: uppercase;
+
+    color: var(--white);
+
+    background: var(--accent);
+
+    padding: 6px 16px;
+
+    border-radius: 10px;
+
+    display: inline-block;
+
+    margin-top: 8px;
+
+    text-decoration: none;
+
+    font-weight: 500;
+
+    transition: background 0.2s;
+
+  }
+
+  .hero-featured .fcard .info .btn-sm:hover { background: #6D28D9; }
+
+  .hero-rating {
+    position: absolute;
+    left: 50%;
+    bottom: 60px;
+    transform: translateX(-50%);
+    z-index: 5;
+    padding: 14px 32px;
+    background: rgba(10, 4, 20, 0.72);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(124,58,237,0.45);
+    border-radius: 60px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    white-space: nowrap;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 0 1px rgba(124,58,237,0.15);
+  }
+  .hero-rating svg {
+    flex-shrink: 0;
+    opacity: 1;
+  }
+  .hero-rating .stars {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    color: var(--gold);
+    line-height: 1;
+  }
+  .hero-rating .score {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  .hero-rating .score small {
+    font-size: 0.65rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.7);
+  }
+  .hero-rating .count {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.8);
+    font-weight: 400;
+  }
+  .hero-rating .count em {
+    font-style: normal;
+    color: var(--gold);
+    font-weight: 600;
+  }
+  .hero-rating .trust-text {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: 500;
+  }
+  .hero-rating .trust-text strong {
+    color: #fff;
+    font-weight: 700;
+  }
+  .hero-rating .trust-text em {
+    font-style: normal;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  .hero-overlay .availability {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.8rem;
+
+    letter-spacing: 0.25em;
+
+    text-transform: uppercase;
+
+    color: rgba(255,255,255,0.75);
+
+    margin-bottom: 30px;
+
+    font-weight: 500;
+
+  }
+
+  .hero-overlay .availability span { color: var(--gold); }
+
+  .hero-overlay h1 {
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: clamp(5rem, 14vw, 14rem);
+
+    font-weight: 300;
+
+    color: var(--white);
+
+    line-height: 0.9;
+
+    letter-spacing: -0.03em;
+
+    opacity: 0; animation: fadeUp 1s 0.3s forwards;
+
+  }
+
+  .hero-overlay h1 .rule {
+
+    display: block;
+
+    width: 80px; height: 1px;
+
+    background: var(--accent);
+
+    margin: 18px 0 22px;
+
+  }
+
+  .hero-overlay .tagline {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 1rem;
+
+    font-weight: 400;
+
+    letter-spacing: 0.1em;
+
+    color: rgba(255,255,255,0.7);
+
+    margin-bottom: 40px;
+
+  }
+
+  @keyframes fadeUp {
+
+    from { opacity: 0; transform: translateY(30px); }
+
+    to { opacity: 1; transform: none; }
+
+  }
+
+  .hero-overlay .hero-actions {
+
+    display: flex; gap: 18px;
+
+  }
+
+  .btn {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 14px 38px;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.32s cubic-bezier(0.34,1.56,0.64,1);
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  }
+  .btn::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+    transition: left 0.5s ease;
+  }
+  .btn:hover::before { left: 100%; }
+
+  .btn-primary {
+    color: var(--white);
+    background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%);
+    border: none;
+    box-shadow: 0 6px 24px rgba(124,58,237,0.45), 0 2px 6px rgba(124,58,237,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
+  }
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #6D28D9 0%, #4C1D95 100%);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 12px 40px rgba(124,58,237,0.6), 0 4px 12px rgba(124,58,237,0.4), inset 0 1px 0 rgba(255,255,255,0.2);
+  }
+
+  .btn-outline {
+    color: var(--white);
+    background: rgba(255,255,255,0.06);
+    border: 1.5px solid rgba(255,255,255,0.45);
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.1);
+  }
+  .btn-outline:hover {
+    background: rgba(124,58,237,0.85);
+    border-color: var(--accent);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 32px rgba(124,58,237,0.45), inset 0 1px 0 rgba(255,255,255,0.15);
+  }
+
+
+
+  /* â�?€â�?€ COMPANIONS â�?€â�?€ */
+
+  #companions {
+
+    background: var(--white);
+
+    text-align: center;
+
+  }
+
+  #companions .section-header { margin-bottom: 50px; }
+
+  #companions .section-header .section-sub { margin: 0 auto; }
+
+  #companions .divider { margin: 12px auto 24px; }
+
+  .companions-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 18px;
+
+    max-width: 1100px;
+
+    margin: 0 auto;
+
+  }
+
+  .companion-card {
+
+    position: relative;
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    aspect-ratio: 2/3;
+
+    box-shadow: 0 8px 32px rgba(13,4,6,0.13);
+
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+
+  }
+
+  .companion-card:hover {
+
+    transform: translateY(-6px) scale(1.02);
+
+    box-shadow: 0 20px 50px rgba(124,58,237,0.18);
+
+  }
+
+  /* Full-bleed photo */
+
+  .companion-card img {
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    object-position: top;
+
+    display: block;
+
+    transition: transform 0.6s ease;
+
+  }
+
+  .companion-card:hover img { transform: scale(1.06); }
+
+
+
+  /* Top gradient for name readability */
+
+  .companion-card .card-top-grad {
+
+    position: absolute;
+
+    top: 0; left: 0; right: 0;
+
+    height: 55%;
+
+    background: linear-gradient(to bottom, rgba(10,4,20,0.55) 0%, transparent 100%);
+
+    z-index: 1;
+
+    pointer-events: none;
+
+  }
+
+
+
+  /* Name + status at top */
+
+  .companion-card .card-header {
+
+    position: absolute;
+
+    top: 20px; left: 20px; right: 20px;
+
+    z-index: 2;
+
+    text-align: left;
+
+  }
+
+  .companion-card .card-header .name {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 1.3rem;
+
+    font-weight: 700;
+
+    color: var(--white);
+
+    display: block;
+
+    line-height: 1.2;
+
+    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+
+  }
+
+  .companion-card .card-header .avail-tag {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    margin-top: 6px;
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.6rem;
+
+    font-weight: 400;
+
+    color: rgba(255,255,255,0.75);
+
+    letter-spacing: 0.04em;
+
+  }
+
+  .companion-card .card-header .avail-tag .spin {
+
+    display: inline-block;
+
+    width: 12px; height: 12px;
+
+    border: 1.5px solid rgba(255,255,255,0.6);
+
+    border-top-color: #fff;
+
+    border-radius: 50%;
+
+    animation: spinLoader 1s linear infinite;
+
+    flex-shrink: 0;
+
+  }
+
+  .companion-card .card-header .avail-tag.booked-tag .spin {
+
+    border-color: rgba(255,255,255,0.3);
+
+    border-top-color: rgba(255,255,255,0.5);
+
+  }
+
+  @keyframes spinLoader {
+
+    to { transform: rotate(360deg); }
+
+  }
+
+
+
+  /* Bottom bar */
+
+  .companion-card .card-footer {
+
+    position: absolute;
+
+    bottom: 16px; left: 14px; right: 14px;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 10px;
+
+  }
+
+  .companion-card .card-footer .identity {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    background: rgba(20,10,25,0.55);
+
+    backdrop-filter: blur(12px);
+
+    -webkit-backdrop-filter: blur(12px);
+
+    border-radius: 50px;
+
+    padding: 6px 14px 6px 6px;
+
+    flex: 1;
+
+    min-width: 0;
+
+  }
+
+  .companion-card .card-footer .identity .avatar {
+
+    width: 32px; height: 32px;
+
+    border-radius: 50%;
+
+    overflow: hidden;
+
+    flex-shrink: 0;
+
+    border: 2px solid rgba(255,255,255,0.25);
+
+  }
+
+  .companion-card .card-footer .identity .avatar img {
+
+    width: 100%; height: 100%;
+
+    object-fit: cover;
+
+    object-position: top;
+
+    transition: none;
+
+  }
+
+  .companion-card:hover .card-footer .identity .avatar img { transform: none; }
+
+  .companion-card .card-footer .identity .id-text {
+
+    display: flex;
+
+    flex-direction: column;
+
+    overflow: hidden;
+
+  }
+
+  .companion-card .card-footer .identity .id-text .handle {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.65rem;
+
+    font-weight: 500;
+
+    color: #fff;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+  }
+
+  .companion-card .card-footer .identity .id-text .meta {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.55rem;
+
+    font-weight: 300;
+
+    color: rgba(255,255,255,0.6);
+
+    white-space: nowrap;
+
+  }
+
+  .companion-card .card-footer .book-btn {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: #fff;
+    background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%);
+    border-radius: 50px;
+    padding: 10px 20px;
+    white-space: nowrap;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    box-shadow: 0 4px 16px rgba(124,58,237,0.5), inset 0 1px 0 rgba(255,255,255,0.15);
+    border: none;
+  }
+  .companion-card .card-footer .book-btn:hover {
+    background: linear-gradient(135deg, #6D28D9 0%, #4C1D95 100%);
+    transform: scale(1.06);
+    box-shadow: 0 8px 28px rgba(124,58,237,0.7), inset 0 1px 0 rgba(255,255,255,0.2);
+  }
+  .companion-card .card-footer .book-btn.booked-btn {
+    background: rgba(20,10,25,0.35);
+    color: rgba(255,255,255,0.35);
+    cursor: not-allowed;
+    pointer-events: none;
+    box-shadow: none;
+
+  }
+
+
+
+  /* â�?€â�?€ ABOUT â�?€â�?€ */
+
+  #about {
+
+  /* ── ABOUT ── */
+  #about {
+    background: var(--white);
+    padding: 80px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+  #about::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 320px; height: 320px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(124,58,237,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .about-inner {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 64px;
+    align-items: center;
+    max-width: 1060px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Left: compact image with accent corner */
+  .about-visual {
+    position: relative;
+    min-height: unset;
+    display: block;
+    background: transparent;
+    flex: none;
+  }
+  .about-visual::before { display: none; }
+  .about-visual .model-nobg {
+    position: relative;
+    width: 100%;
+    height: 360px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 20px;
+    display: block;
+    box-shadow: 0 16px 50px rgba(124,58,237,0.15);
+    transform: none;
+    left: auto;
+  }
+  .about-visual .accent {
+    position: absolute;
+    bottom: -16px;
+    right: -16px;
+    width: 90px;
+    height: 110px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 14px;
+    border: 4px solid var(--white);
+    z-index: 3;
+    box-shadow: 0 8px 24px rgba(13,4,6,0.12);
+  }
+  /* Remove old floating stats */
+  .about-stat { display: none; }
+
+  /* Right: text */
+  .about-text {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    background: transparent;
+  }
+  .about-text::before { display: none; }
+
+  /* Heading uses Vegan Style script font */
+  .about-text .about-heading {
+    font-family: 'VeganStyle', cursive;
+    font-size: clamp(1.6rem, 3vw, 2.4rem);
+    font-weight: 400;
+    color: var(--dark);
+    line-height: 1.35;
+    margin-bottom: 6px;
+    margin-top: 10px;
+    text-transform: none;
+    letter-spacing: 0.01em;
+  }
+  .about-text .about-heading em {
+    font-style: normal;
+    color: var(--accent);
+    font-family: 'VeganStyle', cursive;
+    text-transform: none;
+  }
+
+  .about-text .about-divider {
+    width: 40px; height: 2px;
+    background: var(--accent);
+    margin: 14px 0 20px;
+    border-radius: 2px;
+  }
+
+  .about-text .about-body {
+    font-family: 'Jost', sans-serif;
+    font-weight: 400;
+    font-size: 0.82rem;
+    line-height: 1.9;
+    color: var(--dark);
+    margin-bottom: 28px;
+    max-width: 480px;
+    letter-spacing: 0.01em;
+  }
+
+  /* Stat row */
+  .about-stats-row {
+    display: flex;
+    gap: 32px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(124,58,237,0.1);
+    flex-wrap: wrap;
+  }
+  .about-stats-row .astat {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+  }
+  .about-stats-row .astat .num {
+    font-family: 'Jost', sans-serif;
+    font-size: 1.6rem;
+    font-weight: 800;
+    color: var(--dark);
+    line-height: 1;
+  }
+  .about-stats-row .astat .num span {
+    color: var(--accent);
+  }
+  .about-stats-row .astat .lbl {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.55rem;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* Tags */
+  .about-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 20px 0 0;
+  }
+  .about-tags span {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.58rem;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    border: 1px solid rgba(124,58,237,0.18);
+    border-radius: 100px;
+    padding: 5px 14px;
+    background: var(--cream);
+    transition: all 0.2s;
+  }
+  .about-tags span:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: rgba(124,58,237,0.06);
+  }
+
+    letter-spacing: 0.18em;
+
+    text-transform: uppercase;
+
+    color: var(--accent);
+
+    font-weight: 500;
+
+    margin-bottom: 6px;
+
+  }
+
+  .about-text .ethos-item p {
+
+    font-size: 0.68rem;
+
+    line-height: 1.7;
+
+    margin-bottom: 0;
+
+    color: var(--text-muted);
+
+  }
+
+
+
+  /* â�?€â�?€ SERVICES â�?€â�?€ */
+
+  #services {
+
+    background: var(--white);
+
+    position: relative;
+
+    padding: 100px 80px;
+
+  }
+
+  #services .section-header { text-align: center; margin-bottom: 70px; }
+
+  #services .section-header .section-sub { margin: 0 auto; }
+
+  #services .divider { margin: 12px auto 24px; }
+
+
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+
+
+  .svc-card {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    aspect-ratio: 5/3;
+  }
+
+
+
+  /* Full bleed image */
+
+  .svc-card .svc-img {
+
+    position: absolute;
+
+    inset: 0;
+
+    width: 100%; height: 100%;
+
+    object-fit: cover;
+
+    object-position: top;
+
+    transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+    display: block;
+
+  }
+
+  .svc-card:hover .svc-img { transform: scale(1.08); }
+
+
+
+  /* Base dark overlay — always visible */
+
+  .svc-card .svc-base {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: linear-gradient(160deg, rgba(13,4,6,0.3) 0%, rgba(13,4,6,0.65) 100%);
+
+    transition: opacity 0.4s;
+
+    z-index: 1;
+
+  }
+
+  .svc-card:hover .svc-base { opacity: 0; }
+
+
+
+  /* Hover overlay — flirty gradient */
+
+  .svc-card .svc-hover-overlay {
+
+    position: absolute;
+
+    inset: 0;
+
+    background: linear-gradient(160deg, rgba(124,58,237,0.82) 0%, rgba(236,72,153,0.72) 100%);
+
+    opacity: 0;
+
+    transition: opacity 0.4s;
+
+    z-index: 2;
+
+  }
+
+  .svc-card:hover .svc-hover-overlay { opacity: 1; }
+
+
+
+  /* Number */
+
+  .svc-card .svc-num {
+    position: absolute;
+    top: 20px; left: 24px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.4rem;
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(255,255,255,0.15);
+    line-height: 1;
+    z-index: 3;
+    transition: color 0.4s, transform 0.4s;
+    user-select: none;
+  }
+
+  .svc-card:hover .svc-num {
+
+    color: rgba(255,255,255,0.3);
+
+    transform: scale(1.1) translateY(-4px);
+
+  }
+
+
+
+  /* Content sitting at bottom */
+
+  .svc-card .svc-content {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    padding: 24px;
+    z-index: 3;
+    transform: translateY(0);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .svc-card:hover .svc-content { transform: translateY(-8px); }
+
+
+
+  .svc-card .svc-content .svc-tag {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.55rem;
+
+    letter-spacing: 0.22em;
+
+    text-transform: uppercase;
+
+    color: rgba(255,255,255,0.6);
+
+    font-weight: 400;
+
+    display: block;
+
+    margin-bottom: 6px;
+
+    transition: color 0.3s;
+
+  }
+
+  .svc-card:hover .svc-tag { color: rgba(255,255,255,0.85); }
+
+
+
+  .svc-card .svc-content h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #fff;
+    line-height: 1.2;
+    margin-bottom: 0;
+  }
+
+
+
+  /* Flirty tagline — hidden, slides up on hover */
+
+  .svc-card .svc-reveal {
+
+    max-height: 0;
+
+    overflow: hidden;
+
+    transition: max-height 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94), opacity 0.4s;
+
+    opacity: 0;
+
+  }
+
+  .svc-card:hover .svc-reveal {
+    max-height: 90px;
+    opacity: 1;
+  }
+
+  .svc-card .svc-reveal p {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.6;
+    margin: 8px 0 12px;
+    font-style: italic;
+  }
+
+  .svc-card .svc-reveal .svc-btn {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.5rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 700;
+    color: #fff;
+    background: rgba(255,255,255,0.12);
+    border: 1.5px solid rgba(255,255,255,0.55);
+    padding: 7px 18px;
+    display: inline-block;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+    border-radius: 50px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.15);
+    backdrop-filter: blur(4px);
+  }
+
+  .svc-card .svc-reveal .svc-btn:hover {
+
+    background: rgba(255,255,255,0.92);
+
+    color: var(--accent);
+
+    border-color: transparent;
+
+    transform: translateY(-2px) scale(1.04);
+
+    box-shadow: 0 8px 28px rgba(255,255,255,0.25);
+
+  }
+
+
+
+  /* Thin separator lines between cards */
+
+  .svc-card:nth-child(1),
+
+  .svc-card:nth-child(2) {
+
+    border-bottom: 2px solid var(--white);
+
+  }
+
+  .svc-card:nth-child(1),
+
+  .svc-card:nth-child(3) {
+
+    border-right: 2px solid var(--white);
+
+  }
+
+
+
+  /* â�?€â�?€ PRICING â�?€â�?€ */
+
+  #pricing {
+
+    background: #100818;
+
+    text-align: center;
+
+    padding: 100px 80px;
+
+    position: relative;
+
+    overflow: hidden;
+
+  }
+
+  #pricing::before {
+
+    content: 'DESIRE';
+
+    position: absolute;
+
+    top: 50%; left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 18vw;
+
+    font-weight: 300;
+
+    font-style: italic;
+
+    color: rgba(124,58,237,0.06);
+
+    white-space: nowrap;
+
+    pointer-events: none;
+
+    letter-spacing: -0.04em;
+
+    user-select: none;
+
+  }
+
+  #pricing .section-header { margin-bottom: 70px; position: relative; z-index: 1; }
+
+  #pricing .section-header .section-sub { margin: 0 auto; color: rgba(255,255,255,0.45); }
+
+  #pricing .section-header .section-title { color: #fff; }
+
+  #pricing .section-header .section-title em { color: var(--gold); }
+
+  #pricing .section-header .section-label { color: var(--gold); }
+
+  #pricing .divider { margin: 12px auto 24px; background: rgba(167,139,250,0.4); }
+
+
+
+  .pricing-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 24px;
+
+    max-width: 1000px;
+
+    margin: 0 auto;
+
+    align-items: stretch;
+
+    position: relative;
+
+    z-index: 1;
+
+  }
+
+
+
+  .pricing-card {
+
+    background: #1A0F2E;
+
+    border: 1px solid rgba(124,58,237,0.2);
+
+    border-radius: 6px;
+
+    padding: 36px 32px 32px;
+
+    text-align: left;
+
+    position: relative;
+
+    display: flex;
+
+    flex-direction: column;
+
+    transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+
+  }
+
+  .pricing-card:hover {
+
+    border-color: rgba(124,58,237,0.5);
+
+    transform: translateY(-4px);
+
+    box-shadow: 0 16px 50px rgba(124,58,237,0.18);
+
+  }
+
+
+
+  /* Featured card — prominent top accent border + glow */
+
+  .pricing-card.featured {
+
+    border-color: var(--accent);
+
+    border-top: 3px solid var(--accent);
+
+    box-shadow: 0 0 0 1px rgba(124,58,237,0.4), 0 20px 60px rgba(124,58,237,0.25);
+
+  }
+
+  .pricing-card.featured:hover {
+
+    transform: translateY(-6px);
+
+    box-shadow: 0 0 0 1px rgba(124,58,237,0.6), 0 28px 70px rgba(124,58,237,0.35);
+
+  }
+
+
+
+  /* Most popular badge */
+
+  .pricing-card.featured .pc-badge {
+
+    position: absolute;
+
+    top: -14px; left: 50%; transform: translateX(-50%);
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.55rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.22em;
+
+    text-transform: uppercase;
+
+    background: var(--accent);
+
+    color: #fff;
+
+    padding: 5px 18px;
+
+    border-radius: 2px;
+
+    white-space: nowrap;
+
+  }
+
+
+
+  /* Tier label */
+
+  .pricing-card .plan {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.6rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.22em;
+
+    text-transform: uppercase;
+
+    color: var(--gold);
+
+    margin-bottom: 18px;
+
+    display: block;
+
+  }
+
+
+
+  /* Icon */
+
+  .pricing-card .pc-icon {
+
+    margin-bottom: 20px;
+
+    display: block;
+
+    line-height: 1;
+
+  }
+
+
+
+  /* Price */
+
+  .pricing-card .price {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 3.2rem;
+
+    font-weight: 800;
+
+    line-height: 1;
+
+    color: #fff;
+
+    margin-bottom: 4px;
+
+    display: flex;
+
+    align-items: baseline;
+
+    gap: 4px;
+
+  }
+
+  .pricing-card .price sup {
+
+    font-size: 1.4rem;
+
+    font-weight: 600;
+
+    vertical-align: baseline;
+
+  }
+
+  .pricing-card .price sub {
+
+    font-size: 0.85rem;
+
+    font-weight: 300;
+
+    color: rgba(255,255,255,0.4);
+
+    vertical-align: baseline;
+
+    margin-left: 2px;
+
+  }
+
+
+
+  /* Duration subtitle */
+
+  .pricing-card .duration {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.58rem;
+
+    letter-spacing: 0.2em;
+
+    text-transform: uppercase;
+
+    font-weight: 400;
+
+    color: rgba(255,255,255,0.3);
+
+    margin-bottom: 28px;
+
+  }
+
+
+
+  /* Divider line */
+
+  .pricing-card .pc-line {
+
+    width: 100%;
+
+    height: 1px;
+
+    background: rgba(255,255,255,0.07);
+
+    margin-bottom: 24px;
+
+  }
+
+
+
+  /* Perks — plain list, no bullets */
+
+  .pricing-card .perks {
+
+    list-style: none;
+
+    padding: 0;
+
+    margin: 0 0 32px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+    flex: 1;
+
+  }
+
+  .pricing-card .perks li {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.72rem;
+
+    font-weight: 300;
+
+    color: rgba(255,255,255,0.6);
+
+    line-height: 1.5;
+
+    padding-left: 14px;
+
+    position: relative;
+
+  }
+
+  .pricing-card .perks li::before {
+
+    content: '';
+
+    position: absolute;
+
+    left: 0; top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 4px; height: 4px;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+  }
+
+  .pricing-card.featured .perks li { color: rgba(255,255,255,0.8); }
+
+  .pricing-card.featured .perks li::before { background: var(--gold); }
+
+
+
+  /* Full-width CTA button */
+
+  .pricing-card .pc-btn {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.65rem;
+
+    letter-spacing: 0.22em;
+
+    text-transform: uppercase;
+
+    font-weight: 700;
+
+    display: block;
+
+    width: 100%;
+
+    padding: 16px;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%);
+
+    color: #fff;
+
+    border: none;
+
+    border-radius: 10px;
+
+    transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+
+    margin-top: auto;
+
+    box-shadow: 0 6px 22px rgba(124,58,237,0.4), inset 0 1px 0 rgba(255,255,255,0.15);
+
+    position: relative;
+
+    overflow: hidden;
+
+  }
+
+  .pricing-card .pc-btn::after {
+
+    content: '';
+
+    position: absolute;
+
+    top: 0; left: -100%;
+
+    width: 100%; height: 100%;
+
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+
+    transition: left 0.5s ease;
+
+  }
+
+  .pricing-card .pc-btn:hover::after { left: 100%; }
+
+  .pricing-card .pc-btn:hover {
+
+    background: linear-gradient(135deg, #6D28D9 0%, #4C1D95 100%);
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 12px 36px rgba(124,58,237,0.6), inset 0 1px 0 rgba(255,255,255,0.2);
+
+  }
+
+  .pricing-card.featured .pc-btn {
+
+    background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%);
+
+    box-shadow: 0 8px 28px rgba(124,58,237,0.5), inset 0 1px 0 rgba(255,255,255,0.2);
+
+  }
+
+  .pricing-card.featured .pc-btn:hover {
+
+    background: linear-gradient(135deg, #6D28D9 0%, #4C1D95 100%);
+
+    box-shadow: 0 14px 40px rgba(124,58,237,0.7), inset 0 1px 0 rgba(255,255,255,0.25);
+
+  }
+
+
+
+  /* â�?€â�?€ DISCRETION / HOW IT WORKS â�?€â�?€ */
+
+  #discretion {
+
+    background: var(--cream);
+
+    text-align: center;
+
+    padding: 100px 80px;
+
+    position: relative;
+
+    overflow: hidden;
+
+  }
+
+  /* Subtle purple glow top-center */
+
+  #discretion::before {
+
+    content: '';
+
+    position: absolute;
+
+    top: -100px; left: 50%; transform: translateX(-50%);
+
+    width: 600px; height: 400px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(ellipse, rgba(124,58,237,0.08) 0%, transparent 70%);
+
+    pointer-events: none;
+
+  }
+
+  /* Big ghost heading behind content */
+
+  #discretion::after {
+
+    content: 'TONIGHT';
+
+    position: absolute;
+
+    top: 50%; left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    font-family: 'Cormorant Garamond', serif;
+
+    font-size: 16vw;
+
+    font-weight: 300;
+
+    font-style: italic;
+
+    color: rgba(124,58,237,0.06);
+
+    white-space: nowrap;
+
+    pointer-events: none;
+
+    letter-spacing: -0.04em;
+
+    user-select: none;
+
+    z-index: 0;
+
+  }
+
+
+
+  .disc-eyebrow {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.6rem;
+
+    letter-spacing: 0.28em;
+
+    text-transform: uppercase;
+
+    color: var(--accent);
+
+    font-weight: 500;
+
+    margin-bottom: 18px;
+
+    display: block;
+
+    position: relative; z-index: 1;
+
+  }
+
+  .disc-title {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: clamp(1.8rem, 4vw, 3rem);
+
+    font-weight: 700;
+
+    color: var(--dark);
+
+    letter-spacing: 0.04em;
+
+    text-transform: uppercase;
+
+    margin-bottom: 16px;
+
+    position: relative; z-index: 1;
+
+  }
+
+  .disc-title em {
+
+    font-style: italic;
+
+    font-family: 'Cormorant Garamond', serif;
+
+    color: var(--accent);
+
+    text-transform: none;
+
+    font-weight: 400;
+
+    font-size: 1.1em;
+
+  }
+
+  .disc-sub {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.75rem;
+
+    font-weight: 300;
+
+    color: var(--text-muted);
+
+    max-width: 480px;
+
+    margin: 0 auto 70px;
+
+    line-height: 1.8;
+
+    position: relative; z-index: 1;
+
+  }
+
+
+
+  /* Steps row */
+
+  .disc-steps {
+
+    display: grid;
+
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+
+    align-items: start;
+
+    max-width: 860px;
+
+    margin: 0 auto;
+
+    position: relative;
+
+    z-index: 1;
+
+  }
+
+
+
+  /* Dotted connector */
+
+  .disc-connector {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    padding-top: 46px;
+
+    gap: 5px;
+
+    position: relative;
+
+    z-index: 1;
+
+  }
+
+  .disc-connector span {
+
+    display: block;
+
+    width: 5px; height: 5px;
+
+    border-radius: 50%;
+
+    background: rgba(124,58,237,0.3);
+
+  }
+
+  .disc-connector span:nth-child(2) { background: rgba(124,58,237,0.18); }
+
+  .disc-connector span:nth-child(3) { background: rgba(124,58,237,0.08); }
+
+
+
+  /* Individual step */
+
+  .disc-step {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    padding: 0 10px;
+
+    position: relative;
+
+    z-index: 1;
+
+  }
+
+
+
+  .disc-step .step-num {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.55rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.2em;
+
+    color: var(--accent);
+
+    margin-bottom: 16px;
+
+    display: block;
+
+  }
+
+
+
+  /* Icon box */
+
+  .disc-step .step-icon {
+
+    width: 88px; height: 88px;
+
+    border-radius: 22px;
+
+    background: var(--white);
+
+    border: 1px solid rgba(124,58,237,0.15);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    margin-bottom: 28px;
+
+    box-shadow: 0 4px 20px rgba(124,58,237,0.07);
+
+    transition: background 0.3s, border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+
+  }
+
+  .disc-step:hover .step-icon {
+
+    background: var(--accent);
+
+    border-color: var(--accent);
+
+    transform: translateY(-6px);
+
+    box-shadow: 0 16px 40px rgba(124,58,237,0.25);
+
+  }
+
+  .disc-step:hover .step-icon svg {
+
+    stroke: #fff;
+
+  }
+
+
+
+  .disc-step h4 {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.85rem;
+
+    font-weight: 700;
+
+    color: var(--dark);
+
+    margin-bottom: 10px;
+
+    letter-spacing: 0.02em;
+
+  }
+
+  .disc-step p {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.72rem;
+
+    font-weight: 400;
+
+    color: #6B5055;
+
+    line-height: 1.8;
+
+    max-width: 200px;
+
+    margin: 0 auto;
+
+  }
+
+
+
+  /* â�?€â�?€ TESTIMONIALS â�?€â�?€ */
+
+  #testimonials {
+
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 90px 80px;
+
+    text-align: left;
+
+  }
+
+  /* Full-bleed blurred background image */
+
+  #testimonials .t-bg {
+
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 0;
+
+  }
+
+  #testimonials .t-bg img {
+
+    width: 100%; height: 100%;
+
+    object-fit: cover;
+
+    object-position: center 30%;
+
+    display: block;
+
+    filter: blur(1px) brightness(0.5);
+
+    transform: scale(1.04);
+
+  }
+
+  /* Dark scrim on top of image */
+
+  #testimonials .t-bg::after {
+
+    content: '';
+
+    position: absolute;
+
+    inset: 0;
+
+    background: rgba(10,4,18,0.48);
+
+  }
+
+
+
+  /* Header row — title left, label right */
+
+  .t-header {
+
+    position: relative;
+
+    z-index: 1;
+
+    display: flex;
+
+    align-items: flex-end;
+
+    justify-content: space-between;
+
+    margin-bottom: 50px;
+
+  }
+
+  .t-header h2 {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 1.5rem;
+
+    font-weight: 700;
+
+    color: #fff;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+
+    line-height: 1;
+
+  }
+
+  .t-header .t-label {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.6rem;
+
+    letter-spacing: 0.25em;
+
+    text-transform: uppercase;
+
+    color: var(--accent);
+
+    font-weight: 500;
+
+  }
+
+
+
+  /* Cards grid */
+
+  .t-grid {
+
+    position: relative;
+
+    z-index: 1;
+
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+
+    gap: 16px;
+
+  }
+
+  .t-card {
+
+    background: rgba(255,255,255,0.06);
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    border-radius: 16px;
+
+    padding: 28px 24px;
+
+    backdrop-filter: blur(12px);
+
+    -webkit-backdrop-filter: blur(12px);
+
+    transition: background 0.3s, border-color 0.3s, transform 0.3s;
+
+  }
+
+  .t-card:hover {
+
+    background: rgba(255,255,255,0.1);
+
+    border-color: rgba(124,58,237,0.3);
+
+    transform: translateY(-4px);
+
+  }
+
+
+
+  /* Stars */
+
+  .t-card .t-stars {
+
+    display: flex;
+
+    gap: 3px;
+
+    margin-bottom: 16px;
+
+  }
+
+  .t-card .t-stars svg {
+
+    width: 14px; height: 14px;
+
+    fill: var(--accent);
+
+    flex-shrink: 0;
+
+  }
+
+
+
+  /* Quote */
+
+  .t-card blockquote {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.75rem;
+
+    font-weight: 300;
+
+    font-style: italic;
+
+    color: rgba(255,255,255,0.75);
+
+    line-height: 1.8;
+
+    margin-bottom: 24px;
+
+  }
+
+
+
+  /* Author row */
+
+  .t-card .t-author {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+
+  }
+
+  .t-card .t-avatar {
+
+    width: 36px; height: 36px;
+
+    border-radius: 50%;
+
+    background: var(--accent);
+
+    display: flex; align-items: center; justify-content: center;
+
+    flex-shrink: 0;
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.75rem;
+
+    font-weight: 700;
+
+    color: #fff;
+
+  }
+
+  .t-card .t-author-info .t-name {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.72rem;
+
+    font-weight: 600;
+
+    color: #fff;
+
+    display: block;
+
+    line-height: 1.2;
+
+  }
+
+  .t-card .t-author-info .t-meta {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.55rem;
+
+    font-weight: 400;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+
+    color: var(--accent);
+
+    margin-top: 2px;
+
+    display: block;
+
+  }
+
+
+
+  /* â�?€â�?€ CONTACT â�?€â�?€ */
+
+  #contact {
+
+    background: var(--white);
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 80px;
+
+    align-items: start;
+
+  }
+
+  .contact-text p {
+
+    font-family: 'Jost', sans-serif;
+
+    font-weight: 300;
+
+    font-size: 0.8rem;
+
+    line-height: 1.9;
+
+    color: var(--text-muted);
+
+    margin-bottom: 32px;
+
+  }
+
+  .contact-line {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    margin-bottom: 18px;
+
+  }
+
+  .contact-line .lbl {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.62rem;
+
+    letter-spacing: 0.2em;
+
+    text-transform: uppercase;
+
+    color: var(--text-muted);
+
+    font-weight: 400;
+
+    min-width: 80px;
+
+  }
+
+  .contact-line .val {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.82rem;
+
+    font-weight: 400;
+
+    color: var(--dark);
+
+  }
+
+  .contact-line .val a { color: var(--accent); border-bottom: 1px solid transparent; transition: all 0.2s; }
+
+  .contact-line .val a:hover { border-bottom-color: var(--accent); }
+
+  .contact-form {
+
+    display: flex; flex-direction: column;
+
+    gap: 16px;
+
+  }
+
+  .form-row {
+
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+
+  }
+
+  .form-group { display: flex; flex-direction: column; gap: 5px; }
+
+  .form-group label {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.6rem;
+
+    letter-spacing: 0.2em;
+
+    text-transform: uppercase;
+
+    color: var(--text-muted);
+
+    font-weight: 400;
+
+  }
+
+  .form-group input,
+
+  .form-group textarea {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.78rem;
+
+    font-weight: 300;
+
+    padding: 12px 16px;
+
+    border: 1px solid rgba(124,58,237,0.1);
+
+    background: var(--cream);
+
+    color: var(--dark);
+
+    outline: none;
+
+    transition: border-color 0.2s, box-shadow 0.2s;
+
+  }
+
+  .form-group input:focus,
+
+  .form-group textarea:focus {
+
+    border-color: var(--accent);
+
+    box-shadow: 0 0 0 3px rgba(124,58,237,0.15);
+
+  }
+
+  .form-group textarea {
+
+    resize: vertical;
+
+    min-height: 100px;
+
+  }
+
+  .form-submit {
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.62rem;
+
+    letter-spacing: 0.2em;
+
+    text-transform: uppercase;
+
+    color: var(--white);
+
+    background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%);
+
+    border: none;
+
+    padding: 15px 44px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition: all 0.32s cubic-bezier(0.34,1.56,0.64,1);
+
+    align-self: flex-start;
+
+    border-radius: 50px;
+
+    box-shadow: 0 6px 24px rgba(124,58,237,0.45), 0 2px 6px rgba(124,58,237,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
+
+    position: relative;
+
+    overflow: hidden;
+
+  }
+
+  .form-submit::before {
+
+    content: '';
+
+    position: absolute;
+
+    top: 0; left: -100%;
+
+    width: 100%; height: 100%;
+
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.14), transparent);
+
+    transition: left 0.5s ease;
+
+  }
+
+  .form-submit:hover::before { left: 100%; }
+
+  .form-submit:hover { background: linear-gradient(135deg, #6D28D9 0%, #4C1D95 100%); transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 40px rgba(124,58,237,0.6), inset 0 1px 0 rgba(255,255,255,0.2); }
+
+
+
+  /* â�?€â�?€ FOOTER â�?€â�?€ */
+
+  footer {
+    padding: 80px 80px 40px;
+    background: var(--accent);
+    color: var(--white);
+    text-align: left;
+  }
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2.2fr 1fr 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+  }
+  .footer-brand {
+    padding-right: 40px;
+  }
+  .footer-logo {
+    font-family: 'Jost', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--white);
+    display: inline-block;
+    margin-bottom: 20px;
+    transition: opacity 0.2s;
+  }
+  .footer-logo:hover {
+    opacity: 0.8;
+  }
+  .footer-tagline {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 300;
+    line-height: 1.6;
+    color: rgba(255, 255, 255, 0.65);
+    margin-bottom: 24px;
+    max-width: 320px;
+  }
+  .footer-socials {
+    display: flex;
+    gap: 10px;
+  }
+  .social-box {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  .social-box:hover {
+    border-color: rgba(255, 255, 255, 0.6);
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-2px);
+  }
+  .footer-title {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 24px;
+    position: relative;
+  }
+  .footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .footer-links li {
+    margin-bottom: 12px;
+  }
+  .footer-links a {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none;
+    transition: all 0.2s ease;
+    display: inline-block;
+  }
+  .footer-links a:hover {
+    color: var(--white);
+    transform: translateX(4px);
+  }
+  .footer-divider {
+    border: none;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 30px;
+  }
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .footer-copy {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+    letter-spacing: 0.05em;
+  }
+  .footer-bottom-links {
+    display: flex;
+    gap: 20px;
+  }
+  .footer-bottom-link {
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.4);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .footer-bottom-link:hover {
+    color: var(--white);
+  }
+
+  /* Responsive Footer */
+  @media (max-width: 992px) {
+    .footer-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+    }
+    .footer-brand {
+      grid-column: span 2;
+      padding-right: 0;
+    }
+    .footer-tagline {
+      max-width: 100%;
+    }
+  }
+  @media (max-width: 576px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+    .footer-brand {
+      grid-column: span 1;
+    }
+    .footer-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+    }
+  }
+
+
+
+  /* â�?€â�?€ REVEAL â�?€â�?€ */
+
+  .reveal {
+
+    opacity: 0;
+
+    transform: translateY(24px);
+
+    transition: opacity 0.6s ease, transform 0.6s ease;
+
+  }
+
+  .reveal.visible { opacity: 1; transform: none; }
+
+
+
+  /* â�?€â�?€ RESPONSIVE â�?€â�?€ */
+
+  @media (max-width: 1000px) {
+
+    .companions-grid { grid-template-columns: repeat(2, 1fr); }
+
+    .pricing-grid { grid-template-columns: 1fr; gap: 24px; }
+
+    .pricing-card.featured { transform: none; }
+
+    .pricing-card.featured:hover { transform: translateY(-4px); }
+
+    .discretion-grid { grid-template-columns: 1fr; gap: 30px; }
+
+    .disc-steps { grid-template-columns: 1fr; gap: 40px; }
+
+    .disc-connector { display: none; }
+
+  }
+
+  @media (max-width: 800px) {
+
+    nav { padding: 16px 30px; }
+
+    .nav-links { display: none; }
+
+    .hero-overlay { padding: 0 30px; }
+
+    .hero-rating { display: none; }
+
+    .hero-featured { display: none; }
+
+    section { padding: 70px 30px !important; }
+
+    #about { padding: 60px 30px !important; }
+
+    .about-inner { grid-template-columns: 1fr; gap: 36px; }
+
+    .about-visual .model-nobg { height: 260px; }
+
+    .about-stats-row { gap: 20px; }
+
+    .about-text { padding: 0 !important; }
+
+    #contact { grid-template-columns: 1fr; gap: 40px; }
+
+    .form-row { grid-template-columns: 1fr; }
+
+    .pricing-grid { grid-template-columns: 1fr 1fr; }
+
+    .service-item { gap: 20px; padding: 24px 20px; }
+
+    .service-item .icon { width: 60px; height: 60px; }
+
+    .service-item .action { display: none; }
+
+    .services-grid { grid-template-columns: 1fr; }
+
+    .svc-card:nth-child(1),
+
+    .svc-card:nth-child(3) { border-right: none; }
+
+    .svc-card:nth-child(2) { border-bottom: 2px solid var(--white); }
+
+    .testimonials-scroll { padding: 0 30px 16px; margin: 0 -30px; }
+
+    .testimonial-card { flex: 0 0 300px; padding: 28px 24px; }
+
+    .testimonials-grid { grid-template-columns: 1fr; }
+
+    .t-grid { grid-template-columns: 1fr 1fr; }
+
+    .t-header h2 { font-size: 1.1rem; }
+
+    .companions-grid { gap: 14px; }
+
+    .companion-card .card-header .name { font-size: 1.1rem; }
+
+    .companion-card .card-footer .book-btn { font-size: 0.58rem; padding: 8px 12px; }
+
+    footer { padding: 40px 30px 30px; }
+
+  }
+
+
+
+  /* STICKY CONTACT */
+
+  .sticky-contact {
+
+    position: fixed;
+
+    bottom: 30px; right: 30px;
+
+    z-index: 9999;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    font-family: 'Jost', sans-serif;
+
+    font-size: 0.68rem;
+
+    font-weight: 700;
+
+    letter-spacing: 0.18em;
+
+    text-transform: uppercase;
+
+    color: #fff;
+
+    background: linear-gradient(135deg, #7C3AED 0%, #EC4899 100%);
+
+    padding: 16px 32px;
+
+    text-decoration: none;
+
+    border: none;
+
+    border-radius: 50px;
+
+    box-shadow: 0 6px 30px rgba(124,58,237,0.55), 0 0 0 0 rgba(124,58,237,0.4);
+
+    cursor: pointer;
+
+    transition: all 0.32s cubic-bezier(0.34,1.56,0.64,1);
+
+    animation: stickyPulse 2.5s ease-in-out infinite;
+
+  }
+
+  .sticky-contact:hover {
+
+    background: linear-gradient(135deg, #6D28D9 0%, #DB2777 100%);
+
+    transform: translateY(-4px) scale(1.04);
+
+    box-shadow: 0 14px 48px rgba(124,58,237,0.7), 0 6px 20px rgba(236,72,153,0.5);
+
+    animation: none;
+
+  }
+
+  .sticky-contact svg { flex-shrink: 0; }
+
+  @keyframes stickyPulse {
+
+    0%, 100% { transform: scale(1); box-shadow: 0 0 30px rgba(236,72,153,0.6); }
+
+    50% { transform: scale(1.05); box-shadow: 0 0 60px rgba(236,72,153,0.9); }
+
+  }
+
+  @media (max-width: 600px) {
+
+    .sticky-contact { bottom: 16px; right: 16px; padding: 12px 16px; font-size: 0.6rem; }
+
+    .sticky-contact span { display: none; }
+
+  }
+
+</style>
+
+</head>
+
+<body>
+
+
+
+<!-- NAV -->
+
+<nav>
+
+  <a class="nav-logo" href="#home">Liza</a>
+
+  <ul class="nav-links">
+
+    <li><a href="#companions">Models</a></li>
+
+    <li><a href="#about">About</a></li>
+
+    <li><a href="#services">Services</a></li>
+
+    <li><a href="#pricing">Pricing</a></li>
+
+    <li><a href="#contact">Contact</a></li>
+
+  </ul>
+
+  <a href="#contact" class="nav-cta">Book Now</a>
+
+</nav>
+
+
+
+<!-- HERO -->
+
+<section id="home">
+
+  <div class="hero-bg">
+
+    <img src="https://img.magnific.com/free-photo/young-sexy-woman-black-lingerie-posing-bed_273443-2453.jpg" alt="LIZA">
+
+  </div>
+
+  <div class="hero-overlay">
+
+    <p class="availability"><span>●</span> Kolkata's No. 1 Escort Service</p>
+
+    <h1>
+
+      LIZA
+
+      <span class="rule"></span>
+
+    </h1>
+
+    <p class="tagline">Kolkata Escorts Service & Call Girls Service</p>
+
+    <div class="hero-actions">
+
+      <a href="#companions" class="btn btn-primary">hot escorts</a>
+
+      <a href="#contact" class="btn btn-outline">Book Now</a>
+
+    </div>
+
+  </div>
+
+  <div class="hero-featured">
+
+    <div class="heading"><span class="dot"></span> Available Now</div>
+
+    <div class="fcard" id="fc-1"></div>
+    <div class="fcard" id="fc-2"></div>
+    <div class="fcard" id="fc-3"></div>
+
+  </div>
+
+  <div class="hero-rating">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    <span class="trust-text"><strong>Verified</strong> &middot; <em>200+ Reviews</em></span>
+  </div>
+
+</section>
+
+
+
+<!-- COMPANIONS -->
+
+<section id="companions">
+
+  <div class="section-header reveal">
+
+    <p class="section-label">Our Portfolio</p>
+
+    <h2 class="section-title" style="font-family: 'Vegan Style Personal Use', 'Jost', sans-serif; word-spacing: 0.15em;">Meet Our <em>Companions</em></h2>
+
+    <div class="divider"></div>
+
+    <p class="section-sub">Handpicked. Verified. Unforgettable. Browse our exclusive roster and find your perfect match.</p>
+
+  </div>
+
+  <div class="companions-grid">
+
+
+
+    <div class="companion-card reveal">
+
+      <img src="./images/model1.jpg" alt="Sophia">
+
+      <div class="card-top-grad"></div>
+
+      <div class="card-header">
+
+        <span class="name">Sophia</span>
+
+        <span class="avail-tag"><span class="spin"></span> Available Now</span>
+
+      </div>
+
+      <div class="card-footer">
+
+        <div class="identity">
+
+          <div class="avatar"><img src="./images/model1.jpg" alt="Sophia"></div>
+
+          <div class="id-text">
+
+            <span class="handle">Sophia</span>
+
+            <span class="meta">26 · Mumbai</span>
+
+          </div>
+
+        </div>
+
+        <a href="#contact" class="book-btn">⚡ Book Her</a>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="companion-card reveal" style="transition-delay:0.08s">
+
+      <img src="./images/model2.webp" alt="Natasha">
+
+      <div class="card-top-grad"></div>
+
+      <div class="card-header">
+
+        <span class="name">Natasha</span>
+
+        <span class="avail-tag"><span class="spin"></span> Available Now</span>
+
+      </div>
+
+      <div class="card-footer">
+
+        <div class="identity">
+
+          <div class="avatar"><img src="./images/model2.webp" alt="Natasha"></div>
+
+          <div class="id-text">
+
+            <span class="handle">Natasha</span>
+
+            <span class="meta">24 · Delhi</span>
+
+          </div>
+
+        </div>
+
+        <a href="#contact" class="book-btn">⚡ Book Her</a>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="companion-card reveal" style="transition-delay:0.16s">
+
+      <img src="./images/model3.jpg" alt="Priya">
+
+      <div class="card-top-grad"></div>
+
+      <div class="card-header">
+
+        <span class="name">Priya</span>
+
+        <span class="avail-tag booked-tag"><span class="spin"></span> Booked Tonight</span>
+
+      </div>
+
+      <div class="card-footer">
+
+        <div class="identity">
+
+          <div class="avatar"><img src="./images/model3.jpg" alt="Priya"></div>
+
+          <div class="id-text">
+
+            <span class="handle">Priya</span>
+
+            <span class="meta">27 · Bangalore</span>
+
+          </div>
+
+        </div>
+
+        <a href="#contact" class="book-btn booked-btn">Unavailable</a>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="companion-card reveal" style="transition-delay:0.24s">
+
+      <img src="./images/model4.webp" alt="Anika">
+
+      <div class="card-top-grad"></div>
+
+      <div class="card-header">
+
+        <span class="name">Anika</span>
+
+        <span class="avail-tag"><span class="spin"></span> Available Now</span>
+
+      </div>
+
+      <div class="card-footer">
+
+        <div class="identity">
+
+          <div class="avatar"><img src="./images/model4.webp" alt="Anika"></div>
+
+          <div class="id-text">
+
+            <span class="handle">Anika</span>
+
+            <span class="meta">25 · Hyderabad</span>
+
+          </div>
+
+        </div>
+
+        <a href="#contact" class="book-btn">⚡ Book Her</a>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="companion-card reveal" style="transition-delay:0.32s">
+
+      <img src="./images/model5.webp" alt="Mia">
+
+      <div class="card-top-grad"></div>
+
+      <div class="card-header">
+
+        <span class="name">Mia</span>
+
+        <span class="avail-tag"><span class="spin"></span> Available Now</span>
+
+      </div>
+
+      <div class="card-footer">
+
+        <div class="identity">
+
+          <div class="avatar"><img src="./images/model5.webp" alt="Mia"></div>
+
+          <div class="id-text">
+
+            <span class="handle">Mia</span>
+
+            <span class="meta">23 · Pune</span>
+
+          </div>
+
+        </div>
+
+        <a href="#contact" class="book-btn">⚡ Book Her</a>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="companion-card reveal" style="transition-delay:0.4s">
+
+      <img src="./images/model6.jpg" alt="Elena">
+
+      <div class="card-top-grad"></div>
+
+      <div class="card-header">
+
+        <span class="name">Elena</span>
+
+        <span class="avail-tag booked-tag"><span class="spin"></span> Booked Tonight</span>
+
+      </div>
+
+      <div class="card-footer">
+
+        <div class="identity">
+
+          <div class="avatar"><img src="./images/model6.jpg" alt="Elena"></div>
+
+          <div class="id-text">
+
+            <span class="handle">Elena</span>
+
+            <span class="meta">28 · Mumbai</span>
+
+          </div>
+
+        </div>
+
+        <a href="#contact" class="book-btn booked-btn">Unavailable</a>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="companion-card reveal" style="transition-delay:0.48s">
+
+      <img src="./images/model7.jpg" alt="Zara">
+
+      <div class="card-top-grad"></div>
+
+      <div class="card-header">
+
+        <span class="name">Zara</span>
+
+        <span class="avail-tag"><span class="spin"></span> Available Now</span>
+
+      </div>
+
+      <div class="card-footer">
+
+        <div class="identity">
+
+          <div class="avatar"><img src="./images/model7.jpg" alt="Zara"></div>
+
+          <div class="id-text">
+
+            <span class="handle">Zara</span>
+
+            <span class="meta">24 · Delhi</span>
+
+          </div>
+
+        </div>
+
+        <a href="#contact" class="book-btn">⚡ Book Her</a>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="companion-card reveal" style="transition-delay:0.56s">
+
+      <img src="./images/model8.jpg" alt="Lara">
+
+      <div class="card-top-grad"></div>
+
+      <div class="card-header">
+
+        <span class="name">Lara</span>
+
+        <span class="avail-tag"><span class="spin"></span> Available Now</span>
+
+      </div>
+
+      <div class="card-footer">
+
+        <div class="identity">
+
+          <div class="avatar"><img src="./images/model8.jpg" alt="Lara"></div>
+
+          <div class="id-text">
+
+            <span class="handle">Lara</span>
+
+            <span class="meta">26 · Bangalore</span>
+
+          </div>
+
+        </div>
+
+        <a href="#contact" class="book-btn">⚡ Book Her</a>
+
+      </div>
+
+    </div>
+
+
+
+  </div>
+
+</section>
+
+
+
+<!-- ABOUT -->
+
+<section id="about">
+  <div class="about-inner">
+
+    <div class="about-visual reveal">
+      <img class="model-nobg" src="./images/aboutModel1.webp" alt="LIZA">
+      <img class="accent" src="./images/aboutModel2.webp" alt="LIZA">
+    </div>
+
+    <div class="about-text reveal" style="transition-delay:0.15s">
+      <p class="section-label">Premium Escort Service · 100% Genuine · Verified Girls</p>
+      <h2 class="about-heading">Where <em>Desire</em> Meets Discretion</h2>
+      <div class="about-divider"></div>
+      <p class="about-body">Founded in 2015, LIZA is Kolkata's most discreet companionship agency — connecting discerning gentlemen with extraordinary women who know how to make every moment feel personal. We exist for those who crave more than a transaction. A connection that lingers long after she's gone.</p>
+
+      <div class="about-stats-row">
+        <div class="astat">
+          <span class="num">200<span>+</span></span>
+          <span class="lbl">Happy Clients</span>
+        </div>
+        <div class="astat">
+          <span class="num">4.9<span>★</span></span>
+          <span class="lbl">Avg. Rating</span>
+        </div>
+        <div class="astat">
+          <span class="num">10<span>+</span></span>
+          <span class="lbl">Years Active</span>
+        </div>
+        <div class="astat">
+          <span class="num">6<span>+</span></span>
+          <span class="lbl">Cities</span>
+        </div>
+      </div>
+
+      <div class="about-tags">
+        <span>Premium Service</span>
+        <span>100% Genuine</span>
+        <span>Verified Girls</span>
+        <span>Call Girls</span>
+        <span>Discreet Booking</span>
+        <span>24/7 Available</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- SERVICES -->
+
+<section id="services">
+
+  <div class="section-header reveal">
+
+    <p class="section-label">What We Offer</p>
+
+    <h2 class="section-title" style="font-family: 'Vegan Style Personal Use', 'Jost', sans-serif;">Every <em>Fantasy</em> Has a Form</h2>
+
+    <div class="divider"></div>
+
+    <p class="section-sub">Tell us yours — and we'll give her a name.</p>
+
+  </div>
+
+  <div class="services-grid">
+
+
+
+    <div class="svc-card reveal">
+
+      <img class="svc-img" src="./images/model1.jpg" alt="Dinner Dates">
+
+      <div class="svc-base"></div>
+
+      <div class="svc-hover-overlay"></div>
+
+      <span class="svc-num">01</span>
+
+      <div class="svc-content">
+
+        <span class="svc-tag">Fine Dining</span>
+
+        <h3>Dinner Dates</h3>
+
+        <div class="svc-reveal">
+
+          <p>She arrives in something that makes the room forget its manners. The wine helps — but it's her laugh you'll still hear at midnight.</p>
+
+          <a href="#contact" class="svc-btn">Reserve Her Tonight →</a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="svc-card reveal" style="transition-delay:0.1s">
+
+      <img class="svc-img" src="./images/model4.webp" alt="Events">
+
+      <div class="svc-base"></div>
+
+      <div class="svc-hover-overlay"></div>
+
+      <span class="svc-num">02</span>
+
+      <div class="svc-content">
+
+        <span class="svc-tag">Social Events</span>
+
+        <h3>Events & Galas</h3>
+
+        <div class="svc-reveal">
+
+          <p>On your arm all night. Under your skin forever. She knows exactly how to play the room — and what happens after everyone else leaves.</p>
+
+          <a href="#contact" class="svc-btn">Bring Her Along →</a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="svc-card reveal" style="transition-delay:0.2s">
+
+      <img class="svc-img" src="./images/model2.webp" alt="Travel">
+
+      <div class="svc-base"></div>
+
+      <div class="svc-hover-overlay"></div>
+
+      <span class="svc-num">03</span>
+
+      <div class="svc-content">
+
+        <span class="svc-tag">Jet-Set</span>
+
+        <h3>Travel Companion</h3>
+
+        <div class="svc-reveal">
+
+          <p>First-class seat, first-class everything. By the time you land, you'll have forgotten the destination — and why it ever mattered.</p>
+
+          <a href="#contact" class="svc-btn">Fly Together →</a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="svc-card reveal" style="transition-delay:0.3s">
+
+      <img class="svc-img" src="./images/model3.jpg" alt="Private">
+
+      <div class="svc-base"></div>
+
+      <div class="svc-hover-overlay"></div>
+
+      <span class="svc-num">04</span>
+
+      <div class="svc-content">
+
+        <span class="svc-tag">Exclusive</span>
+
+        <h3>Private Evenings</h3>
+
+        <div class="svc-reveal">
+
+          <p>No schedule. No interruptions. Just her warmth, your curiosity, and the kind of silence that says far more than words ever could.</p>
+
+          <a href="#contact" class="svc-btn">Make it Private →</a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+  </div>
+
+</section>
+
+
+
+<!-- PRICING -->
+
+<section id="pricing">
+
+  <div class="section-header reveal">
+
+    <p class="section-label">Indulgence, Priced Honestly</p>
+
+    <h2 class="section-title" style="font-family: 'Vegan Style Personal Use', 'Jost', sans-serif;">Choose Your <em>Evening</em></h2>
+
+    <div class="divider"></div>
+
+    <p class="section-sub">The best things in life aren't free — they're worth every rupee. Pick your pleasure.</p>
+
+  </div>
+
+  <div class="pricing-grid">
+
+
+
+    <!-- Card 1 -->
+
+    <div class="pricing-card reveal">
+
+      <span class="plan">Silver Tier</span>
+
+      <div class="pc-icon">
+
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+
+          <path d="M8 22h8M12 11v11M6 2h12l-2 9a5 5 0 0 1-10 0L6 2z"/>
+
+        </svg>
+
+      </div>
+
+      <p class="price"><sup>₹</sup>500<sub>/ hr</sub></p>
+
+      <p class="duration">Standard Booking</p>
+
+      <div class="pc-line"></div>
+
+      <ul class="perks">
+
+        <li>100% Verified Companions</li>
+
+        <li>Fine Dining Accompaniment</li>
+
+        <li>Chauffeur Arrival & Departure</li>
+
+        <li>In-Call & Out-Call Bookings</li>
+
+      </ul>
+
+      <a href="#contact" class="pc-btn">Select Tier</a>
+
+    </div>
+
+
+
+    <!-- Card 2 — Featured -->
+
+    <div class="pricing-card featured reveal" style="transition-delay:0.1s">
+
+      <div class="pc-badge">Most Popular</div>
+
+      <span class="plan">Gold Tier</span>
+
+      <div class="pc-icon">
+
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+
+          <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+
+        </svg>
+
+      </div>
+
+      <p class="price"><sup>₹</sup>1,500<sub>/ hr</sub></p>
+
+      <p class="duration">Premium Experience</p>
+
+      <div class="pc-line"></div>
+
+      <ul class="perks">
+
+        <li>Elite Roster Selection</li>
+
+        <li>Priority Booking & Concierge</li>
+
+        <li>Custom Travel Services</li>
+
+        <li>Five-Star Suite Visitation</li>
+
+        <li>Complimentary VIP Support</li>
+
+      </ul>
+
+      <a href="#contact" class="pc-btn">Select Tier</a>
+
+    </div>
+
+
+
+    <!-- Card 3 -->
+
+    <div class="pricing-card reveal" style="transition-delay:0.2s">
+
+      <span class="plan">Platinum Tier</span>
+
+      <div class="pc-icon">
+
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+
+          <path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7z"/>
+
+        </svg>
+
+      </div>
+
+      <p class="price"><sup>₹</sup>4,000<sub>/ hr</sub></p>
+
+      <p class="duration">Executive Booking</p>
+
+      <div class="pc-line"></div>
+
+      <ul class="perks">
+
+        <li>Ultra-Exclusive Portfolios</li>
+
+        <li>Full Travel & Overnight Support</li>
+
+        <li>Dedicated Personal Liaison</li>
+
+        <li>Ultimate Discretion Guarantee</li>
+
+        <li>Executive Concierge Line</li>
+
+      </ul>
+
+      <a href="#contact" class="pc-btn">Select Tier</a>
+
+    </div>
+
+
+
+  </div>
+
+</section>
+
+
+
+<!-- DISCRETION / HOW IT WORKS -->
+
+<section id="discretion">
+
+
+
+  <span class="disc-eyebrow reveal">How It Works</span>
+
+  <h2 class="disc-title reveal" style="font-family: 'Vegan Style Personal Use', 'Jost', sans-serif; text-transform: none; font-style: normal; font-weight: 400;">Three Steps to <em style="font-family: 'Vegan Style Personal Use', 'Jost', sans-serif; font-style: normal; font-weight: 400;">Her</em></h2>
+
+  <p class="disc-sub reveal">From first glance to final touch — everything is handled with absolute grace and discretion. She's closer than you think.</p>
+
+
+
+  <div class="disc-steps">
+
+
+
+    <!-- Step 1 -->
+
+    <div class="disc-step reveal">
+
+      <span class="step-num">— 01 —</span>
+
+      <div class="step-icon">
+
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+
+        </svg>
+
+      </div>
+
+      <h4>Browse Companions</h4>
+
+      <p>Explore our curated elite roster. Filter by city, mood, and desire. Every profile is personally verified.</p>
+
+    </div>
+
+
+
+    <!-- Connector -->
+
+    <div class="disc-connector">
+
+      <span></span><span></span><span></span>
+
+    </div>
+
+
+
+    <!-- Step 2 -->
+
+    <div class="disc-step reveal" style="transition-delay:0.12s">
+
+      <span class="step-num">— 02 —</span>
+
+      <div class="step-icon">
+
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+
+        </svg>
+
+      </div>
+
+      <h4>Pick a Date</h4>
+
+      <p>Choose your date, time, and preferred experience. Bookings are encrypted and confirmed within minutes.</p>
+
+    </div>
+
+
+
+    <!-- Connector -->
+
+    <div class="disc-connector">
+
+      <span></span><span></span><span></span>
+
+    </div>
+
+
+
+    <!-- Step 3 -->
+
+    <div class="disc-step reveal" style="transition-delay:0.24s">
+
+      <span class="step-num">— 03 —</span>
+
+      <div class="step-icon">
+
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+
+          <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+
+        </svg>
+
+      </div>
+
+      <h4>Enjoy & Elevate</h4>
+
+      <p>Meet your companion and surrender to an evening crafted entirely around your pleasure and comfort.</p>
+
+    </div>
+
+
+
+  </div>
+
+</section>
+
+
+
+<!-- TESTIMONIALS -->
+
+<section id="testimonials">
+
+  <!-- Blurred background -->
+
+  <div class="t-bg">
+
+    <img src="./images/testimonialModel.jpg" alt="">
+
+  </div>
+
+
+
+  <!-- Header row -->
+
+  <div class="t-header reveal">
+
+    <h2>Client Experiences</h2>
+
+    <span class="t-label">Discreet Reviews</span>
+
+  </div>
+
+
+
+  <!-- Cards -->
+
+  <div class="t-grid">
+
+
+
+    <div class="t-card reveal">
+
+      <div class="t-stars">
+
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+
+      </div>
+
+      <blockquote>"An evening I will never forget. My companion was intelligent, warm, and utterly captivating. Liza exceeded every expectation."</blockquote>
+
+      <div class="t-author">
+
+        <div class="t-avatar">R</div>
+
+        <div class="t-author-info">
+
+          <span class="t-name">Rahul K.</span>
+
+          <span class="t-meta">Mumbai · Verified Client</span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="t-card reveal" style="transition-delay:0.08s">
+
+      <div class="t-stars">
+
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+
+      </div>
+
+      <blockquote>"Absolute discretion, seamless booking, and a companion who made me feel like the only person in the world. This service is in a league of its own."</blockquote>
+
+      <div class="t-author">
+
+        <div class="t-avatar">A</div>
+
+        <div class="t-author-info">
+
+          <span class="t-name">Arjun M.</span>
+
+          <span class="t-meta">Delhi · VIP Member</span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="t-card reveal" style="transition-delay:0.16s">
+
+      <div class="t-stars">
+
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+
+      </div>
+
+      <blockquote>"I travel for business frequently and Liza has become my trusted partner in every city. Professional, private, and unparalleled quality."</blockquote>
+
+      <div class="t-author">
+
+        <div class="t-avatar">V</div>
+
+        <div class="t-author-info">
+
+          <span class="t-name">Vikram S.</span>
+
+          <span class="t-meta">Bangalore · Travel Client</span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+    <div class="t-card reveal" style="transition-delay:0.24s">
+
+      <div class="t-stars">
+
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+
+        <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+
+      </div>
+
+      <blockquote>"The booking experience was flawless and my companion was breathtakingly beautiful — intelligent and made the whole evening effortlessly magical."</blockquote>
+
+      <div class="t-author">
+
+        <div class="t-avatar">S</div>
+
+        <div class="t-author-info">
+
+          <span class="t-name">Suresh P.</span>
+
+          <span class="t-meta">Hyderabad · Gold Member</span>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+
+  </div>
+
+</section>
+
+
+
+<!-- STICKY CONTACT -->
+
+<a class="sticky-contact" href="#contact">
+
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+
+  <span>Book Now</span>
+
+</a>
+
+
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <!-- Brand Column -->
+      <div class="footer-brand">
+        <a class="footer-logo" href="#home">Liza</a>
+        <p class="footer-tagline">India's premier luxury companion service — discretion, elegance, and desire, delivered.</p>
+        <div class="footer-socials">
+          <a href="#" class="social-box">T</a>
+          <a href="#" class="social-box">I</a>
+          <a href="#" class="social-box">W</a>
+          <a href="#" class="social-box">TG</a>
+        </div>
+      </div>
+      
+      <!-- Company Column -->
+      <div class="footer-col">
+        <h4 class="footer-title">Company</h4>
+        <ul class="footer-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">How It Works</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+
+      <!-- Services Column -->
+      <div class="footer-col">
+        <h4 class="footer-title">Services</h4>
+        <ul class="footer-links">
+          <li><a href="#">Browse Companions</a></li>
+          <li><a href="#">Become a Companion</a></li>
+          <li><a href="#">VIP Membership</a></li>
+          <li><a href="#">Gift Cards</a></li>
+          <li><a href="#">Corporate</a></li>
+        </ul>
+      </div>
+
+      <!-- Support Column -->
+      <div class="footer-col">
+        <h4 class="footer-title">Support</h4>
+        <ul class="footer-links">
+          <li><a href="#">Contact Us</a></li>
+          <li><a href="#">Safety Center</a></li>
+          <li><a href="#">Report Issue</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Verification</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <hr class="footer-divider">
+
+    <div class="footer-bottom">
+      <span class="footer-copy">© 2025 Liza. All rights reserved. For adults 18+ only.</span>
+      <div class="footer-bottom-links">
+        <a href="#" class="footer-bottom-link">Privacy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+<script>
+
+  const reveals = document.querySelectorAll('.reveal');
+
+  const observer = new IntersectionObserver((entries) => {
+
+    entries.forEach(e => {
+
+      if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+
+    });
+
+  }, { threshold: 0.08 });
+
+  reveals.forEach(el => observer.observe(el));
+
+
+
+  const nav = document.querySelector('nav');
+
+  window.addEventListener('scroll', () => {
+
+    nav.style.padding = window.scrollY > 60 ? '12px 60px' : '18px 60px';
+
+    nav.style.boxShadow = window.scrollY > 60 ? '0 2px 30px rgba(124,58,237,0.25)' : 'none';
+
+  });
+
+
+
+  var formBtn = document.querySelector('.form-submit');
+  if (formBtn) {
+    formBtn.addEventListener('click', function () {
+      alert('Thank you for your enquiry. She will respond within 2 hours — try to contain yourself until then.');
+    });
+  }
+
+
+
+  // ── HERO FEATURED CARDS CAROUSEL ──
+  const models = [
+    { name: 'Sophia', detail: '26 \u00b7 Mumbai', img: './images/model1.jpg' },
+    { name: 'Natasha', detail: '24 \u00b7 Delhi', img: './images/model2.webp' },
+    { name: 'Priya', detail: '27 \u00b7 Bangalore', img: './images/model3.jpg' },
+    { name: 'Anika', detail: '25 \u00b7 Hyderabad', img: './images/model4.webp' },
+    { name: 'Mia', detail: '23 \u00b7 Pune', img: './images/model5.webp' },
+    { name: 'Elena', detail: '28 \u00b7 Mumbai', img: './images/model6.jpg' },
+    { name: 'Zara', detail: '24 \u00b7 Delhi', img: './images/model7.jpg' },
+    { name: 'Lara', detail: '26 \u00b7 Bangalore', img: './images/model8.jpg' },
+  ];
+
+  const fc1 = document.getElementById('fc-1');
+  const fc2 = document.getElementById('fc-2');
+  const fc3 = document.getElementById('fc-3');
+  const slots = [fc1, fc2, fc3];
+  let idx = 0;
+
+  function renderCard(slot, model) {
+    slot.innerHTML =
+      '<div class="thumb"><img src="' + model.img + '" alt="' + model.name + '"></div>' +
+      '<div class="info">' +
+        '<span class="name">' + model.name + '</span>' +
+        '<span class="detail">' + model.detail + '</span>' +
+        '<span class="status">\u25cf Available</span>' +
+        '<a href="#companions" class="btn-sm">Book Her</a>' +
+      '</div>';
+  }
+
+  function initFeatured() {
+    for (let i = 0; i < 3; i++) {
+      var m = models[(idx + i) % models.length];
+      renderCard(slots[i], m);
+    }
+  }
+
+  function initFeatured() {
+    for (let i = 0; i < 3; i++) {
+      var m = models[(idx + i) % models.length];
+      renderCard(slots[i], m);
+    }
+  }
+
+  function rotateFeatured() {
+    // Animate out: top swipes left, middle fades
+    slots[0].classList.add('swipe-out');
+    slots[1].classList.add('fade-out');
+
+    setTimeout(function () {
+      idx = (idx + 1) % models.length;
+
+      // Match inline styles to animation end states before removing classes
+      // (prevents snap — transition smooths the return)
+      slots[0].style.transform = 'rotate(-4deg) translateX(-140px)';
+      slots[0].style.opacity = '0';
+      slots[1].style.opacity = '0';
+
+      // Remove animation classes — no visual change since inline styles match
+      slots[0].classList.remove('swipe-out');
+      slots[1].classList.remove('fade-out');
+
+      // Re-render content while cards are invisible
+      for (var i = 0; i < 2; i++) {
+        var m = models[(idx + i) % models.length];
+        renderCard(slots[i], m);
+      }
+
+      // Transition top + middle back to rest position (fade in)
+      slots[0].style.transform = '';
+      slots[0].style.opacity = '';
+      slots[1].style.opacity = '';
+
+      // Bottom card: re-render, position offscreen right (no transition), then swipe in
+      slots[2].classList.add('no-transition');
+      renderCard(slots[2], models[(idx + 2) % models.length]);
+      slots[2].style.transform = 'rotate(3deg) translateX(140px)';
+      slots[2].style.opacity = '0';
+      void slots[2].offsetHeight;
+      slots[2].classList.remove('no-transition');
+      slots[2].style.transform = '';
+      slots[2].style.opacity = '';
+    }, 900);
+  }
+
+  initFeatured();
+  setInterval(rotateFeatured, 6000);
+
+</script>
+
+</body>
+
+</html>
+
