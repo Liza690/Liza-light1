@@ -393,7 +393,7 @@ section { padding: 100px 80px; }
   .hero-rating .trust-text { font-size: 0.55rem !important; }
   nav[style*="padding"] { padding: 10px 16px !important; }
   nav :global(a[href="/"]) { font-size: 1.2rem !important; }
-  .companions-grid { grid-template-columns: 1fr !important; max-width: 340px !important; margin: 0 auto !important; }
+  .companions-grid { grid-template-columns: 1fr !important; max-width: 280px !important; margin: 0 auto !important; }
   .companion-card .card-header { top: 14px !important; left: 14px !important; right: 14px !important; }
   .companion-card .card-header .name { font-size: 1rem !important; }
   .companion-card .card-footer { bottom: 10px !important; left: 10px !important; right: 10px !important; }
