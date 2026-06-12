@@ -29,6 +29,8 @@ const testimonials = [
   },
 ];
 
+const allTestimonials = [...testimonials, ...testimonials];
+
 function StarIcon() {
   return (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="var(--accent)">
@@ -74,53 +76,84 @@ export default function Testimonials() {
         </span>
       </div>
 
-      <div className="t-grid" style={{ position: "relative", zIndex: 1, display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "16px" }}>
-        {testimonials.map((t, i) => (
-          <div
-            key={t.name}
-            className="t-card reveal"
-            style={{
-              background: "rgba(255,255,255,0.06)",
-              border: "1px solid rgba(255,255,255,0.08)",
-              borderRadius: "16px",
-              padding: "28px 24px",
-              backdropFilter: "blur(12px)",
-              WebkitBackdropFilter: "blur(12px)",
-              transition: "background 0.3s, border-color 0.3s, transform 0.3s",
-            }}
-          >
-            <div className="t-stars" style={{ display: "flex", gap: "3px", marginBottom: "16px" }}>
-              {[...Array(5)].map((_, si) => (
-                <StarIcon key={si} />
-              ))}
-            </div>
-
-            <blockquote style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.75rem", fontWeight: 300, fontStyle: "italic", color: "rgba(255,255,255,0.75)", lineHeight: 1.8, marginBottom: "24px" }}>
-              &ldquo;{t.quote}&rdquo;
-            </blockquote>
-
-            <div className="t-author" style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-              <div className="t-avatar" style={{ width: "36px", height: "36px", borderRadius: "50%", background: "var(--accent)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontFamily: "'Jost', sans-serif", fontSize: "0.75rem", fontWeight: 700, color: "#fff" }}>
-                {t.initial}
+      <div className="t-grid">
+        <div className="t-infinite-track">
+          {allTestimonials.map((t, i) => (
+            <div
+              key={`${t.name}-${i}`}
+              className="t-card reveal"
+              style={{
+                background: "rgba(255,255,255,0.06)",
+                border: "1px solid rgba(255,255,255,0.08)",
+                borderRadius: "16px",
+                padding: "28px 24px",
+                backdropFilter: "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+                transition: "background 0.3s, border-color 0.3s, transform 0.3s",
+              }}
+            >
+              <div className="t-stars" style={{ display: "flex", gap: "3px", marginBottom: "16px" }}>
+                {[...Array(5)].map((_, si) => (
+                  <StarIcon key={si} />
+                ))}
               </div>
-              <div className="t-author-info">
-                <span className="t-name" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.72rem", fontWeight: 600, color: "#fff", display: "block", lineHeight: 1.2 }}>{t.name}</span>
-                <span className="t-meta" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.55rem", fontWeight: 400, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--accent)", marginTop: "2px", display: "block" }}>{t.meta}</span>
+
+              <blockquote style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.75rem", fontWeight: 300, fontStyle: "italic", color: "rgba(255,255,255,0.75)", lineHeight: 1.8, marginBottom: "24px" }}>
+                &ldquo;{t.quote}&rdquo;
+              </blockquote>
+
+              <div className="t-author" style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+                <div className="t-avatar" style={{ width: "36px", height: "36px", borderRadius: "50%", background: "var(--accent)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0, fontFamily: "'Jost', sans-serif", fontSize: "0.75rem", fontWeight: 700, color: "#fff" }}>
+                  {t.initial}
+                </div>
+                <div className="t-author-info">
+                  <span className="t-name" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.72rem", fontWeight: 600, color: "#fff", display: "block", lineHeight: 1.2 }}>{t.name}</span>
+                  <span className="t-meta" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.55rem", fontWeight: 400, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--accent)", marginTop: "2px", display: "block" }}>{t.meta}</span>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
 
       <style jsx>{`
+        .t-grid {
+          position: relative;
+          z-index: 1;
+          overflow: hidden;
+          padding: 10px 4px;
+        }
+        .t-infinite-track {
+          display: flex;
+          gap: 16px;
+          width: fit-content;
+          animation: t-scroll 30s linear infinite;
+        }
+        @media (hover: hover) {
+          .t-grid:hover .t-infinite-track {
+            animation-play-state: paused;
+          }
+        }
+        .t-card {
+          flex: 0 0 350px;
+          scroll-snap-align: start;
+        }
         .t-card:hover {
           background: rgba(255,255,255,0.1);
           border-color: rgba(124,58,237,0.3);
           transform: translateY(-4px);
         }
+        @keyframes t-scroll {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
         @media (max-width: 800px) {
-          .t-grid { grid-template-columns: 1fr 1fr; }
           .t-header h2 { font-size: 1.1rem; }
+        }
+        @media (max-width: 600px) {
+          .t-card {
+            flex: 0 0 280px;
+          }
         }
       `}</style>
     </section>

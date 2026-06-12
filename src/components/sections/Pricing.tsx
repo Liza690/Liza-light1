@@ -87,7 +87,7 @@ export default function Pricing() {
 
       <div className="section-header reveal" style={{ marginBottom: "70px", position: "relative", zIndex: 1 }}>
         <p className="section-label" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.62rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "6px", fontWeight: 500 }}>Indulgence, Priced Honestly</p>
-        <h2 className="section-title" style={{ fontFamily: "'VeganStyle', 'Jost', sans-serif", fontSize: "2rem", lineHeight: 1.2, marginBottom: "10px", color: "#fff" }}>
+        <h2 className="section-title" style={{ fontFamily: "'VeganStyle', 'Jost', sans-serif", fontSize: "2rem", lineHeight: 1.2, marginBottom: "10px", color: "#fff", wordSpacing: "0.18em" }}>
           Choose Your <em>Evening</em>
         </h2>
         <div className="divider" style={{ width: "40px", height: "2px", background: "rgba(167,139,250,0.4)", margin: "12px auto 24px" }} />
@@ -96,7 +96,7 @@ export default function Pricing() {
         </p>
       </div>
 
-      <div className="pricing-grid" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "24px", maxWidth: "1000px", margin: "0 auto", alignItems: "stretch", position: "relative", zIndex: 1 }}>
+      <div className="pricing-grid">
         {tiers.map((tier, i) => (
           <div
             key={tier.plan}
@@ -198,6 +198,16 @@ export default function Pricing() {
       </div>
 
       <style jsx>{`
+        .pricing-grid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 24px;
+          max-width: 1000px;
+          margin: 0 auto;
+          align-items: stretch;
+          position: relative;
+          z-index: 1;
+        }
         .pricing-card:hover {
           border-color: rgba(124,58,237,0.5) !important;
           transform: translateY(-4px);

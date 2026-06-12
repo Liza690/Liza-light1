@@ -142,11 +142,11 @@ function ProvidersContent() {
           {/* Page Header */}
           <div style={{ marginBottom: "40px" }}>
             <p className="section-label">Browse Companions</p>
-            <h2 className="section-title" style={{ fontFamily: "'VeganStyle', 'Jost', sans-serif", fontSize: "2rem", marginBottom: "10px" }}>
+            <h2 className="section-title" style={{ fontFamily: "'VeganStyle', 'Jost', sans-serif", fontSize: "2rem", marginBottom: "14px", wordSpacing: "0.18em" }}>
               Discover Our Exclusive <em>Companions</em>
             </h2>
-            <div className="divider" style={{ margin: "12px 0 24px" }} />
-            <p style={{ fontSize: "0.7rem", color: "var(--text-muted)", maxWidth: "500px", fontWeight: 400, letterSpacing: "0.3px" }}>
+            <div className="divider" style={{ margin: "18px 0 28px" }} />
+            <p style={{ fontSize: "0.85rem", color: "var(--text-muted)", maxWidth: "500px", fontWeight: 400, letterSpacing: "0.3px", lineHeight: "1.6" }}>
               Refined, discreet, and unforgettable. Browse India&apos;s most premium companions.
             </p>
           </div>

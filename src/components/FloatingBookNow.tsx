@@ -54,8 +54,8 @@ export default function FloatingBookNow() {
           50% { transform: scale(1.05); box-shadow: 0 0 60px rgba(236,72,153,0.9); }
         }
         @media (max-width: 600px) {
-          .sticky-contact { bottom: 16px; right: 16px; padding: 12px 16px; font-size: 0.6rem; }
-          .sticky-contact span { display: none; }
+          .sticky-contact { bottom: 16px !important; right: 16px !important; padding: 12px 20px !important; font-size: 0.62rem !important; }
+          .sticky-contact span { display: inline !important; }
         }
       `}</style>
     </a>

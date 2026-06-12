@@ -37,7 +37,7 @@ export default function About() {
           <p className="section-label" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.62rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "6px", fontWeight: 500 }}>
             Premium Escort Service · 100% Genuine · Verified Girls
           </p>
-          <h2 className="about-heading" style={{ fontFamily: "'VeganStyle', cursive", fontSize: "clamp(1.6rem, 3vw, 2.4rem)", fontWeight: 400, color: "var(--dark)", lineHeight: 1.35, marginBottom: "6px", marginTop: "10px" }}>
+          <h2 className="about-heading" style={{ fontFamily: "'VeganStyle', cursive", fontSize: "clamp(1.6rem, 3vw, 2.4rem)", fontWeight: 400, color: "var(--dark)", lineHeight: 1.35, marginBottom: "6px", marginTop: "10px", wordSpacing: "0.2em" }}>
             Where <em style={{ fontFamily: "'VeganStyle', cursive", fontStyle: "normal", color: "var(--accent)" }}>Desire</em> Meets Discretion
           </h2>
           <div className="about-divider" style={{ width: "40px", height: "2px", background: "var(--accent)", margin: "14px 0 20px", borderRadius: "2px" }} />
