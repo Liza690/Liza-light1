@@ -368,8 +368,9 @@ section { padding: 100px 80px; }
 }
 
 @media (max-width: 768px) {
-  section { padding: 50px 30px !important; }
-  .section-title { font-size: 1.4rem !important; }
+  section { padding: 70px 30px !important; }
+  .section-title { font-size: 1.6rem !important; }
+  .section-header { margin-bottom: 40px !important; }
   .hero-overlay { padding: 0 24px !important; }
   .hero-actions { flex-direction: column !important; gap: 12px !important; }
   .hero-actions a { width: 100% !important; text-align: center !important; }
@@ -383,9 +384,9 @@ section { padding: 100px 80px; }
 }
 
 @media (max-width: 576px) {
-  section { padding: 40px 20px !important; }
-  .section-title { font-size: 1.2rem !important; }
-  .section-sub { font-size: 0.6rem !important; }
+  section { padding: 60px 20px !important; }
+  .section-title { font-size: 1.5rem !important; }
+  .section-sub { font-size: 0.82rem !important; opacity: 0.9 !important; color: inherit !important; }
   .hero-overlay { padding: 0 20px !important; }
   .hero-actions a { font-size: 0.55rem !important; padding: 12px 28px !important; }
   .hero-rating { padding: 10px 18px !important; gap: 10px !important; }
@@ -414,8 +415,8 @@ section { padding: 100px 80px; }
 }
 
 @media (max-width: 480px) {
-  section { padding: 32px 16px !important; }
-  .section-title { font-size: 1.1rem !important; }
+  section { padding: 50px 16px !important; }
+  .section-title { font-size: 1.4rem !important; }
   nav[style*="padding"] { padding: 10px 14px !important; }
   nav ul { padding: 16px 20px !important; gap: 16px !important; }
   .hero-tagline { font-size: 0.8rem !important; }

@@ -62,7 +62,7 @@ export default function HowItWorks() {
         How It Works
       </span>
 
-      <h2 className="disc-title reveal" style={{ fontFamily: "'VeganStyle', 'Jost', sans-serif", fontSize: "clamp(1.8rem, 4vw, 3rem)", fontWeight: 400, color: "var(--dark)", marginBottom: "16px", position: "relative", zIndex: 1, textTransform: "none" }}>
+      <h2 className="disc-title reveal" style={{ fontFamily: "'VeganStyle', 'Jost', sans-serif", fontSize: "clamp(1.8rem, 4vw, 3rem)", fontWeight: 400, color: "var(--dark)", marginBottom: "16px", position: "relative", zIndex: 1, textTransform: "none", wordSpacing: "0.18em" }}>
         Three Steps to <em style={{ fontFamily: "'VeganStyle', 'Jost', sans-serif", color: "var(--accent)", fontStyle: "normal" }}>Her</em>
       </h2>
 
@@ -70,7 +70,7 @@ export default function HowItWorks() {
         From first glance to final touch — everything is handled with absolute grace and discretion. She&apos;s closer than you think.
       </p>
 
-      <div className="disc-steps" style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr auto 1fr", alignItems: "start", maxWidth: "860px", margin: "0 auto", position: "relative", zIndex: 1 }}>
+      <div className="disc-steps">
         {steps.map((step, i) => (
           <Fragment key={step.num}>
             <div className="disc-step reveal" style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "0 10px", position: "relative", zIndex: 1 }}>
@@ -98,6 +98,15 @@ export default function HowItWorks() {
       </div>
 
       <style jsx>{`
+        .disc-steps {
+          display: grid;
+          grid-template-columns: 1fr auto 1fr auto 1fr;
+          align-items: start;
+          max-width: 860px;
+          margin: 0 auto;
+          position: relative;
+          z-index: 1;
+        }
         #discretion::before {
           content: '';
           position: absolute;

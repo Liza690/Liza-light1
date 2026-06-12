@@ -4,7 +4,7 @@ export default function Footer() {
   return (
     <footer className="site-footer" style={{ padding: "80px 80px 40px", background: "var(--accent)", color: "var(--white)", textAlign: "left" }}>
       <div className="footer-container" style={{ maxWidth: "1200px", margin: "0 auto" }}>
-        <div className="footer-grid" style={{ display: "grid", gridTemplateColumns: "2.2fr 1fr 1fr 1fr", gap: "40px", marginBottom: "60px" }}>
+        <div className="footer-grid">
           <div className="footer-brand" style={{ paddingRight: "40px" }}>
             <a href="#home" style={{ fontFamily: "'Jost', sans-serif", fontSize: "1.8rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--white)", display: "inline-block", marginBottom: "20px" }}>
               Liza
@@ -85,6 +85,12 @@ export default function Footer() {
       </div>
 
       <style jsx>{`
+        .footer-grid {
+          display: grid;
+          grid-template-columns: 2.2fr 1fr 1fr 1fr;
+          gap: 40px;
+          margin-bottom: 60px;
+        }
         .social-box:hover {
           border-color: rgba(255,255,255,0.6);
           color: var(--white);

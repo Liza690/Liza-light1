@@ -62,7 +62,7 @@ export default function Services() {
     <section id="services" ref={sectionRef} style={{ background: "var(--white)", position: "relative", padding: "100px 80px" }}>
       <div className="section-header reveal" style={{ textAlign: "center", marginBottom: "70px" }}>
         <p className="section-label" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.62rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "6px", fontWeight: 500 }}>What We Offer</p>
-        <h2 className="section-title" style={{ fontFamily: "'VeganStyle', 'Jost', sans-serif", fontSize: "2rem", color: "var(--dark)", lineHeight: 1.2, marginBottom: "10px" }}>
+        <h2 className="section-title" style={{ fontFamily: "'VeganStyle', 'Jost', sans-serif", fontSize: "2rem", color: "var(--dark)", lineHeight: 1.2, marginBottom: "10px", wordSpacing: "0.18em" }}>
           Every <em>Fantasy</em> Has a Form
         </h2>
         <div className="divider" style={{ width: "40px", height: "2px", background: "var(--accent)", margin: "12px auto 24px" }} />
@@ -71,7 +71,7 @@ export default function Services() {
         </p>
       </div>
 
-      <div className="services-grid" style={{ display: "grid", gridTemplateColumns: "1fr 1fr", maxWidth: "900px", margin: "0 auto" }}>
+      <div className="services-grid">
         {services.map((svc, i) => (
           <div
             key={svc.num}
@@ -115,6 +115,12 @@ export default function Services() {
       </div>
 
       <style jsx>{`
+        .services-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          max-width: 900px;
+          margin: 0 auto;
+        }
         .svc-card:hover .svc-img { transform: scale(1.08); }
         .svc-card:hover .svc-base { opacity: 0; }
         .svc-card:hover .svc-hover-overlay { opacity: 1 !important; }

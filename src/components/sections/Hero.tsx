@@ -107,7 +107,7 @@ export default function Hero() {
         <p className="availability reveal" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.8rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(255,255,255,0.75)", marginBottom: "30px", fontWeight: 500 }}>
           <span style={{ color: "var(--gold)" }}>●</span> Kolkata&apos;s No. 1 Escort Service
         </p>
-        <h1 className="reveal" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(5rem, 14vw, 14rem)", fontWeight: 300, color: "var(--white)", lineHeight: 0.9, letterSpacing: "-0.03em" }}>
+        <h1 className="reveal" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(5.5rem, 15vw, 14rem)", fontWeight: 300, color: "var(--white)", lineHeight: 0.9, letterSpacing: "-0.03em" }}>
           LIZA
           <span className="rule" style={{ display: "block", width: "80px", height: "1px", background: "var(--accent)", margin: "18px 0 22px" }} />
         </h1>

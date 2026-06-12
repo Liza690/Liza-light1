@@ -66,16 +66,16 @@ export default function Companions() {
         <p className="section-label" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.62rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "6px", fontWeight: 500 }}>
           Our Portfolio
         </p>
-        <h2 className="section-title" style={{ fontFamily: "'VeganStyle', 'Jost', sans-serif", fontSize: "2rem", color: "var(--dark)", lineHeight: 1.2, marginBottom: "10px", wordSpacing: "0.15em" }}>
+        <h2 className="section-title" style={{ fontFamily: "'VeganStyle', 'Jost', sans-serif", fontSize: "2rem", color: "var(--dark)", lineHeight: 1.2, marginBottom: "10px", wordSpacing: "0.18em" }}>
           Meet Our <em>Companions</em>
         </h2>
         <div className="divider" style={{ width: "40px", height: "2px", background: "var(--accent)", margin: "12px auto 24px" }} />
-        <p className="section-sub" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.65rem", fontWeight: 300, color: "var(--text-muted)", lineHeight: 1.8, maxWidth: "500px", margin: "0 auto" }}>
+        <p className="section-sub" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.9rem", fontWeight: 300, color: "var(--text-muted)", lineHeight: 1.8, maxWidth: "500px", margin: "0 auto" }}>
           Handpicked. Verified. Unforgettable. Browse our exclusive roster and find your perfect match.
         </p>
       </div>
 
-      <div className="companions-grid" style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: "18px", maxWidth: "1100px", margin: "0 auto" }}>
+      <div className="companions-grid">
         {companions.map((c, i) => (
           <div
             key={c.name}
@@ -119,11 +119,11 @@ export default function Companions() {
                 </div>
               </div>
               {c.available ? (
-                <a href={`/providers/${c.id}`} className="book-btn" onClick={(e) => e.stopPropagation()} style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.62rem", fontWeight: 700, letterSpacing: "0.06em", color: "#fff", background: "linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%)", borderRadius: "50px", padding: "10px 20px", whiteSpace: "nowrap", textDecoration: "none", transition: "all 0.3s cubic-bezier(0.34,1.56,0.64,1)", flexShrink: 0, display: "flex", alignItems: "center", gap: "5px", boxShadow: "0 4px 16px rgba(124,58,237,0.5), inset 0 1px 0 rgba(255,255,255,0.15)", border: "none", cursor: "pointer" }}>
+                <a href={`/providers/${c.id}`} className="book-btn" onClick={(e) => e.stopPropagation()} style={{ fontFamily: "'Jost', sans-serif", fontWeight: 700, letterSpacing: "0.06em", color: "#fff", background: "linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%)", borderRadius: "50px", whiteSpace: "nowrap", textDecoration: "none", transition: "all 0.3s cubic-bezier(0.34,1.56,0.64,1)", flexShrink: 0, display: "flex", alignItems: "center", gap: "5px", boxShadow: "0 4px 16px rgba(124,58,237,0.5), inset 0 1px 0 rgba(255,255,255,0.15)", border: "none", cursor: "pointer" }}>
                   <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style={{ flexShrink: 0 }}><polygon points="13 2 4 14 12 14 11 22 20 10 12 10 13 2"/></svg> Book Her
                 </a>
               ) : (
-                <a className="book-btn booked-btn" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.62rem", fontWeight: 700, letterSpacing: "0.06em", color: "rgba(255,255,255,0.35)", background: "rgba(20,10,25,0.35)", borderRadius: "50px", padding: "10px 20px", whiteSpace: "nowrap", textDecoration: "none", flexShrink: 0, cursor: "not-allowed", pointerEvents: "none", boxShadow: "none" }}>
+                <a className="book-btn booked-btn" style={{ fontFamily: "'Jost', sans-serif", fontWeight: 700, letterSpacing: "0.06em", color: "rgba(255,255,255,0.35)", background: "rgba(20,10,25,0.35)", borderRadius: "50px", whiteSpace: "nowrap", textDecoration: "none", flexShrink: 0, cursor: "not-allowed", pointerEvents: "none", boxShadow: "none" }}>
                   Unavailable
                 </a>
               )}
@@ -133,6 +133,17 @@ export default function Companions() {
       </div>
 
       <style jsx>{`
+        .companions-grid {
+          display: grid;
+          grid-template-columns: repeat(4, 1fr);
+          gap: 18px;
+          max-width: 1100px;
+          margin: 0 auto;
+        }
+        .book-btn {
+          font-size: 0.62rem;
+          padding: 10px 20px;
+        }
         .companion-card:hover {
           transform: translateY(-6px) scale(1.02);
           box-shadow: 0 20px 50px rgba(124,58,237,0.18);
@@ -153,7 +164,7 @@ export default function Companions() {
         @media (max-width: 800px) {
           .companions-grid { gap: 14px; }
           .companion-card .card-header .name { font-size: 1.1rem; }
-          .companion-card .card-footer .book-btn { font-size: 0.58rem; padding: 8px 12px; }
+          .companion-card .card-footer .book-btn { font-size: 0.58rem !important; padding: 8px 12px !important; }
         }
         @media (max-width: 768px) {
           .companions-grid {
