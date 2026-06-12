@@ -116,7 +116,7 @@ export default function Hero() {
         </p>
         <div className="hero-actions reveal" style={{ display: "flex", gap: "18px" }}>
           <a href="#companions" className="btn btn-primary">hot escorts</a>
-          <a href="#contact" className="btn btn-outline">Book Now</a>
+          <a href="#companions" className="btn btn-outline">Book Now</a>
         </div>
       </div>
 
