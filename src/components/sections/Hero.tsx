@@ -3,14 +3,14 @@
 import { useEffect, useRef } from "react";
 
 const models = [
-  { name: "Sophia", detail: "26 · Mumbai", img: "/images/model1.jpg" },
-  { name: "Natasha", detail: "24 · Delhi", img: "/images/model2.webp" },
-  { name: "Priya", detail: "27 · Bangalore", img: "/images/model3.jpg" },
-  { name: "Anika", detail: "25 · Hyderabad", img: "/images/model4.webp" },
-  { name: "Mia", detail: "23 · Pune", img: "/images/model5.webp" },
-  { name: "Elena", detail: "28 · Mumbai", img: "/images/model6.jpg" },
-  { name: "Zara", detail: "24 · Delhi", img: "/images/model7.jpg" },
-  { name: "Lara", detail: "26 · Bangalore", img: "/images/model8.jpg" },
+  { name: "Sophia", detail: "26 · Kolkata", img: "/images/model1.jpg" },
+  { name: "Natasha", detail: "24 · Kolkata", img: "/images/model2.webp" },
+  { name: "Priya", detail: "27 · Kolkata", img: "/images/model3.jpg" },
+  { name: "Anika", detail: "25 · Kolkata", img: "/images/model4.webp" },
+  { name: "Mia", detail: "23 · Kolkata", img: "/images/model5.webp" },
+  { name: "Elena", detail: "28 · Kolkata", img: "/images/model6.jpg" },
+  { name: "Zara", detail: "24 · Kolkata", img: "/images/model7.jpg" },
+  { name: "Lara", detail: "26 · Kolkata", img: "/images/model8.jpg" },
 ];
 
 function renderCardHTML(model: (typeof models)[0]) {
@@ -99,24 +99,24 @@ export default function Hero() {
   return (
     <section id="home" ref={sectionRef} style={{ height: "100vh", minHeight: "650px", position: "relative", overflow: "hidden" }}>
       <div className="hero-bg" style={{ position: "absolute", inset: 0 }}>
-        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(124,58,237,0.65) 0%, rgba(13,4,6,0.5) 40%, rgba(13,4,6,0.05) 60%, rgba(167,139,250,0.15) 100%)", zIndex: 1 }} />
-        <img src="https://img.magnific.com/free-photo/young-sexy-woman-black-lingerie-posing-bed_273443-2453.jpg" alt="LIZA" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 25%", animation: "heroZoom 10s ease-out forwards" }} />
+        <div style={{ position: "absolute", inset: 0, background: "linear-gradient(135deg, rgba(124,58,237,0.55) 0%, rgba(13,4,6,0.35) 35%, rgba(13,4,6,0.15) 60%, rgba(167,139,250,0.12) 100%)", zIndex: 1 }} />
+        <img src="/images/hero-image.avif" alt="Bengal Beauties" style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "center 25%", animation: "heroZoom 10s ease-out forwards" }} />
       </div>
 
       <div className="hero-overlay" style={{ position: "relative", zIndex: 2, height: "100%", display: "flex", flexDirection: "column", justifyContent: "center", padding: "0 80px" }}>
-        <p className="availability reveal" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.8rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "rgba(255,255,255,0.75)", marginBottom: "30px", fontWeight: 500 }}>
+        <p className="availability reveal" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.8rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "#fff", marginBottom: "30px", fontWeight: 600 }}>
           <span style={{ color: "var(--gold)" }}>●</span> Kolkata&apos;s No. 1 Escort Service
         </p>
-        <h1 className="reveal" style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "clamp(5.5rem, 15vw, 14rem)", fontWeight: 300, color: "var(--white)", lineHeight: 0.9, letterSpacing: "-0.03em" }}>
-          LIZA
-          <span className="rule" style={{ display: "block", width: "80px", height: "1px", background: "var(--accent)", margin: "18px 0 22px" }} />
+        <h1 className="reveal" style={{ fontFamily: "'Jost', sans-serif", fontSize: "clamp(1.8rem, 4.5vw, 3.2rem)", fontWeight: 500, letterSpacing: "0.02em", color: "#fff", lineHeight: 1.15, letterSpacing: "-0.01em", textShadow: "0 2px 20px rgba(0,0,0,0.5)", maxWidth: "800px" }}>
+          Find the Best Kolkata Escorts Services, Kolkata Call Girl
         </h1>
-        <p className="tagline reveal" style={{ fontFamily: "'Jost', sans-serif", fontSize: "1rem", fontWeight: 400, letterSpacing: "0.1em", color: "rgba(255,255,255,0.7)", marginBottom: "40px" }}>
-          Kolkata Escorts Service &amp; Call Girls Service
+        <span className="rule" style={{ display: "block", width: "80px", height: "1px", background: "var(--accent)", margin: "18px 0 22px" }} />
+        <p className="tagline reveal" style={{ fontFamily: "'Jost', sans-serif", fontSize: "clamp(0.95rem, 1.2vw, 1.1rem)", fontWeight: 400, letterSpacing: "0.04em", color: "#fff", marginBottom: "40px", maxWidth: "620px", lineHeight: 1.7, textShadow: "0 2px 20px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.8)" }}>
+          Discover the top rated Russian call Girls or kolkata escorts for life&apos;s special moments. Whether you need an engaging date for a gala, a travel partner, or a discreet private evening, we handle every detail seamlessly.
         </p>
         <div className="hero-actions reveal" style={{ display: "flex", gap: "18px" }}>
-          <a href="#companions" className="btn btn-primary">hot escorts</a>
-          <a href="#companions" className="btn btn-outline">Book Now</a>
+          <a href="/providers" className="btn btn-primary">Hot Escorts</a>
+          <a href="/contact" className="btn btn-outline">Book Now</a>
         </div>
       </div>
 

@@ -7,7 +7,7 @@ const navLinks = [
   { label: "About", href: "#about" },
   { label: "Services", href: "#services" },
   { label: "Pricing", href: "#pricing" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
@@ -41,8 +41,8 @@ export default function Navbar() {
         boxShadow: scrolled ? "0 2px 30px rgba(124,58,237,0.25)" : "none",
       }}
     >
-      <a href="/" style={{ fontFamily: "'Great Vibes', cursive", fontSize: "1.5rem", color: "var(--white)" }}>
-        Liza
+      <a href="/" style={{ fontFamily: "'Great Vibes', cursive", fontSize: "1.5rem", color: "var(--white)", letterSpacing: "0.08em" }}>
+        Bengal Beauties
       </a>
 
       <ul

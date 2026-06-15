@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Navbar from "@/components/sections/Navbar";
 import Hero from "@/components/sections/Hero";
 import Companions from "@/components/sections/Companions";
@@ -6,8 +7,14 @@ import Services from "@/components/sections/Services";
 import Pricing from "@/components/sections/Pricing";
 import HowItWorks from "@/components/sections/HowItWorks";
 import Testimonials from "@/components/sections/Testimonials";
+import FAQ from "@/components/sections/FAQ";
 import Footer from "@/components/sections/Footer";
 import FloatingBookNow from "@/components/FloatingBookNow";
+
+export const metadata: Metadata = {
+  title: "Kolkata Escorts & Call Girl | Premium Companionship | Bengal Beauties",
+  description: "Discover premium Kolkata escorts and elegant call girls at Bengal Beauties. We offer discreet, high-end companionship for dinner dates, events, and travel.",
+};
 
 export default function Home() {
   return (
@@ -21,6 +28,7 @@ export default function Home() {
         <Pricing />
         <HowItWorks />
         <Testimonials />
+        <FAQ />
       </main>
       <Footer />
       <FloatingBookNow />

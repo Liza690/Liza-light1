@@ -4,28 +4,64 @@ import { useEffect, useRef } from "react";
 
 const testimonials = [
   {
-    quote: "An evening I will never forget. My companion was intelligent, warm, and utterly captivating. Liza exceeded every expectation.",
+    quote: "I've tried many services, but the Kolkata escorts at Bengal Beauties are truly in a league of their own. Completely professional and discreet.",
     name: "Rahul K.",
-    meta: "Mumbai · Verified Client",
+    meta: "Kolkata · Verified Client",
     initial: "R",
   },
   {
-    quote: "Absolute discretion, seamless booking, and a companion who made me feel like the only person in the world. This service is in a league of its own.",
+    quote: "Finding a genuine kolkata call girl who is both intelligent and beautiful was difficult until I used this agency. Highly recommended.",
     name: "Arjun M.",
-    meta: "Delhi · VIP Member",
+    meta: "Kolkata · VIP Member",
     initial: "A",
   },
   {
-    quote: "I travel for business frequently and Liza has become my trusted partner in every city. Professional, private, and unparalleled quality.",
+    quote: "If you are looking for a high-end Russian escort in Kolkata, look no further. The experience was sophisticated and handled with perfect privacy.",
     name: "Vikram S.",
-    meta: "Bangalore · Travel Client",
+    meta: "Kolkata · Premium Client",
     initial: "V",
   },
   {
-    quote: "The booking experience was flawless and my companion was breathtakingly beautiful — intelligent and made the whole evening effortlessly magical.",
+    quote: "The attention to detail provided for my private evening was exceptional. It's rare to find such high-quality Kolkata call girls in the city.",
     name: "Suresh P.",
-    meta: "Hyderabad · Gold Member",
+    meta: "Kolkata · Gold Member",
     initial: "S",
+  },
+  {
+    quote: "I was impressed by the ease of the booking process. It's the most reliable service for anyone needing a professional kolkata escort.",
+    name: "Amit R.",
+    meta: "Kolkata · First-Time Client",
+    initial: "A",
+  },
+  {
+    quote: "My dinner date was a wonderful experience. Everything was curated perfectly, making it the most memorable evening I've had in a long time.",
+    name: "Deepak M.",
+    meta: "Kolkata · Regular Client",
+    initial: "D",
+  },
+  {
+    quote: "Discretion and class are clearly the priorities here. It's comforting to know that Bengal Beauties maintain such high standards for all their companions.",
+    name: "Rohan S.",
+    meta: "Kolkata · VIP Member",
+    initial: "R",
+  },
+  {
+    quote: "I needed someone for a gala event and the companion provided was elegant, charming, and a perfect conversationalist. A truly five-star experience.",
+    name: "Karan V.",
+    meta: "Kolkata · Elite Client",
+    initial: "K",
+  },
+  {
+    quote: "The service is seamless. Whether you need a travel companion or just someone for a relaxed evening, they provide the best in the city.",
+    name: "Nikhil P.",
+    meta: "Kolkata · Travel Client",
+    initial: "N",
+  },
+  {
+    quote: "A refreshing and stress-free experience. If you're searching for top-tier companionship, this is easily the most trustworthy and professional agency available.",
+    name: "Manish T.",
+    meta: "Kolkata · Verified Client",
+    initial: "M",
   },
 ];
 
