@@ -107,7 +107,7 @@ export default function Hero() {
         <p className="availability reveal" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.8rem", letterSpacing: "0.25em", textTransform: "uppercase", color: "#fff", marginBottom: "30px", fontWeight: 600 }}>
           <span style={{ color: "var(--gold)" }}>●</span> Kolkata&apos;s No. 1 Escort Service
         </p>
-        <h1 className="reveal" style={{ fontFamily: "'Jost', sans-serif", fontSize: "clamp(1.8rem, 4.5vw, 3.2rem)", fontWeight: 500, letterSpacing: "0.02em", color: "#fff", lineHeight: 1.15, letterSpacing: "-0.01em", textShadow: "0 2px 20px rgba(0,0,0,0.5)", maxWidth: "800px" }}>
+        <h1 className="reveal" style={{ fontFamily: "'Jost', sans-serif", fontSize: "clamp(1.8rem, 4.5vw, 3.2rem)", fontWeight: 500, color: "#fff", lineHeight: 1.15, letterSpacing: "-0.01em", textShadow: "0 2px 20px rgba(0,0,0,0.5)", maxWidth: "800px" }}>
           Find the Best Kolkata Escorts Services, Kolkata Call Girl
         </h1>
         <span className="rule" style={{ display: "block", width: "80px", height: "1px", background: "var(--accent)", margin: "18px 0 22px" }} />
