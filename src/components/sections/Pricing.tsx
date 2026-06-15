@@ -80,7 +80,7 @@ export default function Pricing() {
   }, []);
 
   return (
-    <section id="pricing" ref={sectionRef} style={{ background: "#100818", textAlign: "center", padding: "100px 80px", position: "relative", overflow: "hidden" }}>
+    <section id="pricing" ref={sectionRef} className="pricing-section" style={{ background: "#100818", textAlign: "center", position: "relative", overflow: "hidden" }}>
       <div style={{ content: "''", position: "absolute", top: "50%", left: "50%", transform: "translate(-50%, -50%)", fontFamily: "'Cormorant Garamond', serif", fontSize: "18vw", fontWeight: 300, fontStyle: "italic", color: "rgba(124,58,237,0.06)", whiteSpace: "nowrap", pointerEvents: "none", letterSpacing: "-0.04em", userSelect: "none", zIndex: 0 }}>
         DESIRE
       </div>
@@ -91,7 +91,7 @@ export default function Pricing() {
           Choose Your <em>Evening</em>
         </h2>
         <div className="divider" style={{ width: "40px", height: "2px", background: "rgba(167,139,250,0.4)", margin: "12px auto 24px" }} />
-        <p className="section-sub" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.65rem", fontWeight: 300, color: "rgba(255,255,255,0.45)", lineHeight: 1.8, maxWidth: "500px", margin: "0 auto" }}>
+        <p className="section-sub" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.75rem", fontWeight: 400, color: "rgba(255,255,255,0.8)", lineHeight: 1.8, maxWidth: "500px", margin: "0 auto" }}>
           The best things in life aren&apos;t free — they&apos;re worth every rupee. Pick your pleasure.
         </p>
       </div>
@@ -143,7 +143,7 @@ export default function Pricing() {
 
             <ul className="perks" style={{ listStyle: "none", padding: 0, margin: "0 0 32px", display: "flex", flexDirection: "column", gap: "12px", flex: 1 }}>
               {tier.perks.map((perk) => (
-                <li key={perk} style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.72rem", fontWeight: 300, color: tier.featured ? "rgba(255,255,255,0.8)" : "rgba(255,255,255,0.6)", lineHeight: 1.5, paddingLeft: "14px", position: "relative" }}>
+                <li key={perk} className="perk-item" style={{ fontFamily: "'Jost', sans-serif", fontWeight: 400, color: tier.featured ? "#fff" : "rgba(255,255,255,0.85)", lineHeight: 1.5, paddingLeft: "14px", position: "relative" }}>
                   {perk}
                 </li>
               ))}
@@ -198,6 +198,9 @@ export default function Pricing() {
       </div>
 
       <style jsx>{`
+        .pricing-section {
+          padding: 100px 80px;
+        }
         .pricing-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
@@ -238,11 +241,21 @@ export default function Pricing() {
           transition: left 0.5s ease;
         }
         .pc-btn:hover::after { left: 100%; }
+        .perk-item { font-size: 0.72rem; }
         @media (max-width: 1000px) {
+          .pricing-section { padding: 80px 40px; }
           .pricing-grid { grid-template-columns: 1fr; gap: 24px; }
+          .perk-item { font-size: 1.35rem; }
         }
         @media (max-width: 800px) {
+          .pricing-section { padding: 70px 24px; }
           .pricing-grid { grid-template-columns: 1fr 1fr; }
+          .perk-item { font-size: 1.4rem; }
+        }
+        @media (max-width: 560px) {
+          .pricing-section { padding: 60px 16px; }
+          .pricing-grid { grid-template-columns: 1fr; gap: 20px; }
+          .perk-item { font-size: 1.5rem; }
         }
       `}</style>
     </section>

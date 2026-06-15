@@ -1,48 +1,19 @@
 "use client";
 
-import { Suspense, useState, useEffect, useCallback, useRef } from "react";
+import { Suspense, useState, useMemo, useRef } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Navbar from "@/components/sections/Navbar";
 import Footer from "@/components/sections/Footer";
-interface ProviderResult {
-  _id: string;
-  name: string;
-  bio?: string;
-  profileImages?: string[];
-  city: string;
-  age?: number;
-  averageRating: number;
-  totalReviews: number;
-  totalBookings: number;
-  isVerified: boolean;
-  isAvailable: boolean;
-  tags?: string[];
-  price?: number;
-}
-
-interface FilterOptions {
-  cities: string[];
-  priceRange: { minPrice: number; maxPrice: number };
-  experienceLevels: string[];
-}
-
-interface Pagination {
-  page: number;
-  limit: number;
-  total: number;
-  pages: number;
-}
+import { companions } from "@/data/companions";
 
 const ITEMS_PER_PAGE = 12;
+
+const allCities = ["Kolkata"];
 
 function ProvidersContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  const [providers, setProviders] = useState<ProviderResult[]>([]);
-  const [filters, setFilters] = useState<FilterOptions | null>(null);
-  const [pagination, setPagination] = useState<Pagination>({ page: 1, limit: ITEMS_PER_PAGE, total: 0, pages: 0 });
-  const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState(searchParams.get("q") || "");
   const [activeCity, setActiveCity] = useState(searchParams.get("city") || "");
   const [priceSort, setPriceSort] = useState<string>(searchParams.get("sort") || "");
@@ -54,44 +25,30 @@ function ProvidersContent() {
 
   const currentPage = Number(searchParams.get("page") || "1");
 
-  const fetchProviders = useCallback(async (pageNum: number) => {
-    setLoading(true);
-    try {
-      const params = new URLSearchParams();
-      params.set("page", String(pageNum));
-      params.set("limit", String(ITEMS_PER_PAGE));
-      if (searchQuery) params.set("q", searchQuery);
-      if (activeCity) params.set("city", activeCity);
-      if (minAge) params.set("minAge", minAge);
-      if (maxAge) params.set("maxAge", maxAge);
-      if (priceSort === "asc" || priceSort === "desc") params.set("sort", priceSort);
-
-      const res = await fetch(`/api/v1/search?${params.toString()}`, { signal: AbortSignal.timeout(800) });
-
-      if (res.ok) {
-        const data = await res.json();
-        setProviders(data.providers || []);
-        setPagination(data.pagination || { page: pageNum, limit: ITEMS_PER_PAGE, total: 0, pages: 0 });
-        setLoading(false);
-        return;
+  const filtered = useMemo(() => {
+    let result = companions.filter((c) => {
+      if (searchQuery) {
+        const q = searchQuery.toLowerCase();
+        if (!c.name.toLowerCase().includes(q) && !c.city.toLowerCase().includes(q)) return false;
       }
-    } catch {}
+      if (activeCity && c.city !== activeCity) return false;
+      const age = c.age;
+      if (minAge && age < Number(minAge)) return false;
+      if (maxAge && age > Number(maxAge)) return false;
+      return true;
+    });
 
-    setProviders([]);
-    setPagination({ page: pageNum, limit: ITEMS_PER_PAGE, total: 0, pages: 0 });
-    setLoading(false);
+    if (priceSort === "asc") {
+      result = [...result].sort((a, b) => Number(a.price) - Number(b.price));
+    } else if (priceSort === "desc") {
+      result = [...result].sort((a, b) => Number(b.price) - Number(a.price));
+    }
+
+    return result;
   }, [searchQuery, activeCity, priceSort, minAge, maxAge]);
 
-  useEffect(() => {
-    fetchProviders(currentPage);
-  }, [currentPage, fetchProviders]);
-
-  useEffect(() => {
-    fetch("/api/v1/search/filters")
-      .then((r) => r.ok ? r.json() : null)
-      .then((d) => { if (d) setFilters(d); })
-      .catch(() => {});
-  }, []);
+  const totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
+  const pageProviders = filtered.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
 
   const applyAllFilters = () => {
     const params = new URLSearchParams();
@@ -141,7 +98,7 @@ function ProvidersContent() {
         <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 16px" }} className="sm:px-8">
           {/* Page Header */}
           <div style={{ marginBottom: "40px" }}>
-            <p className="section-label">Browse Companions</p>
+            <p className="section-label" style={{ marginBottom: "8px" }}>Browse Companions</p>
             <h2 className="section-title" style={{ fontFamily: "'VeganStyle', 'Jost', sans-serif", fontSize: "2rem", marginBottom: "14px", wordSpacing: "0.18em" }}>
               Discover Our Exclusive <em>Companions</em>
             </h2>
@@ -151,7 +108,7 @@ function ProvidersContent() {
             </p>
           </div>
 
-          {/* Search Bar — Modern Elegant */}
+          {/* Search Bar */}
           <form onSubmit={handleSearch} style={{ marginBottom: "40px" }}>
             <div ref={searchRef} style={{
               display: "flex",
@@ -283,7 +240,7 @@ function ProvidersContent() {
                         {!activeCity && <span style={{ width: 3, height: 3, borderRadius: "50%", background: "var(--accent)", flexShrink: 0 }} />}
                         All Cities
                       </button>
-                      {(filters?.cities || []).map((city) => (
+                      {allCities.map((city) => (
                         <button
                           key={city}
                           onClick={() => { setActiveCity(city); navigateWithFilters({ city }); }}
@@ -453,35 +410,31 @@ function ProvidersContent() {
 
             {/* Results Grid */}
             <div>
-              {loading ? (
-                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "80px 0" }}>
-                  <div style={{ width: 40, height: 40, border: "2px solid var(--accent)", borderTopColor: "transparent", borderRadius: "50%", animation: "spin 0.6s linear infinite", marginBottom: "16px" }} />
-                  <p style={{ fontSize: "0.7rem", letterSpacing: "2px", textTransform: "uppercase", color: "var(--text-muted)", fontWeight: 700 }}>Searching companions...</p>
-                </div>
-              ) : providers.length === 0 ? (
-                <div style={{ textAlign: "center", padding: "80px 0", border: "1px dashed var(--taupe)" }}>
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: "block", margin: "0 auto 16px", opacity: 0.4 }}><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-                  <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.5rem", color: "var(--dark)", marginBottom: "8px" }}>No Companions Found</h3>
-                  <p style={{ fontSize: "0.8rem", color: "var(--text-muted)", maxWidth: "400px", margin: "0 auto" }}>
+              {pageProviders.length === 0 ? (
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", padding: "80px 0", border: "1px dashed var(--taupe)", width: "100%" }}>
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ display: "block", marginBottom: 16, opacity: 0.4 }}><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                  <h3 className="font-['Bebas_Neue'] text-2xl tracking-[1.5px]" style={{ marginBottom: "8px", color: "var(--dark)" }}>No Companions Found</h3>
+                  <p className="text-xs" style={{ color: "var(--text-muted)", textAlign: "center", maxWidth: 400 }}>
                     Try adjusting your search or filter criteria to discover more premium companions.
                   </p>
                 </div>
               ) : (
                 <>
-                  <div style={{ fontSize: "10px", color: "var(--text-muted)", letterSpacing: "1.5px", textTransform: "uppercase", fontWeight: 600, marginBottom: "20px" }}>
-                    Showing {providers.length} of {pagination.total} Companions
+                  <div style={{ marginBottom: "20px", fontSize: "10px", color: "var(--text-muted)", letterSpacing: "1.5px", textTransform: "uppercase", fontWeight: 600 }}>
+                    Showing {pageProviders.length} of {filtered.length} Companions
                   </div>
 
                   <div className="models-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(240px, 1fr))", gap: "18px" }}>
-                    {providers.map((p, i) => (
+                    {pageProviders.map((c, i) => (
                       <div
-                        key={p._id}
+                        key={c.id}
                         className="model-card"
+                        onClick={() => router.push(`/providers/${c.id}`)}
                         style={{ position: "relative", borderRadius: "24px", overflow: "hidden", cursor: "pointer", aspectRatio: "2/3", boxShadow: "0 8px 32px rgba(13,4,6,0.13)", transition: "transform 0.35s ease, box-shadow 0.35s ease", animationDelay: `${i * 0.08}s` }}
                       >
                         <img
-                          src={p.profileImages?.[0] || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400"}
-                          alt={p.name}
+                          src={c.images[0]}
+                          alt={c.name}
                           className="model-card-img"
                           style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top", display: "block", transition: "transform 0.6s ease" }}
                         />
@@ -490,21 +443,14 @@ function ProvidersContent() {
 
                         <div className="card-header" style={{ position: "absolute", top: "20px", left: "20px", right: "20px", zIndex: 2, textAlign: "left" }}>
                           <span className="name" style={{ fontFamily: "'Jost', sans-serif", fontSize: "1.15rem", fontWeight: 700, color: "var(--white)", display: "block", lineHeight: 1.2, textShadow: "0 2px 12px rgba(0,0,0,0.4)", wordBreak: "break-word" }}>
-                            {p.name}
+                            {c.name}
                           </span>
                           <div style={{ display: "flex", alignItems: "center", gap: "6px", marginTop: "6px", flexWrap: "wrap" }}>
-                            {p.isAvailable ? (
-                              <span className="avail-tag" style={{ display: "inline-flex", alignItems: "center", gap: "4px", fontFamily: "'Jost', sans-serif", fontSize: "0.55rem", fontWeight: 400, color: "rgba(255,255,255,0.75)", letterSpacing: "0.04em" }}>
-                                <span className="spin" style={{ display: "inline-block", width: "12px", height: "12px", border: "1.5px solid rgba(255,255,255,0.6)", borderTopColor: "#fff", borderRadius: "50%", animation: "spinLoader 1s linear infinite", flexShrink: 0 }} />
-                                Available Now
-                              </span>
-                            ) : (
-                              <span className="avail-tag booked-tag" style={{ display: "inline-flex", alignItems: "center", gap: "4px", fontFamily: "'Jost', sans-serif", fontSize: "0.55rem", fontWeight: 400, color: "rgba(255,255,255,0.5)", letterSpacing: "0.04em" }}>
-                                <span className="spin" style={{ display: "inline-block", width: "10px", height: "10px", border: "1.5px solid rgba(255,255,255,0.3)", borderTopColor: "rgba(255,255,255,0.5)", borderRadius: "50%", animation: "spinLoader 1s linear infinite", flexShrink: 0 }} />
-                                Booked Tonight
-                              </span>
-                            )}
-                            {p.isVerified && (
+                            <span className="avail-tag" style={{ display: "inline-flex", alignItems: "center", gap: "4px", fontFamily: "'Jost', sans-serif", fontSize: "0.55rem", fontWeight: 400, color: "rgba(255,255,255,0.75)", letterSpacing: "0.04em" }}>
+                              <span className="spin" style={{ display: "inline-block", width: "12px", height: "12px", border: "1.5px solid rgba(255,255,255,0.6)", borderTopColor: "#fff", borderRadius: "50%", animation: "spinLoader 1s linear infinite", flexShrink: 0 }} />
+                              Available Now
+                            </span>
+                            {c.verified && (
                               <span style={{ background: "var(--accent)", color: "#fff", fontSize: "0.45rem", fontWeight: 800, letterSpacing: "1px", textTransform: "uppercase", padding: "2px 6px", borderRadius: "50px", lineHeight: 1 }}>✓</span>
                             )}
                           </div>
@@ -513,34 +459,28 @@ function ProvidersContent() {
                         <div className="card-footer" style={{ position: "absolute", bottom: "12px", left: "12px", right: "12px", zIndex: 2, display: "flex", alignItems: "center", justifyContent: "space-between", gap: "8px" }}>
                           <div className="identity" style={{ display: "flex", alignItems: "center", gap: "8px", background: "rgba(20,10,25,0.55)", backdropFilter: "blur(12px)", WebkitBackdropFilter: "blur(12px)", borderRadius: "50px", padding: "5px 12px 5px 5px", flex: 1, minWidth: 0, overflow: "hidden" }}>
                             <div className="avatar" style={{ width: "28px", height: "28px", borderRadius: "50%", overflow: "hidden", flexShrink: 0, border: "2px solid rgba(255,255,255,0.25)" }}>
-                              <img src={p.profileImages?.[0] || "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&q=80&w=400"} alt={p.name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
+                              <img src={c.images[0]} alt={c.name} style={{ width: "100%", height: "100%", objectFit: "cover", objectPosition: "top" }} />
                             </div>
                             <div className="id-text" style={{ display: "flex", flexDirection: "column", overflow: "hidden", minWidth: 0 }}>
                               <span className="handle" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.6rem", fontWeight: 500, color: "#fff", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                                {p.name}
+                                {c.name}
                               </span>
                               <span className="meta" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.5rem", fontWeight: 300, color: "rgba(255,255,255,0.6)", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
-                                {p.city}{p.age ? ` · ${p.age} yrs` : ""}
+                                {c.city}{c.age ? ` · ${c.age} yrs` : ""}
                               </span>
                             </div>
                           </div>
-                          {p.isAvailable ? (
-                            <a href={`/providers/${p._id}`} className="book-btn" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.55rem", fontWeight: 700, letterSpacing: "0.06em", color: "#fff", background: "linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%)", borderRadius: "50px", padding: "8px 14px", whiteSpace: "nowrap", textDecoration: "none", transition: "all 0.3s cubic-bezier(0.34,1.56,0.64,1)", flexShrink: 0, display: "flex", alignItems: "center", gap: "4px", boxShadow: "0 4px 16px rgba(124,58,237,0.5), inset 0 1px 0 rgba(255,255,255,0.15)", border: "none", cursor: "pointer" }}>
-                              <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style={{ flexShrink: 0 }}><polygon points="13 2 4 14 12 14 11 22 20 10 12 10 13 2"/></svg>
-                              Book Her
-                            </a>
-                          ) : (
-                            <a className="book-btn booked-btn" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.55rem", fontWeight: 700, letterSpacing: "0.06em", color: "rgba(255,255,255,0.35)", background: "rgba(20,10,25,0.35)", borderRadius: "50px", padding: "8px 14px", whiteSpace: "nowrap", textDecoration: "none", flexShrink: 0, cursor: "not-allowed", pointerEvents: "none", boxShadow: "none" }}>
-                              Unavailable
-                            </a>
-                          )}
+                          <a href={`/providers/${c.id}`} className="book-btn" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.55rem", fontWeight: 700, letterSpacing: "0.06em", color: "#fff", background: "linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%)", borderRadius: "50px", padding: "8px 14px", whiteSpace: "nowrap", textDecoration: "none", transition: "all 0.3s cubic-bezier(0.34,1.56,0.64,1)", flexShrink: 0, display: "flex", alignItems: "center", gap: "4px", boxShadow: "0 4px 16px rgba(124,58,237,0.5), inset 0 1px 0 rgba(255,255,255,0.15)", border: "none", cursor: "pointer" }}>
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style={{ flexShrink: 0 }}><polygon points="13 2 4 14 12 14 11 22 20 10 12 10 13 2"/></svg>
+                            Book Her
+                          </a>
                         </div>
                       </div>
                     ))}
                   </div>
 
                   {/* Pagination */}
-                  {pagination.pages > 1 && (
+                  {totalPages > 1 && (
                     <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "6px", marginTop: "48px" }}>
                       <button
                         onClick={() => goToPage(currentPage - 1)}
@@ -567,8 +507,8 @@ function ProvidersContent() {
                         ← Prev
                       </button>
                       <div style={{ display: "flex", alignItems: "center", gap: "4px", background: "rgba(255,255,255,0.5)", backdropFilter: "blur(8px)", padding: "4px", borderRadius: "14px", border: "1px solid rgba(192,138,132,0.08)" }}>
-                        {Array.from({ length: pagination.pages }, (_, i) => i + 1)
-                          .filter((p) => p === 1 || p === pagination.pages || Math.abs(p - currentPage) <= 2)
+                        {Array.from({ length: totalPages }, (_, i) => i + 1)
+                          .filter((p) => p === 1 || p === totalPages || Math.abs(p - currentPage) <= 2)
                           .map((p, idx, arr) => (
                             <span key={p} style={{ display: "flex", alignItems: "center" }}>
                               {idx > 0 && arr[idx - 1] !== p - 1 && (
@@ -600,7 +540,7 @@ function ProvidersContent() {
                       </div>
                       <button
                         onClick={() => goToPage(currentPage + 1)}
-                        disabled={currentPage >= pagination.pages}
+                        disabled={currentPage >= totalPages}
                         style={{
                           padding: "9px 18px",
                           borderRadius: "12px",
@@ -609,16 +549,16 @@ function ProvidersContent() {
                           fontWeight: 700,
                           letterSpacing: "1px",
                           textTransform: "uppercase",
-                          color: currentPage >= pagination.pages ? "rgba(192,138,132,0.3)" : "var(--text-muted)",
+                          color: currentPage >= totalPages ? "rgba(192,138,132,0.3)" : "var(--text-muted)",
                           background: "rgba(255,255,255,0.6)",
                           backdropFilter: "blur(8px)",
-                          cursor: currentPage >= pagination.pages ? "default" : "pointer",
+                          cursor: currentPage >= totalPages ? "default" : "pointer",
                           fontFamily: "'Jost', sans-serif",
                           transition: "all 0.2s",
                           userSelect: "none",
                         }}
-                        onMouseEnter={(e) => { if (currentPage < pagination.pages) { e.currentTarget.style.borderColor = "rgba(124,58,237,0.3)"; e.currentTarget.style.color = "var(--accent)"; e.currentTarget.style.background = "rgba(255,255,255,0.9)"; }}}
-                        onMouseLeave={(e) => { if (currentPage < pagination.pages) { e.currentTarget.style.borderColor = "rgba(192,138,132,0.15)"; e.currentTarget.style.color = "var(--text-muted)"; e.currentTarget.style.background = "rgba(255,255,255,0.6)"; }}}
+                        onMouseEnter={(e) => { if (currentPage < totalPages) { e.currentTarget.style.borderColor = "rgba(124,58,237,0.3)"; e.currentTarget.style.color = "var(--accent)"; e.currentTarget.style.background = "rgba(255,255,255,0.9)"; }}}
+                        onMouseLeave={(e) => { if (currentPage < totalPages) { e.currentTarget.style.borderColor = "rgba(192,138,132,0.15)"; e.currentTarget.style.color = "var(--text-muted)"; e.currentTarget.style.background = "rgba(255,255,255,0.6)"; }}}
                       >
                         Next →
                       </button>
@@ -652,6 +592,12 @@ function ProvidersContent() {
         }
         @media (max-width: 1024px) {
           .providers-layout { grid-template-columns: 1fr !important; }
+          .mobile-filter-toggle { display: block; }
+          .sidebar-filters { display: none; }
+          .sidebar-filters.open { display: block; }
+        }
+        @media (min-width: 1025px) {
+          .mobile-filter-toggle { display: none; }
         }
         @media (max-width: 800px) {
           .models-grid { gap: 14px; }

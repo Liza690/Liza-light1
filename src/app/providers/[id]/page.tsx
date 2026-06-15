@@ -60,19 +60,15 @@ export default function ProviderDetail() {
   const [error, setError] = useState<string | null>(null);
   const [selectedSlot, setSelectedSlot] = useState<string | null>(null);
   const [selectedServices, setSelectedServices] = useState<string[]>([]);
-  
+
   const [toast, setToast] = useState<{ msg: string; type: "error" | "success" | "info" } | null>(null);
-  
+
   const showToast = (msg: string, type: "error" | "success" | "info" = "error") => {
     setToast({ msg, type });
     setTimeout(() => setToast(null), 4000);
   };
-  
+
   const [bookingModalOpen, setBookingModalOpen] = useState(false);
-  const [bookingLoading, setBookingLoading] = useState(false);
-  const [clientName, setClientName] = useState("");
-  const [clientPhone, setClientPhone] = useState("");
-  const [clientNotes, setClientNotes] = useState("");
 
   const convertTo24Hour = (timeStr: string) => {
     const [time, modifier] = timeStr.split(" ");
@@ -97,194 +93,64 @@ export default function ProviderDetail() {
     return resultDate.toISOString();
   };
 
-  const handleBookingSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!provider) return;
-    if (selectedServices.length === 0) {
-      showToast("Please select at least one service.", "info");
-      return;
-    }
-    if (!selectedSlot) {
-      showToast("Please select an availability slot.", "info");
-      return;
-    }
+  useEffect(() => {
+    if (!id) return;
 
-    setBookingLoading(true);
+    const matched = companions.find((c) => String(c.id) === String(id));
 
-    try {
-      const skipWeekMatch = selectedSlot.match(/──skip(\d+)$/);
-      const skipWeeks = skipWeekMatch ? parseInt(skipWeekMatch[1], 10) : 0;
-      const cleanSlot = skipWeekMatch ? selectedSlot.slice(0, -(`──skip${skipWeeks}`.length)) : selectedSlot;
-      const parts = cleanSlot.split("-");
-      const dayName = parts[0];
-      const timeStr = parts[1];
-      const dateKeyFromSlot = parts.length > 2 ? parts.slice(2).join("-") : undefined;
-      const dayIndex = DAYS.indexOf(dayName);
+    if (matched) {
+      const basePrice = Number(matched.price.replace(/[^0-9]/g, ""));
 
-      const formattedStartTime = convertTo24Hour(timeStr);
-      const totalServicesDuration = servicesList
-        .filter((s) => selectedServices.includes(s._id))
-        .reduce((sum, s) => sum + s.duration, 0);
-
-      const [sh, sm] = formattedStartTime.split(":").map(Number);
-      const startMins = sh * 60 + sm;
-      const endMins = startMins + totalServicesDuration;
-      const eh = Math.floor(endMins / 60) % 24;
-      const em = endMins % 60;
-      const formattedEndTime = `${String(eh).padStart(2, "0")}:${String(em).padStart(2, "0")}`;
-
-      const targetDate = dateKeyFromSlot
-        ? new Date(dateKeyFromSlot).toISOString()
-        : getDateForDayOfWeek(dayIndex, skipWeeks).toISOString();
-
-      const selectedServiceNames = servicesList
-        .filter(s => selectedServices.includes(s._id))
-        .map(s => s.name)
-        .join(", ");
-
-      const fallbackWaLink = `https://wa.me/1234567890?text=Hello! I want to book ${encodeURIComponent(provider.name)} for ${encodeURIComponent(selectedServiceNames)} on ${encodeURIComponent(new Date(targetDate).toLocaleDateString("en-IN", { day: "2-digit", month: "2-digit", year: "numeric" }))} at ${encodeURIComponent(formattedStartTime)}`;
-
-      const payload = {
-        providerId: provider._id,
-        serviceIds: selectedServices,
-        date: targetDate,
-        startTime: formattedStartTime,
-        endTime: formattedEndTime,
-        customerName: clientName,
-        customerPhone: clientPhone,
-        notes: clientNotes || clientName + " booking request",
+      const fallbackData: ProviderData = {
+        _id: String(matched.id),
+        name: matched.name,
+        bio: matched.bio,
+        profileImages: matched.images,
+        city: matched.city,
+        languages: matched.langs.split(", "),
+        experienceLevel: matched.pro ? "Expert" : "Intermediate",
+        experienceYears: Math.max(2, matched.age - 21),
+        age: matched.age,
+        height: matched.height,
+        weight: matched.weight,
+        isAvailable: true,
+        isVerified: matched.verified,
+        averageRating: 4.9,
+        totalReviews: Math.round(Number(matched.bookings) / 10),
+        totalBookings: Number(matched.bookings),
+        tags: [
+            ...(matched.isNew ? ["New Arrival"] : []),
+            ...(matched.pro ? ["Top Rated"] : []),
+            "Companion",
+            "Discreet",
+          ],
+        services: matched.services.map((s, idx) => ({
+          _id: `svc-${idx}`,
+          name: s,
+          description: `Premium ${s} experience provided with elegance and full discretion.`,
+          category: "Companion",
+          duration: 60,
+          price: s === "Overnight" ? basePrice * 7 : basePrice,
+          currency: "INR",
+        })),
+        availability: [
+          { _id: "av-1", dayOfWeek: new Date().getDay(), startTime: "10:00 AM", endTime: "11:00 AM", isBooked: false },
+          { _id: "av-2", dayOfWeek: new Date().getDay(), startTime: "2:00 PM", endTime: "3:00 PM", isBooked: false },
+          { _id: "av-3", dayOfWeek: new Date().getDay(), startTime: "5:00 PM", endTime: "6:00 PM", isBooked: false },
+          { _id: "av-4", dayOfWeek: new Date().getDay(), startTime: "9:00 PM", endTime: "10:00 PM", isBooked: false },
+          { _id: "av-5", dayOfWeek: (new Date().getDay() + 1) % 7, startTime: "11:00 AM", endTime: "12:00 PM", isBooked: false },
+          { _id: "av-6", dayOfWeek: (new Date().getDay() + 1) % 7, startTime: "3:00 PM", endTime: "4:00 PM", isBooked: false },
+          { _id: "av-7", dayOfWeek: (new Date().getDay() + 1) % 7, startTime: "6:00 PM", endTime: "7:00 PM", isBooked: false },
+          { _id: "av-8", dayOfWeek: (new Date().getDay() + 1) % 7, startTime: "10:00 PM", endTime: "11:00 PM", isBooked: false },
+        ]
       };
 
-      const res = await fetch("/api/v1/bookings", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-
-      if (!res.ok) {
-        const errData = await res.json().catch(() => ({}));
-        throw new Error(errData.error || "Failed to create booking. Please try again.");
-      }
-
-      const data = await res.json();
-      const targetWaLink = data.whatsappLink || fallbackWaLink;
-
-      setBookingModalOpen(false);
-      setClientName("");
-      setClientPhone("");
-      setClientNotes("");
-      showToast("Booking confirmed! Opening WhatsApp...", "success");
-
-      setTimeout(() => {
-        window.location.href = targetWaLink;
-      }, 800);
-
-    } catch (err: any) {
-      console.error(err);
-      showToast(err.message || "Error confirming booking. Please try again.", "error");
-    } finally {
-      setBookingLoading(false);
+      setProvider(fallbackData);
+      setLoading(false);
+    } else {
+      setError("Provider details could not be found.");
+      setLoading(false);
     }
-  };
-
-  useEffect(() => {
-    let active = true;
-
-    async function fetchProvider() {
-      try {
-        setLoading(true);
-        setError(null);
-
-        const controller = new AbortController();
-        const timeoutId = setTimeout(() => controller.abort(), 1000);
-
-        const res = await fetch(`/api/v1/providers/${id}`, {
-          signal: controller.signal,
-        });
-        
-        clearTimeout(timeoutId);
-
-        if (!res.ok) {
-          throw new Error("API responded with error");
-        }
-        
-        const data = await res.json();
-        if (active) {
-          setProvider(data);
-          setLoading(false);
-        }
-      } catch (err: any) {
-        console.warn("API Fetch failed or timed out. Falling back to local static data...", err);
-        
-        const matched = companions.find((c) => String(c.id) === String(id));
-        
-        if (matched) {
-          const basePrice = Number(matched.price.replace(/[^0-9]/g, ""));
-          
-          const fallbackData: ProviderData = {
-            _id: String(matched.id),
-            name: matched.name,
-            bio: matched.bio,
-            profileImages: matched.images,
-            city: matched.city,
-            languages: matched.langs.split(", "),
-            experienceLevel: matched.pro ? "Expert" : "Intermediate",
-            experienceYears: Math.max(2, matched.age - 21),
-            age: matched.age,
-            height: "5'6\"",
-            weight: "52 kg",
-            isAvailable: true,
-            isVerified: matched.verified,
-            averageRating: 4.9,
-            totalReviews: Math.round(Number(matched.bookings) / 10),
-            totalBookings: Number(matched.bookings),
-            tags: [
-                ...(matched.isNew ? ["New Arrival"] : []),
-                ...(matched.pro ? ["Top Rated"] : []),
-                "Companion",
-                "Discreet",
-              ],
-            services: matched.services.map((s, idx) => ({
-              _id: `svc-${idx}`,
-              name: s,
-              description: `Premium ${s} experience provided with elegance and full discretion.`,
-              category: "Companion",
-              duration: 60,
-              price: s === "Overnight" ? basePrice * 7 : basePrice,
-              currency: "INR",
-            })),
-            availability: [
-              { _id: "av-1", dayOfWeek: new Date().getDay(), startTime: "10:00 AM", endTime: "11:00 AM", isBooked: false },
-              { _id: "av-2", dayOfWeek: new Date().getDay(), startTime: "2:00 PM", endTime: "3:00 PM", isBooked: false },
-              { _id: "av-3", dayOfWeek: new Date().getDay(), startTime: "5:00 PM", endTime: "6:00 PM", isBooked: false },
-              { _id: "av-4", dayOfWeek: new Date().getDay(), startTime: "9:00 PM", endTime: "10:00 PM", isBooked: false },
-              { _id: "av-5", dayOfWeek: (new Date().getDay() + 1) % 7, startTime: "11:00 AM", endTime: "12:00 PM", isBooked: false },
-              { _id: "av-6", dayOfWeek: (new Date().getDay() + 1) % 7, startTime: "3:00 PM", endTime: "4:00 PM", isBooked: false },
-              { _id: "av-7", dayOfWeek: (new Date().getDay() + 1) % 7, startTime: "6:00 PM", endTime: "7:00 PM", isBooked: false },
-              { _id: "av-8", dayOfWeek: (new Date().getDay() + 1) % 7, startTime: "10:00 PM", endTime: "11:00 PM", isBooked: false },
-            ]
-          };
-
-          if (active) {
-            setProvider(fallbackData);
-            setLoading(false);
-          }
-        } else {
-          if (active) {
-            setError("Provider details could not be found.");
-            setLoading(false);
-          }
-        }
-      }
-    }
-
-    if (id) {
-      fetchProvider();
-    }
-
-    return () => {
-      active = false;
-    };
   }, [id]);
 
   const toggleService = (serviceId: string) => {
@@ -387,8 +253,6 @@ export default function ProviderDetail() {
     ? `₹${totalSelectedPrice.toLocaleString()}` 
     : (baselinePrice > 0 ? `₹${baselinePrice.toLocaleString()}` : "Price on Request");
 
-  const waLink = `https://wa.me/1234567890?text=Hello! I'm interested in booking ${encodeURIComponent(provider.name)} in ${encodeURIComponent(provider.city)}.${selectedServices.length > 0 ? ` Selected services: ${encodeURIComponent(servicesList.filter(s => selectedServices.includes(s._id)).map(s => s.name).join(", "))}.` : ""}${selectedSlot ? ` Selected slot: ${encodeURIComponent(selectedSlot.replace(/-/g, " "))}.` : ""}`;
-
   return (
     <>
       <Navbar />
@@ -453,7 +317,7 @@ export default function ProviderDetail() {
                 </div>
 
                 {/* City · Age */}
-                <p style={{ marginTop: 16}} className="text-xs text-[var(--text-muted)] uppercase tracking-[2px] font-semibold flex items-center gap-2 mb-6">
+                <p style={{ marginTop: 16 }} className="text-xs text-[var(--text-muted)] uppercase tracking-[2px] font-semibold flex items-center gap-2 mb-6">
                   <span>{provider.city}</span>
                   {provider.age && (
                     <>
@@ -503,7 +367,7 @@ export default function ProviderDetail() {
                     <div className="font-['Bebas_Neue'] text-4xl sm:text-5xl text-[var(--gold)] leading-none tracking-wide">
                       {displayPriceText}
                     </div>
-                    <div style={{marginTop:16}} className="text-[10px] text-[var(--text-muted)] tracking-[1.5px] font-bold uppercase mt-1">
+                    <div style={{ marginTop: 16 }} className="text-[10px] text-[var(--text-muted)] tracking-[1.5px] font-bold uppercase mt-1">
                       {totalSelectedPrice > 0 ? "Selected Total" : "Starting Price"}
                     </div>
                   </div>
@@ -544,7 +408,7 @@ export default function ProviderDetail() {
                   className="bg-gradient-to-br from-[var(--dark-mid)] to-[var(--dark)] border border-white/5 rounded-2xl shadow-xl hover:border-[var(--accent)]/20 transition-all duration-300"
                   style={{ padding: "32px" }}
                 >
-                  <h3 style={{marginBottom:20}} className="text-[10px] font-bold tracking-[2.5px] uppercase text-[var(--gold)] mb-3 flex items-center gap-2">
+                  <h3 style={{ marginBottom: 20 }} className="text-[10px] font-bold tracking-[2.5px] uppercase text-[var(--gold)] mb-3 flex items-center gap-2">
                     <span className="w-1.5 h-1.5 rounded-full bg-[var(--accent)]" />
                     Bio & Details
                   </h3>
@@ -564,7 +428,6 @@ export default function ProviderDetail() {
                   Specifications
                 </h3>
                 <div className="grid grid-cols-2 gap-3.5">
-                  {/* Height */}
                   <div style={{ paddingTop: 15, paddingBottom: 10 }} className="bg-white/2 border border-white/5 rounded-xl pt-8 px-4 pb-5 text-center flex flex-col items-center gap-2">
                     <div className="w-9 h-9 rounded-full bg-[var(--accent)]/10 border border-[var(--accent)]/20 flex items-center justify-center">
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -576,7 +439,6 @@ export default function ProviderDetail() {
                     <div className="font-['Bebas_Neue'] text-xl text-white tracking-[0.5px]">{provider.height || "N/A"}</div>
                     <div className="text-[9px] font-bold tracking-[1.5px] uppercase text-[var(--text-muted)]">Height</div>
                   </div>
-                  {/* Weight */}
                   <div style={{ paddingTop: 15, paddingBottom: 10 }} className="bg-white/2 border border-white/5 rounded-xl pt-8 px-4 pb-5 text-center flex flex-col items-center gap-2">
                     <div className="w-9 h-9 rounded-full bg-[var(--accent)]/10 border border-[var(--accent)]/20 flex items-center justify-center">
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -587,7 +449,6 @@ export default function ProviderDetail() {
                     <div className="font-['Bebas_Neue'] text-xl text-white tracking-[0.5px]">{provider.weight || "N/A"}</div>
                     <div className="text-[9px] font-bold tracking-[1.5px] uppercase text-[var(--text-muted)]">Weight</div>
                   </div>
-                  {/* Languages */}
                   <div style={{ paddingTop: 15, paddingBottom: 10 }} className="bg-white/2 border border-white/5 rounded-xl pt-8 px-4 pb-5 text-center flex flex-col items-center gap-2">
                     <div className="w-9 h-9 rounded-full bg-[var(--accent)]/10 border border-[var(--accent)]/20 flex items-center justify-center">
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -601,7 +462,6 @@ export default function ProviderDetail() {
                     </div>
                     <div className="text-[9px] font-bold tracking-[1.5px] uppercase text-[var(--text-muted)]">Languages</div>
                   </div>
-                  {/* Experience */}
                   <div style={{ paddingTop: 15, paddingBottom: 10 }} className="bg-white/2 border border-white/5 rounded-xl pt-8 px-4 pb-5 text-center flex flex-col items-center gap-2">
                     <div className="w-9 h-9 rounded-full bg-[var(--accent)]/10 border border-[var(--accent)]/20 flex items-center justify-center">
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -692,7 +552,6 @@ export default function ProviderDetail() {
                 
                 {hasAvailability ? (
                   <div className="flex flex-col gap-5">
-                    {/* ── Date-specific slots ── */}
                     {Object.entries(dateSpecificSlots)
                       .sort(([a], [b]) => a.localeCompare(b))
                       .map(([dateKey, slots]) => {
@@ -742,7 +601,6 @@ export default function ProviderDetail() {
                         );
                     })}
 
-                    {/* ── Recurring weekly slots ── */}
                     {DAYS.map((dayName, idx) => {
                       const daySlots = recurringSlots[idx] || [];
                       if (daySlots.length === 0) return null;
@@ -765,7 +623,6 @@ export default function ProviderDetail() {
                               const isThisKey = selectedSlot === key;
                               const isBookedKey = selectedSlot === bookedKey;
                               const isSelected = isThisKey || isBookedKey;
-                              const label = skipWeeks > 0 ? `+${skipWeeks}wk` : null;
                               return (
                                 <button
                                   key={key}
@@ -821,35 +678,13 @@ export default function ProviderDetail() {
               >
                 <div className="absolute inset-0 bg-gradient-to-r from-[var(--accent)]/5 to-[var(--deeper)] opacity-50 pointer-events-none" />
                 <button
-                  onClick={() => {
-                    if (selectedServices.length === 0) {
-                      showToast("Please select at least one service first.", "info");
-                      return;
-                    }
-                    if (!selectedSlot) {
-                      showToast("Please select an available time slot first.", "info");
-                      return;
-                    }
-                    const [slotDay, slotTime, slotDateKey] = selectedSlot.split("-");
-                    const dayIdx = DAYS.indexOf(slotDay);
-                    let slotIsBooked = false;
-                    if (slotDateKey) {
-                      slotIsBooked = (dateSpecificSlots[slotDateKey] || []).find(s => s.time === slotTime)?.isBooked ?? false;
-                    } else {
-                      slotIsBooked = (recurringSlots[dayIdx] || []).find(s => s.time === slotTime)?.isBooked ?? false;
-                    }
-                    if (slotIsBooked) {
-                      showToast(`${provider?.name} is not available at this time. Please choose a different slot.`, "error");
-                      return;
-                    }
-                    setBookingModalOpen(true);
-                  }}
+                  onClick={() => setBookingModalOpen(true)}
                   className="flex items-center justify-center w-full min-h-[58px] rounded-xl bg-[var(--accent)] hover:bg-[#5B21B6] text-white text-sm font-bold tracking-[2.5px] uppercase text-center transition-all hover:shadow-[0_0_35px_rgba(124,58,237,0.6)] hover:-translate-y-0.5 cursor-pointer border border-[var(--gold)]/30 px-6 py-4 shadow-lg"
                 >
                   ✦ Book Session Now
                 </button>
-                <p style={{ marginTop: 15 }}className="text-[10px] text-[var(--text-muted)] text-center mt-3 tracking-[0.5px] font-semibold">
-                  You will be prompted for contact info, and then redirected to WhatsApp
+                <p style={{ marginTop: 15 }} className="text-[10px] text-[var(--text-muted)] text-center mt-3 tracking-[0.5px] font-semibold">
+                  We will confirm your booking via a private channel.
                 </p>
               </div>
 
@@ -858,73 +693,46 @@ export default function ProviderDetail() {
         </div>
       </div>
 
-      {/* ===== Visitor Details Form Modal ===== */}
+      {/* Booked message modal */}
       {bookingModalOpen && (
-        <div className="fixed inset-0 z-[1000] bg-black/85 backdrop-filter backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-gradient-to-b from-[var(--dark-mid)] to-[var(--dark)] border border-white/10 w-full max-w-md rounded-2xl shadow-2xl relative" style={{ padding: "40px 32px" }}>
-            <button 
+        <div
+          style={{
+            position: "fixed", inset: 0, zIndex: 9999,
+            background: "rgba(0,0,0,0.85)", backdropFilter: "blur(4px)",
+            display: "flex", alignItems: "center", justifyContent: "center", padding: 20,
+          }}
+          onClick={() => setBookingModalOpen(false)}
+        >
+          <div
+            style={{
+              background: "var(--dark-mid)", border: "1px solid rgba(124,58,237,0.2)",
+              borderRadius: 16, padding: "36px 32px", width: "100%", maxWidth: 420,
+              position: "relative", textAlign: "center",
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
               onClick={() => setBookingModalOpen(false)}
-              className="absolute top-4 right-4 text-white/50 hover:text-white transition-colors text-lg"
-              style={{ width: "32px", height: "32px", display: "flex", alignItems: "center", justifyContent: "center" }}
-            >
-              ✕
-            </button>
-            <div className="text-center" style={{ marginBottom: "32px" }}>
-              <h3 className="font-['Bebas_Neue'] text-3xl tracking-[1.5px] text-[var(--gold)]">CONFIRM YOUR DETAILS</h3>
-              <p className="text-[9px] text-[var(--text-muted)] tracking-[1.5px] uppercase font-bold mt-1">Finalizing your premium session booking</p>
-            </div>
-            
-            <form onSubmit={handleBookingSubmit} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-              <div>
-                <label className="block text-[9px] font-bold uppercase tracking-[1.5px] text-[var(--text-muted)]" style={{ marginBottom: "8px" }}>Your Name</label>
-                <input
-                  type="text"
-                  required
-                  value={clientName}
-                  onChange={(e) => setClientName(e.target.value)}
-                  placeholder="e.g. James Smith"
-                  className="w-full bg-white/2 border border-white/8 focus:border-[var(--accent)] text-white text-xs rounded-xl outline-none transition-all"
-                  style={{ padding: "14px 16px" }}
-                />
-              </div>
-
-              <div>
-                <label className="block text-[9px] font-bold uppercase tracking-[1.5px] text-[var(--text-muted)]" style={{ marginBottom: "8px" }}>WhatsApp / Phone Number</label>
-                <input
-                  type="text"
-                  required
-                  value={clientPhone}
-                  onChange={(e) => setClientPhone(e.target.value)}
-                  placeholder="e.g. +91 98765 43210"
-                  className="w-full bg-white/2 border border-white/8 focus:border-[var(--accent)] text-white text-xs rounded-xl outline-none transition-all"
-                  style={{ padding: "14px 16px" }}
-                />
-              </div>
-
-              <div>
-                <label className="block text-[9px] font-bold uppercase tracking-[1.5px] text-[var(--text-muted)]" style={{ marginBottom: "8px" }}>Any Notes / Custom Requests</label>
-                <textarea
-                  value={clientNotes}
-                  onChange={(e) => setClientNotes(e.target.value)}
-                  placeholder="Share details or special preferences..."
-                  className="w-full bg-white/2 border border-white/8 focus:border-[var(--accent)] text-white text-xs rounded-xl outline-none transition-all resize-none"
-                  style={{ padding: "14px 16px", height: "80px" }}
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={bookingLoading}
-                className="w-full bg-[var(--accent)] hover:bg-[#5B21B6] text-white text-xs font-bold tracking-[2px] uppercase rounded-xl transition-all duration-300 hover:shadow-[0_0_25px_rgba(124,58,237,0.4)] flex items-center justify-center"
-                style={{ padding: "16px", minHeight: "50px", marginTop: "8px" }}
-              >
-                {bookingLoading ? (
-                  <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                ) : (
-                  "✦ Finalize & Redirect to WhatsApp"
-                )}
-              </button>
-            </form>
+              style={{
+                position: "absolute", top: 12, right: 12, width: 30, height: 30,
+                background: "transparent", border: "1px solid rgba(255,255,255,0.15)",
+                color: "#aaa", cursor: "pointer", display: "flex",
+                alignItems: "center", justifyContent: "center",
+              }}
+            >✕</button>
+            <h3 style={{ fontFamily: "'Bebas Neue', sans-serif", fontSize: 28, letterSpacing: 2, color: "#fff", marginBottom: 16 }}>Sorry!</h3>
+            <p style={{ color: "#999", fontSize: 13, lineHeight: 1.8, marginBottom: 24 }}>
+              All companions are currently booked. Please try again later.
+            </p>
+            <button
+              onClick={() => setBookingModalOpen(false)}
+              style={{
+                background: "var(--accent)", color: "#fff", border: "none", padding: "14px 32px",
+                fontFamily: "'Montserrat', sans-serif", fontSize: 11, fontWeight: 800,
+                letterSpacing: 2, textTransform: "uppercase", cursor: "pointer",
+                borderRadius: 999, transition: "all 0.3s",
+              }}
+            >OK</button>
           </div>
         </div>
       )}

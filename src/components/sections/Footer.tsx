@@ -2,14 +2,14 @@
 
 export default function Footer() {
   return (
-    <footer className="site-footer" style={{ padding: "80px 80px 40px", background: "var(--accent)", color: "var(--white)", textAlign: "left" }}>
+    <footer className="site-footer" style={{ padding: "48px 60px 28px", background: "var(--accent)", color: "var(--white)", textAlign: "left" }}>
       <div className="footer-container" style={{ maxWidth: "1200px", margin: "0 auto" }}>
         <div className="footer-grid">
           <div className="footer-brand" style={{ paddingRight: "40px" }}>
-            <a href="#home" style={{ fontFamily: "'Jost', sans-serif", fontSize: "1.8rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--white)", display: "inline-block", marginBottom: "20px" }}>
-              Liza
+            <a href="#home" style={{ fontFamily: "'Jost', sans-serif", fontSize: "1.5rem", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase", color: "var(--white)", display: "inline-block", marginBottom: "12px" }}>
+              Bengal Beauties
             </a>
-            <p className="footer-tagline" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.85rem", fontWeight: 300, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", marginBottom: "24px", maxWidth: "320px" }}>
+            <p className="footer-tagline" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.78rem", fontWeight: 300, lineHeight: 1.6, color: "rgba(255,255,255,0.65)", marginBottom: "14px", maxWidth: "320px" }}>
               India&apos;s premier luxury companion service — discretion, elegance, and desire, delivered.
             </p>
             <div className="footer-socials" style={{ display: "flex", gap: "10px" }}>
@@ -54,12 +54,12 @@ export default function Footer() {
             },
           ].map((col) => (
             <div key={col.title} className="footer-col">
-              <h4 className="footer-title" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--white)", marginBottom: "24px", position: "relative" }}>
+              <h4 className="footer-title" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--white)", marginBottom: "12px", position: "relative" }}>
                 {col.title}
               </h4>
               <ul className="footer-links" style={{ listStyle: "none", padding: 0, margin: 0 }}>
                 {col.links.map((link) => (
-                  <li key={link} style={{ marginBottom: "12px" }}>
+                  <li key={link} style={{ marginBottom: "8px" }}>
                     <a href="#" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.8rem", fontWeight: 400, color: "rgba(255,255,255,0.6)", textDecoration: "none", transition: "all 0.2s ease", display: "inline-block" }}>
                       {link}
                     </a>
@@ -70,11 +70,11 @@ export default function Footer() {
           ))}
         </div>
 
-        <hr className="footer-divider" style={{ border: "none", height: "1px", background: "rgba(255,255,255,0.1)", marginBottom: "30px" }} />
+        <hr className="footer-divider" style={{ border: "none", height: "1px", background: "rgba(255,255,255,0.1)", marginBottom: "18px" }} />
 
         <div className="footer-bottom" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "20px" }}>
           <span className="footer-copy" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.75rem", color: "rgba(255,255,255,0.4)", letterSpacing: "0.05em" }}>
-            © 2025 Liza. All rights reserved. For adults 18+ only.
+            © 2026 Bengal Beauties. All rights reserved. For adults 18+ only.
           </span>
           <div className="footer-bottom-links" style={{ display: "flex", gap: "20px" }}>
             <a href="#" className="footer-bottom-link" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.75rem", color: "rgba(255,255,255,0.4)", textDecoration: "none" }}>
@@ -88,8 +88,8 @@ export default function Footer() {
         .footer-grid {
           display: grid;
           grid-template-columns: 2.2fr 1fr 1fr 1fr;
-          gap: 40px;
-          margin-bottom: 60px;
+          gap: 24px;
+          margin-bottom: 32px;
         }
         .social-box:hover {
           border-color: rgba(255,255,255,0.6);
@@ -132,7 +132,7 @@ export default function Footer() {
           }
         }
         @media (max-width: 800px) {
-          footer { padding: 40px 30px 30px; }
+          footer { padding: 36px 24px 24px; }
         }
       `}</style>
     </footer>

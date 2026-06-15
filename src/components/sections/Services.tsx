@@ -61,13 +61,13 @@ export default function Services() {
   return (
     <section id="services" ref={sectionRef} style={{ background: "var(--white)", position: "relative", padding: "100px 80px" }}>
       <div className="section-header reveal" style={{ textAlign: "center", marginBottom: "70px" }}>
-        <p className="section-label" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.62rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "6px", fontWeight: 500 }}>What We Offer</p>
+        <p className="section-label" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.62rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--accent)", marginBottom: "6px", fontWeight: 700 }}>What We Offer</p>
         <h2 className="section-title" style={{ fontFamily: "'VeganStyle', 'Jost', sans-serif", fontSize: "2rem", color: "var(--dark)", lineHeight: 1.2, marginBottom: "10px", wordSpacing: "0.18em" }}>
-          Every <em>Fantasy</em> Has a Form
+          Discover Top-Rated <em>Kolkata Escorts</em>  and <em>Russian Escort</em> in Kolkata 
         </h2>
         <div className="divider" style={{ width: "40px", height: "2px", background: "var(--accent)", margin: "12px auto 24px" }} />
-        <p className="section-sub" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.65rem", fontWeight: 300, color: "var(--text-muted)", lineHeight: 1.8, maxWidth: "500px", margin: "0 auto" }}>
-          Tell us yours — and we&apos;ll give her a name.
+        <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.85rem", fontWeight: 400, color: "var(--dark)", lineHeight: 1.8, maxWidth: "500px", margin: "0 auto" }}>
+          Discover the top rated Russian call Girls or kolkata escorts for life's special moments. Whether you need an engaging date for a gala, a travel partner, or a discreet private evening, we handle every detail seamlessly.
         </p>
       </div>
 

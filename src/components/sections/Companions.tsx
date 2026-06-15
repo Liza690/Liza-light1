@@ -1,45 +1,30 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { companions as companionsData } from "@/data/companions";
 
 interface CompanionCard {
-  id: string;
+  id: number;
   name: string;
   meta: string;
   img: string;
   available: boolean;
 }
 
+const companionCards: CompanionCard[] = companionsData.map((c) => ({
+  id: c.id,
+  name: c.name,
+  meta: `${c.age} · ${c.city}`,
+  img: c.images[0],
+  available: c.bookings !== "0",
+}));
+
 export default function Companions() {
   const router = useRouter();
   const sectionRef = useRef<HTMLElement>(null);
-  const [companions, setCompanions] = useState<CompanionCard[]>([]);
-  const [loaded, setLoaded] = useState(false);
-
-  useEffect(() => {
-    async function fetchCompanions() {
-      try {
-        const res = await fetch("/api/v1/providers?limit=8&sort=bookings");
-        if (!res.ok) throw new Error("API error");
-        const data = await res.json();
-        const cards: CompanionCard[] = (data.providers || []).map((p: any) => ({
-          id: p._id,
-          name: p.name,
-          meta: `${p.age || ""} · ${p.city}`.replace(/^ · /, ""),
-          img: p.profileImages?.[0] || "",
-          available: p.isAvailable ?? true,
-        }));
-        if (cards.length > 0) setCompanions(cards);
-        else throw new Error("Empty");
-      } catch {
-        // API unavailable — render nothing
-      } finally {
-        setLoaded(true);
-      }
-    }
-    fetchCompanions();
-  }, []);
+  const companions = companionCards;
+  const loaded = true;
 
   useEffect(() => {
     if (!loaded) return;
@@ -63,14 +48,14 @@ export default function Companions() {
   return (
     <section id="companions" ref={sectionRef} style={{ background: "var(--white)", textAlign: "center", padding: "100px 80px" }}>
       <div className="section-header reveal" style={{ marginBottom: "50px" }}>
-        <p className="section-label" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.62rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--gold)", marginBottom: "6px", fontWeight: 500 }}>
+        <p className="section-label" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.62rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--accent)", marginBottom: "6px", fontWeight: 700 }}>
           Our Portfolio
         </p>
         <h2 className="section-title" style={{ fontFamily: "'VeganStyle', 'Jost', sans-serif", fontSize: "2rem", color: "var(--dark)", lineHeight: 1.2, marginBottom: "10px", wordSpacing: "0.18em" }}>
-          Meet Our <em>Companions</em>
+          Meet Our Best Kolkata <em>Escorts</em> or <em>Call Girls</em>
         </h2>
         <div className="divider" style={{ width: "40px", height: "2px", background: "var(--accent)", margin: "12px auto 24px" }} />
-        <p className="section-sub" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.9rem", fontWeight: 300, color: "var(--text-muted)", lineHeight: 1.8, maxWidth: "500px", margin: "0 auto" }}>
+        <p className="section-sub" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.9rem", fontWeight: 300, color: "var(--dark)", lineHeight: 1.8, maxWidth: "500px", margin: "0 auto" }}>
           Handpicked. Verified. Unforgettable. Browse our exclusive roster and find your perfect match.
         </p>
       </div>

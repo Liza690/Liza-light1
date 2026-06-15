@@ -3,9 +3,7 @@
 export default function FloatingBookNow() {
   return (
     <a
-      href="https://wa.me/1234567890?text=Hi%20there!%20I%27d%20like%20to%20book%20a%20companion."
-      target="_blank"
-      rel="noopener noreferrer"
+      href="/providers"
       className="sticky-contact"
       style={{
         position: "fixed",
