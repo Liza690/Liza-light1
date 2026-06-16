@@ -42,7 +42,7 @@ export default function About() {
           </h2>
           <div className="about-divider" style={{ width: "40px", height: "2px", background: "var(--accent)", margin: "14px 0 20px", borderRadius: "2px" }} />
           <p className="about-body" style={{ fontFamily: "'Jost', sans-serif", fontWeight: 400, fontSize: "0.82rem", lineHeight: 1.9, color: "var(--dark)", marginBottom: "28px", maxWidth: "480px", letterSpacing: "0.01em" }}>
-            EVERY SPECIAL OCCASION DESERVES THE PERFECT COMPANION. AT BENGAL BEAUTIES, WE TAKE PRIDE IN OFFERING A CURATED SELECTION OF REFINED INDIVIDUALS FOR YOUR SOCIAL AND PRIVATE NEEDS. FROM INTIMATE DINNERS TO SPECIAL EVENTS, WE ARE DEDICATED TO ENSURING YOUR TIME WITH US IS RELAXING, PROFESSIONAL, AND ENTIRELY FOCUSED ON YOU.
+            AT BENGAL BEAUTIES, WE BELIEVE EVERY MOMENT DESERVES TO BE SPECIAL. OUR PROFESSIONAL TEAM PROVIDES DISCREET AND <em style={{ fontStyle: "normal", color: "var(--accent)", fontWeight: 700 }}>HIGH-QUALITY COMPANIONSHIP</em> FOR THE DISCERNING INDIVIDUAL. FROM <em style={{ fontStyle: "normal", color: "var(--accent)", fontWeight: 700 }}>LOCAL FAVORITES</em> TO A STUNNING <em style={{ fontStyle: "normal", color: "var(--accent)", fontWeight: 700 }}>RUSSIAN ESCORT</em> IN KOLKATA, WE ARE DEDICATED TO CREATING A RELAXED, MEMORABLE, AND PERFECTLY CURATED EXPERIENCE JUST FOR YOU.
           </p>
 
           <div className="about-stats-row" style={{ display: "flex", gap: "32px", paddingTop: "24px", borderTop: "1px solid rgba(124,58,237,0.1)", flexWrap: "wrap" }}>

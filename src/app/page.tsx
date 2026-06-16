@@ -12,8 +12,8 @@ import Footer from "@/components/sections/Footer";
 import FloatingBookNow from "@/components/FloatingBookNow";
 
 export const metadata: Metadata = {
-  title: "Kolkata Escorts & Call Girl | Premium Companionship | Bengal Beauties",
-  description: "Discover premium Kolkata escorts and elegant call girls at Bengal Beauties. We offer discreet, high-end companionship for dinner dates, events, and travel.",
+  title: "Elite Kolkata Companionship Services | Elegant & Discreet",
+  description: "Discover elite companions in Kolkata at Bengal Beauties. We offer discreet, high-end companionship for galas, travel, and private events. Book your date today.",
 };
 
 export default function Home() {

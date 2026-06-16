@@ -4,44 +4,44 @@ import { useState } from "react";
 
 const faqs = [
   {
-    q: "How can I find a premium escort service near me in Kolkata?",
-    a: "Finding a high-quality escort service near me is simple with Bengal Beauties. We offer a curated, discreet platform that connects you with elite companions across the city, ensuring a professional and memorable experience.",
+    q: "What is the process for booking a companion with Bengal Beauties?",
+    a: "Booking is simple: browse our curated profiles to find your perfect match, then contact our team to confirm availability and logistics. We handle all the details to ensure your experience is seamless and professional.",
   },
   {
-    q: "What should I expect when booking a Kolkata call girl?",
-    a: "When you choose a Kolkata call girl through our agency, you can expect unmatched professionalism, elegance, and discretion. We focus on providing personalized companionship that caters to your specific preferences and desires for any occasion.",
+    q: "How quickly can I secure a companion for a last-minute request?",
+    a: "We prioritize efficiency and can often accommodate short-notice requests. Please reach out to our team directly via our contact channels, and we will do our best to arrange a high-quality companion for you promptly.",
   },
   {
-    q: "Is it possible to request a Russian escort in Kolkata?",
-    a: "Yes, we provide access to an exclusive Russian escort in Kolkata for those seeking a unique, sophisticated, and culturally refined companionship experience. Our companions are vetted for class and personality to ensure your complete satisfaction.",
+    q: "Is my privacy and discretion fully guaranteed during the booking?",
+    a: "Absolutely, We operate with strict confidentiality protocols. Your identity and personal information remain protected throughout the entire booking process, allowing you to enjoy your experience with complete peace of mind.",
   },
   {
-    q: "How do Bengal Beauties ensure the discretion of my booking?",
-    a: "Discretion is the foundation of our agency. We handle all bookings through private channels, ensuring your identity remains protected while you enjoy our professional kolkata escorts in complete confidence.",
+    q: "Are your companions available for travel or out-of-town events?",
+    a: "Yes, We frequently provide travel companionship for business trips, vacations, and special events. Our companions are well-traveled, professional, and ready to accompany you to any destination you require.",
   },
   {
-    q: "Are your services available for a last-minute call girl service near me?",
-    a: "While we recommend scheduling in advance for the best experience, we do our best to accommodate requests. If you are searching for a call girl service near me on short notice, contact our team, and we will assist you promptly.",
+    q: "How do you ensure the quality and professionalism of your companions?",
+    a: "We personally vet all our companions to ensure they meet our high standards of elegance, intelligence, and social grace. We focus on individuals who can comfortably adapt to high-end settings and provide an elevated experience.",
   },
   {
-    q: "What sets your Kolkata escorts apart from others?",
-    a: "Our kolkata escorts are chosen for their sophistication, intelligence, and ability to elevate any social setting. Bengal Beauties is dedicated to maintaining high standards of conduct, safety, and client-focused service for every engagement.",
+    q: "Can I hire a companion for professional events or business dinners?",
+    a: "Certainly. Our companions are adept at handling sophisticated social settings, including business dinners, galas, and networking events. They are trained to be engaging, presentable, and the perfect partner for your professional engagements.",
   },
   {
-    q: "Can I hire Kolkata call girls for private events or galas?",
-    a: "Absolutely, We specialize in providing the perfect companion for dinners, galas, and private functions. Our kolkata call girls are experienced in high-end social settings and will ensure you have an engaging and elegant partner by your side.",
+    q: "What is included in the service fee?",
+    a: "Our service fee covers the coordination, vetting, and booking of your selected companion. We aim for complete transparency; please contact us directly for specific details regarding rates and what is included in your chosen experience.",
   },
   {
-    q: "How do I initiate a booking with a Kolkata escort?",
-    a: "Simply browse our online profiles to find the companion who best matches your requirements. Once you have made your selection, contact our booking team, and we will manage the rest of the process seamlessly.",
+    q: "Can I request a specific style or personality for my companion?",
+    a: "Yes We encourage you to share your preferences regarding personality, interests, and style when you contact us. Our goal is to match you with a companion who aligns perfectly with your desires for the event.",
   },
   {
-    q: "Do you provide services for out-of-town visitors looking for a Kolkata escort?",
-    a: "Yes, we frequently assist business travelers and tourists. Whether you are in the city for a short stay or an extended period, our kolkata escort services are designed to make your time here truly exceptional and stress-free.",
+    q: "Do you offer long-term or recurring companionship arrangements?",
+    a: "Yes, we cater to clients looking for consistent companionship for regular social activities or ongoing needs. Contact our team to discuss a tailored arrangement that suits your schedule and lifestyle.",
   },
   {
-    q: "What safety and professional standards do Bengal Beauties maintain?",
-    a: "Safety and mutual respect are our top priorities. We thoroughly vet all companions to ensure they meet our rigorous standards for elegance and class, guaranteeing a respectful and worry-free experience for every client we serve.",
+    q: "What payment methods are accepted for booking?",
+    a: "We offer secure and discreet payment options to ensure a smooth transaction. Once your booking is confirmed, our team will provide you with all the necessary details to finalize your reservation safely.",
   },
 ];
 

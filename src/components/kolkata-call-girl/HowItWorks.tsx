@@ -6,7 +6,7 @@ const steps = [
   {
     num: "01",
     title: "Browse Companions",
-    desc: "Browse our hand-picked selection of graceful, expert companions. Choose the ideal person whose character and charm match exactly what you want.",
+    desc: "Explore our curated collection of elegant, professional companions. Select the perfect person whose personality and style align with your specific desires.",
     icon: (
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -16,7 +16,7 @@ const steps = [
   {
     num: "02",
     title: "Pick a Date",
-    desc: "Select the perfect moment for your meetup. Our staff confirms every detail quickly, guaranteeing a safe, well-planned, and highly memorable encounter.",
+    desc: "Choose the ideal time for your meeting. Our team confirms all details promptly, ensuring a secure and perfectly scheduled, memorable experience.",
     icon: (
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <rect x="3" y="4" width="18" height="18" rx="2" ry="2" /><line x1="16" y1="2" x2="16" y2="6" /><line x1="8" y1="2" x2="8" y2="6" /><line x1="3" y1="10" x2="21" y2="10" />
@@ -26,7 +26,7 @@ const steps = [
   {
     num: "03",
     title: "Enjoy & Elevate",
-    desc: "Just enjoy your planned activity. We manage all the specifics to ensure your time remains classy, recharging, and perfectly high-end.",
+    desc: "Relax and enjoy your chosen activity. We focus on every detail to ensure your time is sophisticated, refreshing, and truly elevated.",
     icon: (
       <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
@@ -67,7 +67,7 @@ export default function HowItWorks() {
       </h2>
 
       <p className="disc-sub reveal" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.75rem", fontWeight: 400, color: "#5C3D40", maxWidth: "480px", margin: "0 auto 70px", lineHeight: 1.8, position: "relative", zIndex: 1 }}>
-        Enjoy smooth, private, and custom-tailored companionship through our easy, professional system built to guarantee your total happiness and complete discretion.
+        Experience seamless, discreet, and personalized companionship through our simple, professional booking process designed to ensure your complete satisfaction and absolute privacy.
       </p>
 
       <div className="disc-steps">

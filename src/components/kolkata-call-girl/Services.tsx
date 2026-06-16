@@ -63,11 +63,11 @@ export default function Services() {
       <div className="section-header reveal" style={{ textAlign: "center", marginBottom: "70px" }}>
         <p className="section-label" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.62rem", letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--accent)", marginBottom: "6px", fontWeight: 700 }}>What We Offer</p>
         <h2 className="section-title" style={{ fontFamily: "'VeganStyle', 'Jost', sans-serif", fontSize: "clamp(1.3rem, 4vw, 2rem)", color: "var(--dark)", lineHeight: 1.6, marginBottom: "10px" }}>
-          Discover <em>Top-Rated Kolkata</em> Companionship 
+          Discover Top-Rated <em>Kolkata Escorts</em>  and <em>Russian Escort</em> in Kolkata 
         </h2>
         <div className="divider" style={{ width: "40px", height: "2px", background: "var(--accent)", margin: "12px auto 24px" }} />
         <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.85rem", fontWeight: 400, color: "var(--dark)", lineHeight: 1.8, maxWidth: "500px", margin: "0 auto" }}>
-          Discover top-rated companions for life's special moments. Whether you need an engaging date for a gala, a travel partner, or a discreet private evening, we handle every detail seamlessly.
+          Discover the top rated Russian call Girls or kolkata escorts for life's special moments. Whether you need an engaging date for a gala, a travel partner, or a discreet private evening, we handle every detail seamlessly.
         </p>
       </div>
 
