@@ -14,7 +14,7 @@ const models = [
 ];
 
 function renderCardHTML(model: (typeof models)[0]) {
-  return `<a href="/kolkata-call-girl#companions"><div class="thumb"><img src="${model.img}" alt="${model.name}"></div><div class="info"><span class="name">${model.name}</span><span class="detail">${model.detail}</span><span class="status">● Available</span><a href="/kolkata-call-girl#companions" class="btn-sm">Book Her</a></div></a>`;
+  return `<div class="thumb"><img src="${model.img}" alt="${model.name}"></div><div class="info"><span class="name">${model.name}</span><span class="detail">${model.detail}</span><span class="status">● Available</span><a href="#companions" class="btn-sm">Book Her</a></div>`;
 }
 
 export default function Hero() {
@@ -108,14 +108,14 @@ export default function Hero() {
           <span style={{ color: "var(--gold)" }}>●</span> Kolkata&apos;s No. 1 Escort Service
         </p>
         <h1 className="reveal" style={{ fontFamily: "'Jost', sans-serif", fontSize: "clamp(1.8rem, 4.5vw, 3.2rem)", fontWeight: 500, color: "#fff", lineHeight: 1.15, letterSpacing: "-0.01em", textShadow: "0 2px 20px rgba(0,0,0,0.5)", maxWidth: "800px" }}>
-          Find the Best Kolkata Companionship Services
+          Find the Best Kolkata Escorts Services, Kolkata Call Girl
         </h1>
         <span className="rule" style={{ display: "block", width: "80px", height: "1px", background: "var(--accent)", margin: "18px 0 22px" }} />
         <p className="tagline reveal" style={{ fontFamily: "'Jost', sans-serif", fontSize: "clamp(0.95rem, 1.2vw, 1.1rem)", fontWeight: 400, letterSpacing: "0.04em", color: "#fff", marginBottom: "40px", maxWidth: "620px", lineHeight: 1.7, textShadow: "0 2px 20px rgba(0,0,0,0.9), 0 2px 8px rgba(0,0,0,0.8)" }}>
-          Find your ideal Kolkata companion or a stunning international partner for a discreet, unforgettable experience tailored to your lifestyle.
+          Discover the top rated Russian call Girls or kolkata escorts for life&apos;s special moments. Whether you need an engaging date for a gala, a travel partner, or a discreet private evening, we handle every detail seamlessly.
         </p>
         <div className="hero-actions reveal" style={{ display: "flex", gap: "18px" }}>
-          <a href="/kolkata-call-girl" className="btn btn-primary">Hot Escorts</a>
+          <a href="/providers" className="btn btn-primary">Hot Escorts</a>
           <a href="/contact" className="btn btn-outline">Book Now</a>
         </div>
       </div>

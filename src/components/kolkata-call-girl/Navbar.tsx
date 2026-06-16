@@ -5,9 +5,9 @@ import { useRouter } from "next/navigation";
 
 const navLinks = [
   { label: "Models", href: "/providers" },
-  { label: "About", href: "/kolkata-call-girl#about" },
-  { label: "Services", href: "/kolkata-call-girl#services" },
-  { label: "Pricing", href: "/kolkata-call-girl#pricing" },
+  { label: "About", href: "#about" },
+  { label: "Services", href: "#services" },
+  { label: "Pricing", href: "#pricing" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -65,7 +65,7 @@ export default function Navbar() {
           boxShadow: scrolled ? "0 2px 30px rgba(124,58,237,0.25)" : "none",
         }}
       >
-        <a href="/kolkata-call-girl" style={{ fontFamily: "'Great Vibes', cursive", fontSize: "1.5rem", color: "var(--white)", letterSpacing: "0.08em" }}>
+        <a href="/" style={{ fontFamily: "'Great Vibes', cursive", fontSize: "1.5rem", color: "var(--white)", letterSpacing: "0.08em" }}>
           Bengal Beauties
         </a>
 
@@ -93,7 +93,7 @@ export default function Navbar() {
           </ul>
 
           <a
-            href="/kolkata-call-girl#companions"
+            href="#contact"
             className="desktop-book-btn"
             style={{
               fontFamily: "'Jost', sans-serif",

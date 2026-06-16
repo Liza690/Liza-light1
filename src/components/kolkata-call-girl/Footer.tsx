@@ -42,22 +42,15 @@ export default function Footer() {
           {[
             {
               title: "Company",
-              links: [
-                { label: "About Us", href: "/kolkata-call-girl#about" },
-                { label: "How It Works", href: "/kolkata-call-girl#discretion" },
-              ],
+              links: ["About Us", "How It Works" ],
             },
             {
               title: "Services",
-              links: [
-                { label: "Browse Companions", href: "/providers" },
-              ],
+              links: ["Browse Companions"],
             },
             {
               title: "Support",
-              links: [
-                { label: "Contact Us", href: "/contact" },
-              ],
+              links: ["Contact Us"],
             },
           ].map((col) => (
             <div key={col.title} className="footer-col">
@@ -66,9 +59,9 @@ export default function Footer() {
               </h4>
               <ul className="footer-links" style={{ listStyle: "none", padding: 0, margin: 0 }}>
                 {col.links.map((link) => (
-                  <li key={link.label} style={{ marginBottom: "8px" }}>
-                    <a href={link.href} style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.8rem", fontWeight: 400, color: "rgba(255,255,255,0.6)", textDecoration: "none", transition: "all 0.2s ease", display: "inline-block" }}>
-                      {link.label}
+                  <li key={link} style={{ marginBottom: "8px" }}>
+                    <a href="#" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.8rem", fontWeight: 400, color: "rgba(255,255,255,0.6)", textDecoration: "none", transition: "all 0.2s ease", display: "inline-block" }}>
+                      {link}
                     </a>
                   </li>
                 ))}

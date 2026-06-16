@@ -52,7 +52,7 @@ export default function Companions() {
           Our Portfolio
         </p>
         <h2 className="section-title" style={{ fontFamily: "'VeganStyle', 'Jost', sans-serif", fontSize: "clamp(1.3rem, 4vw, 2rem)", color: "var(--dark)", lineHeight: 1.6, marginBottom: "10px" }}>
-          Meet Our <em>Best Kolkata</em> Companions
+          Meet Our Best Kolkata <em>Escorts</em> or <em>Call Girls</em>
         </h2>
         <div className="divider" style={{ width: "40px", height: "2px", background: "var(--accent)", margin: "12px auto 24px" }} />
         <p style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.9rem", fontWeight: 300, color: "var(--dark)", lineHeight: 1.8, maxWidth: "500px", margin: "0 auto" }}>

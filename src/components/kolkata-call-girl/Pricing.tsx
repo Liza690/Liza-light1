@@ -150,7 +150,7 @@ export default function Pricing() {
             </ul>
 
             <a
-              href="/providers"
+              href="#contact"
               className="pc-btn"
               style={{
                 fontFamily: "'Jost', sans-serif",
