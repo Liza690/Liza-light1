@@ -34,6 +34,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
+        <meta name="google-site-verification" content="eoA3SeeFHMHRg4beIL8aFVDXILXL5S3kRg9u4qjIG-8" />
         <link rel="icon" href="/images/logo.png" type="image/png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
