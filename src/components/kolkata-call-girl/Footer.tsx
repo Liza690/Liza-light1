@@ -44,14 +44,14 @@ export default function Footer() {
               {
                 title: "Company",
                 links: [
-                  { label: "About Us", href: "#about" },
-                  { label: "How It Works", href: "#discretion" },
+                  { label: "About Us", href: "#about", external: false },
+                  { label: "How It Works", href: "#discretion", external: false },
                 ],
               },
               {
                 title: "Services",
                 links: [
-                  { label: "Browse Companions", href: "/providers" },
+                  { label: "Browse Companions", href: "/providers", external: false },
                 ],
               },
               {
@@ -63,7 +63,7 @@ export default function Footer() {
               {
                 title: "Support",
                 links: [
-                  { label: "Contact Us", href: "/contact" },
+                  { label: "Contact Us", href: "/contact", external: false },
                 ],
               },
             ].map((col) => (
