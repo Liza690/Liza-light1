@@ -39,42 +39,50 @@ export default function Footer() {
             </div>
           </div>
 
-          {[
-            {
-              title: "Company",
-              links: [
-                { label: "About Us", href: "/kolkata-call-girl#about" },
-                { label: "How It Works", href: "/kolkata-call-girl#discretion" },
-              ],
-            },
-            {
-              title: "Services",
-              links: [
-                { label: "Browse Companions", href: "/providers" },
-              ],
-            },
-            {
-              title: "Support",
-              links: [
-                { label: "Contact Us", href: "/contact" },
-              ],
-            },
-          ].map((col) => (
-            <div key={col.title} className="footer-col">
-              <h4 className="footer-title" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--white)", marginBottom: "12px", position: "relative" }}>
-                {col.title}
-              </h4>
-              <ul className="footer-links" style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                {col.links.map((link) => (
-                  <li key={link.label} style={{ marginBottom: "8px" }}>
-                    <a href={link.href} style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.8rem", fontWeight: 400, color: "rgba(255,255,255,0.6)", textDecoration: "none", transition: "all 0.2s ease", display: "inline-block" }}>
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <div className="footer-links-row">
+            {[
+              {
+                title: "Company",
+                links: [
+                  { label: "About Us", href: "/kolkata-call-girl#about" },
+                  { label: "How It Works", href: "/kolkata-call-girl#discretion" },
+                ],
+              },
+              {
+                title: "Services",
+                links: [
+                  { label: "Browse Companions", href: "/providers" },
+                ],
+              },
+              {
+                title: "Our Network",
+                links: [
+                  { label: "Calcutta Nights", href: "https://calcuttanights.com/kolkata-escorts", external: true },
+                ],
+              },
+              {
+                title: "Support",
+                links: [
+                  { label: "Contact Us", href: "/contact" },
+                ],
+              },
+            ].map((col) => (
+              <div key={col.title} className="footer-col">
+                <h4 className="footer-title" style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.65rem", fontWeight: 700, letterSpacing: "0.2em", textTransform: "uppercase", color: "var(--white)", marginBottom: "12px", position: "relative" }}>
+                  {col.title}
+                </h4>
+                <ul className="footer-links" style={{ listStyle: "none", padding: 0, margin: 0 }}>
+                  {col.links.map((link) => (
+                    <li key={link.label} style={{ marginBottom: "8px" }}>
+                      <a href={link.href} target={link.external ? "_blank" : undefined} rel={link.external ? "noopener noreferrer" : undefined} style={{ fontFamily: "'Jost', sans-serif", fontSize: "0.8rem", fontWeight: 400, color: "rgba(255,255,255,0.6)", textDecoration: "none", transition: "all 0.2s ease", display: "inline-block" }}>
+                        {link.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
 
         <hr className="footer-divider" style={{ border: "none", height: "1px", background: "rgba(255,255,255,0.1)", marginBottom: "18px" }} />
@@ -94,9 +102,16 @@ export default function Footer() {
       <style jsx>{`
         .footer-grid {
           display: grid;
-          grid-template-columns: 2.2fr 1fr 1fr 1fr;
+          grid-template-columns: 2.2fr 3fr;
           gap: 24px;
           margin-bottom: 32px;
+        }
+        .footer-links-row {
+          display: flex;
+          gap: 20px;
+        }
+        .footer-links-row > div {
+          flex: 1;
         }
         .social-box:hover {
           border-color: rgba(255,255,255,0.6);
@@ -113,15 +128,14 @@ export default function Footer() {
         }
         @media (max-width: 992px) {
           .footer-grid {
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 30px;
-          }
-          .footer-brand {
-            grid-column: span 2;
-            padding-right: 0;
           }
           .footer-tagline {
             max-width: 100%;
+          }
+          .footer-links-row {
+            gap: 16px;
           }
         }
         @media (max-width: 576px) {
@@ -129,8 +143,12 @@ export default function Footer() {
             grid-template-columns: 1fr;
             gap: 30px;
           }
-          .footer-brand {
-            grid-column: span 1;
+          .footer-links-row {
+            flex-wrap: wrap;
+            gap: 20px;
+          }
+          .footer-links-row > div {
+            flex: 1 0 140px;
           }
           .footer-bottom {
             flex-direction: column;
